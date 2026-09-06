@@ -1,0 +1,26 @@
+# Joonisekoda
+
+> Tehniline tootmisdokumentatsioon puittoodetele ja mänguväljakutele.
+> Kaubamärk kuulub ettevõttele VISIONFRAME3D OÜ (registrikood 17123646, Elva, Eesti).
+
+Ühest 3D-mudelist tehakse korraga tootmisjoonised, lõikeleht, paigaldusjuhend ja
+ohutusala plaan — kõik sama detailinumbriga. Samast mudelist saab ka koosteanimatsiooni,
+paigaldaja treeningmängu, brauseris töötava tootekonfiguraatori ja liitreaalsuse.
+
+## Teenused
+- Tootmisjoonised ja lõikelehed (cut-list, BOM)
+- Paigaldusjuhendid ja ohutusala plaanid
+- Koosteanimatsioonid
+- Treeningmängud paigaldajale (Unity, brauseris)
+- 3D-konfiguraatorid (brauseris, ilma pilve-GPU-ta)
+- 3D-vaatur ja liitreaalsus (AR) telefonis, ilma rakenduseta
+
+## Töötavad näidised
+- Koduleht ja portfoolio: https://joonisekoda.ee/
+- Tootekonfiguraator: https://demo.joonisekoda.ee/
+- AR-kataloog, 67 mudelit: https://ar.joonisekoda.ee/
+
+## Kontakt
+- E-post: visionframe3d@gmail.com
+- Telefon: +372 5825 7130
+- Asukoht: Elva, Tartumaa, Eesti. Teenindame Eestit ja Baltikumi.

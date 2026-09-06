@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Otsingu- ja AI-robotid on teretulnud
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://joonisekoda.ee/sitemap.xml
