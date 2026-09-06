@@ -785,27 +785,199 @@ footer{background:var(--ink);color:#fff;padding:65px 0 28px}
   .footer-bottom span{display:block;margin-top:5px}
 }
 .cta-kontakt{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+/* --- Keelevalik (EST / ENG) ---
+   Sisu ei ole eraldi ENG-lehel vaid samas failis: iga tolgitav element kannab
+   `data-en` atribuuti ja JS vahetab ainult sisu. Uks fail, uks tode — sama
+   pohimotte, mis kogu ulejaanud lehel. */
+.header-right{display:flex;align-items:center;gap:16px}
+.lang{
+  display:flex;align-items:center;gap:2px;
+  border:1px solid var(--line);border-radius:9px;padding:3px;
+}
+.lang-nupp{
+  background:none;border:0;cursor:pointer;
+  font-family:"DM Sans",sans-serif;
+  font-size:12px;font-weight:700;letter-spacing:.04em;
+  color:#8fa0b1;padding:6px 9px;border-radius:6px;transition:.2s;
+}
+.lang-nupp:hover{color:#fff}
+.lang-nupp.is-akt{background:rgba(163,230,53,.14);color:var(--lime)}
+.lang-lyhi{display:none}
+
+/* Paise ulevoolu kaitse. Enne keelevalikut oli paises ainult logo + CTA ja
+   360 px ekraanil jai napilt ruumi; keelenupud voavad ~85 px juurde ja ilma
+   selleta laheks „Küsi pakkumist" nupp EST/ENG peale. Kaks kaitset:
+   1) .header-right ei kahane kunagi (nupud jaavad terveks),
+   2) logo tekst kahaneb ja loppeb vajadusel kolme punktiga, mitte ei murra
+      rida ega lukka nuppe kaadrist valja. Nii ei saa pais ule aare minna
+      uhelgi laiusel, ka 320 px peal. */
+.header-right{flex:0 0 auto}
+.logo{min-width:0}
+.logo-mark{flex:0 0 auto}
+.logo-tekst{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:850px){
+  .header-right{gap:9px}
+  .lang{padding:2px}
+  .lang-nupp{padding:5px 7px;font-size:11px}
+}
+@media(max-width:560px){
+  .logo{font-size:18px;gap:9px}
+  .logo-mark{width:26px;height:26px;flex:0 0 auto}
+  .logo-mark:after{width:15px;height:15px;left:5px;top:5px}
+  .lang{border:0;padding:0;gap:0}
+  .lang-nupp{padding:5px 6px}
+  .lang-pikk{display:none}
+  .lang-lyhi{display:inline}
+  .header-cta{padding:9px 11px;font-size:11px}
+}
 </style>
 </head>
 
 <body>
 
+<script>
+/* --- EST / ENG keelevahetus -------------------------------------------------
+   Eestikeelne tekst on HTML-is sees, ingliskeelne `data-en` atribuudis. Nii on
+   molemad tolked ilmtingimata uhes kohas: kui keegi muudab eestikeelset lauset,
+   naeb ta samas kohas ka inglise oma ja see ei jaa markamatult vananema.
+   Eestikeelse teksti jatab JS esimesel vahetusel `data-et`-sse — seda ei ole
+   vaja faili kirjutada, see on juba elemendis olemas.
+
+   ! Teadlik piirang: <title>, meta description ja JSON-LD jaavad serveeritud
+   HTML-is eestikeelseks. Otsimootor ja jagamiseelvaade (OG) naevad seega ainult
+   EST-i. Kui ENG-lehte on vaja ka Google'is, tuleb teha eraldi /en/ URL. */
+(function(){
+  var HOIDIK = 'jk-keel';
+  var META = {
+    en: {
+      title: 'Joonisekoda — product configurators, augmented reality and training games',
+      desc:  'Browser-based product configurators, augmented reality (AR) and installer training games for timber products. Production drawings, cutting lists and installation manuals from the same model. Joonisekoda — VISIONFRAME3D OU, Elva.',
+      ogTitle: 'Joonisekoda — on screen first, then on site',
+      ogDesc:  'A configurator where the buyer assembles the product themselves. AR that puts it in their own yard. A training game for the installer. Drawings and cutting lists from the same model.',
+      ogAlt:   'The final step of a playhouse installation — an example from a Joonisekoda installation manual',
+      locale:  'en_GB'
+    },
+    et: {}   // et taidetakse lehe enda pealt, et see ei saaks HTML-iga lahku minna
+  };
+
+  /* Jarjekord: URL > kasutaja varasem valik > eesti keel.
+     Brauseri keele jargi EI arvata: link laheb sageli eesti kliendile edasi
+     inglisekeelse liidesega arvutis ja vale keel oleks siis vaikimisi. */
+  function algne(){
+    var q = new URLSearchParams(location.search).get('lang');
+    if (q === 'en' || q === 'et') return q;
+    try { var s = localStorage.getItem(HOIDIK); if (s === 'en' || s === 'et') return s; } catch(e){}
+    return 'et';
+  }
+
+  var keel = algne();
+  document.documentElement.lang = keel;
+
+  /* Skriptidele, mis loovad teksti jooksvalt (AR-hoiatused, iframe'i title). */
+  window.JK = {
+    keel: function(){ return keel; },
+    t: function(et, en){ return keel === 'en' ? en : et; }
+  };
+
+  function meta(sel, attr, val){
+    var el = document.querySelector(sel);
+    if (el && val != null) el.setAttribute(attr, val);
+  }
+
+  function korja(){
+    var t = document.querySelector('title');
+    META.et = {
+      title: t ? t.textContent : '',
+      desc: (document.querySelector('meta[name="description"]')||{}).content,
+      ogTitle: (document.querySelector('meta[property="og:title"]')||{}).content,
+      ogDesc: (document.querySelector('meta[property="og:description"]')||{}).content,
+      ogAlt: (document.querySelector('meta[property="og:image:alt"]')||{}).content,
+      locale: 'et_EE'
+    };
+  }
+
+  function rakenda(uus){
+    keel = uus;
+    document.documentElement.lang = keel;
+    var m = META[keel];
+
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      if (el.dataset.et == null) el.dataset.et = el.innerHTML;
+      el.innerHTML = keel === 'en' ? el.dataset.en : el.dataset.et;
+    });
+    ['alt','aria-label'].forEach(function(a){
+      document.querySelectorAll('[data-en-' + a + ']').forEach(function(el){
+        var hoiu = 'data-et-' + a;
+        if (!el.hasAttribute(hoiu)) el.setAttribute(hoiu, el.getAttribute(a) || '');
+        el.setAttribute(a, el.getAttribute(keel === 'en' ? 'data-en-' + a : hoiu));
+      });
+    });
+
+    if (m.title) document.title = m.title;
+    meta('meta[name="description"]', 'content', m.desc);
+    meta('meta[property="og:title"]', 'content', m.ogTitle);
+    meta('meta[property="og:description"]', 'content', m.ogDesc);
+    meta('meta[property="og:image:alt"]', 'content', m.ogAlt);
+    meta('meta[property="og:locale"]', 'content', m.locale);
+    meta('meta[name="twitter:title"]', 'content', m.ogTitle);
+    meta('meta[name="twitter:description"]', 'content', m.ogDesc);
+
+    document.querySelectorAll('.lang-nupp').forEach(function(n){
+      var akt = n.dataset.lang === keel;
+      n.classList.toggle('is-akt', akt);
+      n.setAttribute('aria-pressed', akt ? 'true' : 'false');
+    });
+
+    try { localStorage.setItem(HOIDIK, keel); } catch(e){}
+
+    /* Link peab olema jagatav: ?lang=en jaab aadressiribale, ?lang=et laheb ara
+       (eesti keel on vaikimisi, tarbetu parameeter ainult koledab URL-i).
+       try/catch, sest file:// pealt viskab replaceState SecurityError'i — leht
+       peab ka kohapeal topeltklikiga avatuna tootama. */
+    try {
+      var u = new URL(location.href);
+      if (keel === 'en') u.searchParams.set('lang', 'en'); else u.searchParams.delete('lang');
+      history.replaceState(null, '', u.pathname + u.search + u.hash);
+    } catch(e){}
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    korja();
+    document.querySelectorAll('.lang-nupp').forEach(function(n){
+      n.addEventListener('click', function(){ rakenda(n.dataset.lang); });
+    });
+    if (keel !== 'et') rakenda(keel);
+    else document.querySelectorAll('.lang-nupp').forEach(function(n){
+      var akt = n.dataset.lang === 'et';
+      n.classList.toggle('is-akt', akt);
+      n.setAttribute('aria-pressed', akt ? 'true' : 'false');
+    });
+  });
+})();
+</script>
+
 <header id="header">
   <div class="container header-inner">
     <a class="logo" href="#">
       <span class="logo-mark"></span>
-      Joonisekoda
+      <span class="logo-tekst">Joonisekoda</span>
     </a>
     <nav>
       <ul>
-        <li><a href="#teenused">Teenused</a></li>
-        <li><a href="#interaktiivne">Konfiguraator &amp; AR</a></li>
-        <li><a href="#animatsioon">Animatsioon &amp; mäng</a></li>
-        <li><a href="#protsess">Protsess</a></li>
-        <li><a href="#tehtud">Tehtud tööd</a></li>
+        <li><a href="#teenused" data-en="Services">Teenused</a></li>
+        <li><a href="#interaktiivne" data-en="Configurator &amp; AR">Konfiguraator &amp; AR</a></li>
+        <li><a href="#animatsioon" data-en="Animation &amp; game">Animatsioon &amp; mäng</a></li>
+        <li><a href="#protsess" data-en="Process">Protsess</a></li>
+        <li><a href="#tehtud" data-en="Work">Tehtud tööd</a></li>
       </ul>
     </nav>
-    <a class="header-cta" href="#kontakt">Küsi pakkumist →</a>
+    <div class="header-right">
+      <div class="lang" role="group" aria-label="Keel / Language">
+        <button type="button" class="lang-nupp is-akt" data-lang="et" lang="et" aria-pressed="true" aria-label="Eesti keel"><span class="lang-pikk">EST</span><span class="lang-lyhi">ET</span></button>
+        <button type="button" class="lang-nupp" data-lang="en" lang="en" aria-pressed="false" aria-label="English"><span class="lang-pikk">ENG</span><span class="lang-lyhi">EN</span></button>
+      </div>
+      <a class="header-cta" href="#kontakt" data-en="Get a quote →">Küsi pakkumist →</a>
+    </div>
   </div>
 </header>
 
@@ -970,31 +1142,31 @@ footer{background:var(--ink);color:#fff;padding:65px 0 28px}
 
   <div class="container hero-grid">
     <div>
-      <div class="kicker"><i></i> Konfiguraatorid · liitreaalsus · treeningmängud</div>
-      <h1>Toode ekraanil,<br><span>enne kui platsil.</span></h1>
-      <p class="hero-copy">
+      <div class="kicker" data-en="<i></i> Configurators · augmented reality · training games"><i></i> Konfiguraatorid · liitreaalsus · treeningmängud</div>
+      <h1 data-en="On screen first,<br><span>then on site.</span>">Toode ekraanil,<br><span>enne kui platsil.</span></h1>
+      <p class="hero-copy" data-en="A configurator where the buyer assembles the product themselves. Augmented reality that puts it in their own yard at full size. A training game where the installer makes the mistakes on screen, not on site. All from one model — the same one the drawings and cutting lists come from.">
         Konfiguraator, kus ostja paneb toote ise kokku. Liitreaalsus, mis paneb selle
         tema õuele päris mõõdus. Treeningmäng, kus paigaldaja teeb vead ekraanil, mitte
         platsil. Kõik ühest mudelist — samast, millest tulevad ka joonised ja lõikelehed.
       </p>
       <div class="actions">
-        <a class="btn btn-primary" href="#kontakt">Küsi projektipakkumist →</a>
-        <a class="btn btn-ghost" href="#interaktiivne">Proovi kohe →</a>
+        <a class="btn btn-primary" href="#kontakt" data-en="Request a project quote →">Küsi projektipakkumist →</a>
+        <a class="btn btn-ghost" href="#interaktiivne" data-en="Try it now →">Proovi kohe →</a>
       </div>
     </div>
 
     <div class="hero-visual">
       <figure class="sheet">
-        <span class="sheet-tag">Mängumaja · 3D-mudel</span>
-        <img src="pildid/mangumaja.jpg" alt="Mängumaja Oliver — 3D-mudel">
+        <span class="sheet-tag" data-en="Playhouse · 3D model">Mängumaja · 3D-mudel</span>
+        <img src="pildid/mangumaja.jpg" alt="Mängumaja Oliver — 3D-mudel" data-en-alt="Playhouse Oliver — 3D model">
       </figure>
       <div class="floating-spec">
         <b>1:1</b>
-        <span>Täpne digitaalne mudel enne tootmist</span>
+        <span data-en="An exact digital model before production">Täpne digitaalne mudel enne tootmist</span>
       </div>
       <div class="hero-label">
         <small>Joonisekoda / 2026</small>
-        <strong>Detailist tervikuks.</strong>
+        <strong data-en="From part to whole.">Detailist tervikuks.</strong>
       </div>
     </div>
   </div>
@@ -1002,10 +1174,10 @@ footer{background:var(--ink);color:#fff;padding:65px 0 28px}
 
 <div class="trust">
   <div class="container trust-inner">
-    <div class="trust-item"><strong>Konfiguraator</strong><span>ostja valib ise</span></div>
-    <div class="trust-item"><strong>AR</strong><span>1:1 oma õues</span></div>
-    <div class="trust-item"><strong>Treeningmäng</strong><span>vead ekraanil, mitte platsil</span></div>
-    <div class="trust-item"><strong>Joonised</strong><span>samast mudelist</span></div>
+    <div class="trust-item"><strong data-en="Configurator">Konfiguraator</strong><span data-en="the buyer chooses">ostja valib ise</span></div>
+    <div class="trust-item"><strong>AR</strong><span data-en="1:1 in your own yard">1:1 oma õues</span></div>
+    <div class="trust-item"><strong data-en="Training game">Treeningmäng</strong><span data-en="mistakes on screen, not on site">vead ekraanil, mitte platsil</span></div>
+    <div class="trust-item"><strong data-en="Drawings">Joonised</strong><span data-en="from the same model">samast mudelist</span></div>
   </div>
 </div>
 
@@ -1013,10 +1185,10 @@ footer{background:var(--ink);color:#fff;padding:65px 0 28px}
   <div class="container">
     <div class="section-top">
       <div>
-        <div class="eyebrow">Teenused</div>
-        <h2 class="section-title">Tehniline töö,<br>mis päriselt liigub.</h2>
+        <div class="eyebrow" data-en="Services">Teenused</div>
+        <h2 class="section-title" data-en="Technical work<br>that actually moves.">Tehniline töö,<br>mis päriselt liigub.</h2>
       </div>
-      <p class="section-intro">
+      <p class="section-intro" data-en="Not just good-looking drawings. We make documentation the next person can genuinely put to use in the factory or on the installation site.">
         Ei ole lihtsalt ilusad joonised. Loome dokumentatsiooni, mille järgmine inimene
         saab reaalselt tootmises või paigaldusplatsil kasutusele võtta.
       </p>
@@ -1026,73 +1198,73 @@ footer{background:var(--ink);color:#fff;padding:65px 0 28px}
       <article class="service new">
         <span class="service-number">01 / 09</span>
         <span class="service-icon">CONF</span>
-        <h3>Tootekonfiguraator</h3>
-        <p>Klient paneb toote ise kokku: seinad, sisustus, materjalid ja toonid. Iga valik on sinu päris geomeetria, mitte pilt — ja päringuni jõuab juba valmis kombinatsioon.</p>
-        <span class="service-tag">Veebis, 3D</span>
+        <h3 data-en="Product configurator">Tootekonfiguraator</h3>
+        <p data-en="The customer assembles the product themselves: walls, interior, materials and finishes. Every choice is your real geometry, not a picture — and the enquiry arrives with the combination already set.">Klient paneb toote ise kokku: seinad, sisustus, materjalid ja toonid. Iga valik on sinu päris geomeetria, mitte pilt — ja päringuni jõuab juba valmis kombinatsioon.</p>
+        <span class="service-tag" data-en="On the web, 3D">Veebis, 3D</span>
       </article>
 
       <article class="service new">
         <span class="service-number">02 / 09</span>
         <span class="service-icon">AR</span>
-        <h3>AR — vaata oma toas</h3>
-        <p>Ostja suunab telefonikaamera oma hoovi või tuppa ja näeb toodet päris mõõdus, päris kohas. Mööbel, saunad, aiamajad — enne kui midagi on tellitud.</p>
-        <span class="service-tag">Telefoni kaameraga</span>
+        <h3 data-en="AR — see it in your room">AR — vaata oma toas</h3>
+        <p data-en="The buyer points their phone camera at their yard or room and sees the product at full size, in the real place. Furniture, saunas, garden houses — before anything is ordered.">Ostja suunab telefonikaamera oma hoovi või tuppa ja näeb toodet päris mõõdus, päris kohas. Mööbel, saunad, aiamajad — enne kui midagi on tellitud.</p>
+        <span class="service-tag" data-en="With a phone camera">Telefoni kaameraga</span>
       </article>
 
       <article class="service new">
         <span class="service-number">03 / 09</span>
         <span class="service-icon">360</span>
-        <h3>3D tootevaatur</h3>
-        <p>Pöörlev ja suumitav toode otse tootelehel. Üks fail, mis töötab telefonis ja arvutis, ilma pluginate ja rakendusteta.</p>
-        <span class="service-tag">Tootelehele</span>
+        <h3 data-en="3D product viewer">3D tootevaatur</h3>
+        <p data-en="A rotating, zoomable product right on the product page. One file that works on phone and desktop, with no plugins and no apps.">Pöörlev ja suumitav toode otse tootelehel. Üks fail, mis töötab telefonis ja arvutis, ilma pluginate ja rakendusteta.</p>
+        <span class="service-tag" data-en="For the product page">Tootelehele</span>
       </article>
 
       <article class="service new">
         <span class="service-number">04 / 09</span>
         <span class="service-icon">GAME</span>
-        <h3>Treeningmäng tootest</h3>
-        <p>Interaktiivne mäng, kus paigaldaja paneb toote virtuaalselt kokku — õiges järjekorras, õigete kinnitustega. Vead tulevad välja ekraanil, mitte platsil.</p>
-        <span class="service-tag">Brauseris</span>
+        <h3 data-en="A training game of your product">Treeningmäng tootest</h3>
+        <p data-en="An interactive game where the installer assembles the product virtually — in the right order, with the right fasteners. Mistakes surface on screen, not on site.">Interaktiivne mäng, kus paigaldaja paneb toote virtuaalselt kokku — õiges järjekorras, õigete kinnitustega. Vead tulevad välja ekraanil, mitte platsil.</p>
+        <span class="service-tag" data-en="In the browser">Brauseris</span>
       </article>
 
       <article class="service new">
         <span class="service-number">05 / 09</span>
         <span class="service-icon">▶</span>
-        <h3>Toote- ja koosteanimatsioon</h3>
-        <p>Sama mudel liikuma pandud: toode laguneb detailideks ja pannakse õiges järjekorras uuesti kokku. Müügiks, juhendisse ja tootmise sisekoolitusse.</p>
-        <span class="service-tag">Video / veeb</span>
+        <h3 data-en="Product and assembly animation">Toote- ja koosteanimatsioon</h3>
+        <p data-en="The same model set in motion: the product comes apart into its pieces and goes back together in the right order. For sales, for the manual and for in-house production training.">Sama mudel liikuma pandud: toode laguneb detailideks ja pannakse õiges järjekorras uuesti kokku. Müügiks, juhendisse ja tootmise sisekoolitusse.</p>
+        <span class="service-tag" data-en="Video / web">Video / veeb</span>
       </article>
 
       <article class="service">
         <span class="service-number">06 / 09</span>
         <span class="service-icon">→</span>
-        <h3>Paigaldusjuhendid</h3>
-        <p>Samm-sammuline dokumentatsioon paigaldusmeeskonnale: detailid, asukohad, ühendused ja vajalikud kinnitusvahendid.</p>
-        <span class="service-tag">Platsile kaasa</span>
+        <h3 data-en="Installation manuals">Paigaldusjuhendid</h3>
+        <p data-en="Step-by-step documentation for the installation crew: parts, positions, connections and the fasteners required.">Samm-sammuline dokumentatsioon paigaldusmeeskonnale: detailid, asukohad, ühendused ja vajalikud kinnitusvahendid.</p>
+        <span class="service-tag" data-en="To take on site">Platsile kaasa</span>
       </article>
 
       <article class="service">
         <span class="service-number">07 / 09</span>
         <span class="service-icon">3D</span>
-        <h3>3D mudeldamine</h3>
-        <p>Detailne digitaalne mudel konstruktsioonist, elementidest ja sõlmedest. Probleemid tulevad nähtavale enne, kui materjal saetakse.</p>
-        <span class="service-tag">1:1 geomeetria</span>
+        <h3 data-en="3D modelling">3D mudeldamine</h3>
+        <p data-en="A detailed digital model of the structure, its elements and its joints. Problems come to light before the material is cut.">Detailne digitaalne mudel konstruktsioonist, elementidest ja sõlmedest. Probleemid tulevad nähtavale enne, kui materjal saetakse.</p>
+        <span class="service-tag" data-en="1:1 geometry">1:1 geomeetria</span>
       </article>
 
       <article class="service">
         <span class="service-number">08 / 09</span>
         <span class="service-icon">CUT</span>
-        <h3>Tootmisjoonised &amp; lõikelehed</h3>
-        <p>Selged koostejoonised ja täpsed materjaliandmed, mida saab kasutada tootmise planeerimisel ja järkamisel.</p>
-        <span class="service-tag">Tootmisvalmis</span>
+        <h3 data-en="Production drawings &amp; cutting lists">Tootmisjoonised &amp; lõikelehed</h3>
+        <p data-en="Clear assembly drawings and precise material data you can use for production planning and cutting.">Selged koostejoonised ja täpsed materjaliandmed, mida saab kasutada tootmise planeerimisel ja järkamisel.</p>
+        <span class="service-tag" data-en="Production-ready">Tootmisvalmis</span>
       </article>
 
       <article class="service">
         <span class="service-number">09 / 09</span>
         <span class="service-icon">✓</span>
-        <h3>Dokumentatsiooni audit</h3>
-        <p>Olemasolevate projektide kontroll, korrastamine ja viimine ühtseks tootmisloogikaks.</p>
-        <span class="service-tag">Kontrollitud</span>
+        <h3 data-en="Documentation audit">Dokumentatsiooni audit</h3>
+        <p data-en="Reviewing and tidying existing projects, and bringing them into one production logic.">Olemasolevate projektide kontroll, korrastamine ja viimine ühtseks tootmisloogikaks.</p>
+        <span class="service-tag" data-en="Checked">Kontrollitud</span>
       </article>
     </div>
   </div>
@@ -1197,10 +1369,10 @@ model-viewer::part(default-progress-bar){height:3px}
   <div class="container">
     <div class="section-top">
       <div>
-        <div class="eyebrow">Uus</div>
-        <h2 class="section-title">Sama mudel.<br>Nüüd kliendi käes.</h2>
+        <div class="eyebrow" data-en="New">Uus</div>
+        <h2 class="section-title" data-en="The same model.<br>Now in the customer's hands.">Sama mudel.<br>Nüüd kliendi käes.</h2>
       </div>
-      <p class="section-intro">
+      <p class="section-intro" data-en="Once the model has been made, it doesn't have to stay on your computer. Three outputs from the same geometry: the customer assembles the product, turns it from every side and places it in their yard with a phone. All in the browser — nothing to install.">
         Kui mudel on korra tehtud, ei pea ta jääma ainult sinu arvutisse. Kolm väljundit
         samast geomeetriast: klient paneb toote ise kokku, keerab teda igast küljest ja
         paneb telefoniga oma õue. Kõik brauseris — midagi ei pea installima.
@@ -1212,56 +1384,56 @@ model-viewer::part(default-progress-bar){height:3px}
       <!-- 1. KONFIGURAATOR -->
       <article class="show lai">
         <div class="show-copy">
-          <div class="eyebrow">Konfiguraator</div>
-          <h3>Klient paneb toote<br>ise kokku.</h3>
-          <p>
+          <div class="eyebrow" data-en="Configurator">Konfiguraator</div>
+          <h3 data-en="The customer assembles<br>the product.">Klient paneb toote<br>ise kokku.</h3>
+          <p data-en="Walls, interior, materials and finishes — every choice swaps real geometry, not a picture. The buyer sees at once what they are ordering, and the enquiry that reaches you already has the combination set.">
             Seinad, sisustus, materjalid ja toonid — iga valik vahetab päris geomeetriat,
             mitte pilti. Ostja näeb kohe, mida ta tellib, ja sinuni jõuab päring, kus
             kombinatsioon on juba paigas.
           </p>
           <ul class="show-list">
-            <li>7 mudelifaili katsid 7 varianti — konfiguraator katab 216</li>
-            <li>Iga uus valik korrutab failide arvu, konfiguraator liidab</li>
-            <li>Töötab tavalises brauseris, ka telefonis</li>
-            <li>Näidis all on ehitatud päris tootemudelitest</li>
+            <li data-en="7 model files covered 7 variants — the configurator covers 216">7 mudelifaili katsid 7 varianti — konfiguraator katab 216</li>
+            <li data-en="Every new option multiplies the number of files; the configurator only adds">Iga uus valik korrutab failide arvu, konfiguraator liidab</li>
+            <li data-en="Runs in an ordinary browser, phones included">Töötab tavalises brauseris, ka telefonis</li>
+            <li data-en="The demo below is built from real product models">Näidis all on ehitatud päris tootemudelitest</li>
           </ul>
           <a class="btn btn-primary" href="https://demo.joonisekoda.ee/"
-             target="_blank" rel="noopener">Ava konfiguraator →</a>
+             target="_blank" rel="noopener" data-en="Open the configurator →">Ava konfiguraator →</a>
         </div>
         <div class="show-media">
-          <span class="play"><i></i> Konfiguraator</span>
+          <span class="play" data-en="<i></i> Configurator"><i></i> Konfiguraator</span>
           <div class="konf-kate" id="konf-katte">
-            <strong style="font-size:19px">Välisauna konfiguraator</strong>
-            <p>Esisein, lava, keris ja toonid — vaheta ja vaata. Demo laeb ~49 MB,
+            <strong style="font-size:19px" data-en="Outdoor sauna configurator">Välisauna konfiguraator</strong>
+            <p data-en="Front wall, benches, heater and finishes — switch and look. The demo loads ~49 MB, so it starts only on click.">Esisein, lava, keris ja toonid — vaheta ja vaata. Demo laeb ~49 MB,
                seepärast käivitub alles klikiga.</p>
-            <button type="button" id="konf-nupp">Käivita demo</button>
+            <button type="button" id="konf-nupp" data-en="Launch the demo">Käivita demo</button>
           </div>
-          <span class="media-note">Näidiskonfiguraator · Unity WebGL · 216 kombinatsiooni</span>
+          <span class="media-note" data-en="Demo configurator · Unity WebGL · 216 combinations">Näidiskonfiguraator · Unity WebGL · 216 kombinatsiooni</span>
         </div>
       </article>
 
       <!-- 2. 3D-VAATUR -->
       <article class="show flip">
         <div class="show-copy">
-          <div class="eyebrow">3D tootevaatur</div>
-          <h3>Pöörlev toode<br>otse tootelehel.</h3>
-          <p>
+          <div class="eyebrow" data-en="3D product viewer">3D tootevaatur</div>
+          <h3 data-en="A rotating product<br>right on the product page.">Pöörlev toode<br>otse tootelehel.</h3>
+          <p data-en="The customer turns the product with a mouse or a finger, zooms in on a detail and looks at it from below. One file that works everywhere — no plugins, no apps, no separate mobile version.">
             Klient keerab toodet hiirega või sõrmega, suumib detailile lähemale ja vaatab
             alt üles. Üks fail, mis töötab igal pool — ilma pluginate, rakenduste ja
             eraldi mobiiliversioonita.
           </p>
           <ul class="show-list">
-            <li>Kogu hoone koos klaasseinaga: 1,0 MB, avaneb sekunditega</li>
-            <li>Sama geomeetria, millest tulevad joonised ja lõikelehed</li>
-            <li>Läheb olemasolevale tootelehele ühe koodireaga</li>
-            <li>Proovi kohe — hiirega keera, rullikuga suumi</li>
+            <li data-en="The whole building including its glass wall: 1.0 MB, opens in seconds">Kogu hoone koos klaasseinaga: 1,0 MB, avaneb sekunditega</li>
+            <li data-en="The same geometry the drawings and cutting lists come from">Sama geomeetria, millest tulevad joonised ja lõikelehed</li>
+            <li data-en="Drops into an existing product page with one line of code">Läheb olemasolevale tootelehele ühe koodireaga</li>
+            <li data-en="Try it now — drag to turn, scroll to zoom">Proovi kohe — hiirega keera, rullikuga suumi</li>
           </ul>
         </div>
         <div class="show-media">
-          <span class="play"><i></i> Keera ja suumi</span>
+          <span class="play" data-en="<i></i> Turn and zoom"><i></i> Keera ja suumi</span>
           <model-viewer
               src="mudel/paviljon.glb"
-              alt="Moodulpaviljon 3×4 m — pöörlev 3D-mudel"
+              alt="Moodulpaviljon 3×4 m — pöörlev 3D-mudel" data-en-alt="Modular pavilion 3×4 m — rotating 3D model"
               camera-controls
               touch-action="pan-y"
               auto-rotate
@@ -1276,43 +1448,43 @@ model-viewer::part(default-progress-bar){height:3px}
               exposure="1.3"
               loading="eager">
           </model-viewer>
-          <span class="media-note">Moodulpaviljon 3×4 m · 21 700 kolmnurka · 1,0 MB</span>
+          <span class="media-note" data-en="Modular pavilion 3×4 m · 21,700 triangles · 1.0 MB">Moodulpaviljon 3×4 m · 21 700 kolmnurka · 1,0 MB</span>
         </div>
       </article>
 
       <!-- 3. AR / WEBAR -->
       <article class="show">
         <div class="show-copy">
-          <div class="eyebrow">AR — liitreaalsus</div>
-          <h3>Vaata oma õues,<br>enne kui tellid.</h3>
-          <p>
+          <div class="eyebrow" data-en="AR — augmented reality">AR — liitreaalsus</div>
+          <h3 data-en="See it in your yard,<br>before you order.">Vaata oma õues,<br>enne kui tellid.</h3>
+          <p data-en="The buyer opens the page on their phone, taps a button and points the camera at their yard. The product stands there at full size — they can walk around it, judge the distance and see whether it fits at all. Furniture, saunas, garden houses, shelters.">
             Ostja avab lehe telefonis, vajutab nuppu ja suunab kaamera oma hoovi. Toode
             seisab seal päris mõõdus — ta saab ümber käia, kaugust hinnata ja vaadata,
             kas see üldse mahub. Mööbel, saunad, aiamajad, varjualused.
           </p>
           <ul class="show-list">
-            <li>Päris mõõtkava 1:1 — ei ole illustratsioon</li>
-            <li>Töötab telefoni brauseris, rakendust ei ole vaja</li>
+            <li data-en="True 1:1 scale — not an illustration">Päris mõõtkava 1:1 — ei ole illustratsioon</li>
+            <li data-en="Works in the phone browser, no app needed">Töötab telefoni brauseris, rakendust ei ole vaja</li>
             <li>Android: Scene Viewer · iPhone: AR Quick Look</li>
-            <li>Sama mudel, millest tulevad joonised ja lõikeleht</li>
+            <li data-en="The same model the drawings and cutting list come from">Sama mudel, millest tulevad joonised ja lõikeleht</li>
           </ul>
           <div id="ar-qr-plokk" style="margin-top:22px;display:none;gap:16px;align-items:center">
             <div id="ar-qr" style="background:#fff;padding:9px;border-radius:10px;line-height:0"></div>
-            <p style="font-size:13px;color:#9caebe;margin:0">
+            <p style="font-size:13px;color:#9caebe;margin:0" data-en="<strong style=&quot;color:#fff;display:block;margin-bottom:3px&quot;>Try it on your phone</strong> Scan with the camera — the page opens on your phone and the AR button appears.">
               <strong style="color:#fff;display:block;margin-bottom:3px">Proovi telefonis</strong>
               Skanni kaameraga — leht avaneb telefonis ja AR-nupp ilmub kohale.
             </p>
           </div>
-          <p id="ar-margis" style="margin-top:18px;font-size:13px;color:#7d8fa0">
+          <p id="ar-margis" style="margin-top:18px;font-size:13px;color:#7d8fa0" data-en="The AR button appears on phones. On a computer you can turn the model, but there is no camera.">
             AR-nupp ilmub telefonis. Arvutis saab mudelit keerata, aga kaamerat ei ole.
           </p>
         </div>
         <div class="show-media">
-          <span class="play"><i></i> Vaata oma toas</span>
+          <span class="play" data-en="<i></i> See it in your room"><i></i> Vaata oma toas</span>
           <model-viewer
               src="mudel/terrassisaun.glb"
               ios-src="mudel/terrassisaun.usdz"
-              alt="Terrassisaun — liitreaalsuses oma õues"
+              alt="Terrassisaun — liitreaalsuses oma õues" data-en-alt="Terrace sauna — in augmented reality in your own yard"
               ar
               ar-modes="webxr scene-viewer quick-look"
               ar-scale="fixed"
@@ -1326,11 +1498,11 @@ model-viewer::part(default-progress-bar){height:3px}
               shadow-intensity="1.1"
               exposure="1.3"
               loading="eager">
-            <button slot="ar-button" class="ar-nupp" type="button">
+            <button slot="ar-button" class="ar-nupp" type="button" data-en="View in your yard →">
               Vaata oma õues →
             </button>
           </model-viewer>
-          <span class="media-note">1:1 mõõtkava · Android ja iPhone</span>
+          <span class="media-note" data-en="1:1 scale · Android and iPhone">1:1 mõõtkava · Android ja iPhone</span>
         </div>
       </article>
 
@@ -1351,7 +1523,7 @@ model-viewer::part(default-progress-bar){height:3px}
     var raam = document.createElement('iframe');
     raam.className = 'konf-raam';
     raam.src = 'https://demo.joonisekoda.ee/';
-    raam.title = 'Välisauna konfiguraator';
+    raam.title = JK.t('Välisauna konfiguraator', 'Outdoor sauna configurator');
     raam.allow = 'fullscreen; xr-spatial-tracking';
     raam.loading = 'lazy';
     katte.parentNode.insertBefore(raam, katte);
@@ -1379,13 +1551,11 @@ model-viewer::part(default-progress-bar){height:3px}
       var h = document.createElement('div');
       h.className = 'vaatur-hoiatus';
       h.innerHTML = failina
-        ? '<strong>3D-vaatur vajab veebiserverit</strong>' +
-          '<div>Leht on avatud failina. Brauser ei luba <code>file://</code> pealt ' +
-          '3D-mudelit lugeda.</div>' +
-          '<div>Käivita kaustas <code>py -3 -m http.server 8091</code> ja ava ' +
-          '<code>http://127.0.0.1:8091</code>.</div>'
-        : '<strong>Mudel ei laadinud</strong>' +
-          '<div>Kontrolli, kas <code>mudel/paviljon.glb</code> on serveri all olemas.</div>';
+        ? '<strong>' + JK.t('3D-vaatur vajab veebiserverit','A 3D viewer needs a web server') + '</strong>' +
+          '<div>' + JK.t('Leht on avatud failina. Brauser ei luba <code>file://</code> pealt 3D-mudelit lugeda.','The page was opened as a file. The browser will not read a 3D model over <code>file://</code>.') + '</div>' +
+          '<div>' + JK.t('Käivita kaustas <code>py -3 -m http.server 8091</code> ja ava <code>http://127.0.0.1:8091</code>.','Run <code>py -3 -m http.server 8091</code> in the folder and open <code>http://127.0.0.1:8091</code>.') + '</div>'
+        : '<strong>' + JK.t('Mudel ei laadinud','The model did not load') + '</strong>' +
+          '<div>' + JK.t('Kontrolli, kas <code>mudel/paviljon.glb</code> on serveri all olemas.','Check that <code>mudel/paviljon.glb</code> is present on the server.') + '</div>';
       mv.parentNode.insertBefore(h, mv);
     }, 12000);
   });
@@ -1423,10 +1593,8 @@ model-viewer::part(default-progress-bar){height:3px}
       k.className = 'vaatur-hoiatus';
       k.style.cssText = 'position:static;padding:18px;border-radius:14px;margin-top:14px';
       k.innerHTML = ios
-        ? '<strong>AR ei avane selles brauseris</strong><div>iPhone’is toimib ' +
-          'liitreaalsus ainult Safaris. Vajalik on iPhone 6s või uuem.</div>'
-        : '<strong>AR ei ole selles seadmes saadaval</strong><div>Androidis on vaja ' +
-          'Chrome’i ja rakendust „Google Play teenused AR-i jaoks”.</div>';
+        ? '<strong>' + JK.t('AR ei avane selles brauseris','AR will not open in this browser') + '</strong><div>' + JK.t('iPhone’is toimib liitreaalsus ainult Safaris. Vajalik on iPhone 6s või uuem.','On iPhone, augmented reality works only in Safari. An iPhone 6s or newer is required.') + '</div>'
+        : '<strong>' + JK.t('AR ei ole selles seadmes saadaval','AR is not available on this device') + '</strong><div>' + JK.t('Androidis on vaja Chrome’i ja rakendust „Google Play teenused AR-i jaoks”.','On Android you need Chrome and the „Google Play Services for AR” app.') + '</div>';
       arMv.parentNode.appendChild(k);
     };
     arMv.addEventListener('load', kontrolli);
@@ -1457,10 +1625,10 @@ model-viewer::part(default-progress-bar){height:3px}
   <div class="container">
     <div class="section-top">
       <div>
-        <div class="eyebrow">Uus</div>
-        <h2 class="section-title">Mudel ei pea<br>paberile jääma.</h2>
+        <div class="eyebrow" data-en="New">Uus</div>
+        <h2 class="section-title" data-en="The model doesn't have<br>to stay on paper.">Mudel ei pea<br>paberile jääma.</h2>
       </div>
-      <p class="section-intro">
+      <p class="section-intro" data-en="Once the 3D model exists, it can produce an animation and a training game as well as drawings. Same geometry, same part numbers — only a different output.">
         Kui 3D-mudel on olemas, saab sellest lisaks joonistele teha ka animatsiooni ja
         treeningmängu. Sama geomeetria, samad detailinumbrid — ainult teine väljund.
       </p>
@@ -1469,54 +1637,54 @@ model-viewer::part(default-progress-bar){height:3px}
     <div class="showcase">
       <article class="show">
         <div class="show-copy">
-          <div class="eyebrow">Animatsioon</div>
-          <h3>Toote- ja koosteanimatsioon</h3>
-          <p>
+          <div class="eyebrow" data-en="Animation">Animatsioon</div>
+          <h3 data-en="Product and assembly animation">Toote- ja koosteanimatsioon</h3>
+          <p data-en="The product is taken apart on screen and put back together — part by part, in the same order as the real installation. The clearest way to show how it goes together, without anyone having to learn to read a drawing.">
             Toode võetakse ekraanil lahti ja pannakse uuesti kokku — detail detaili haaval,
             samas järjekorras nagu päris paigaldus. Kõige selgem viis näidata, kuidas asi
             käib, ilma et keegi peaks joonist lugema õppima.
           </p>
           <ul class="show-list">
-            <li>Plahvatusvaade: iga detail oma numbriga</li>
-            <li>Koostejärjekord täpselt nagu paigaldusjuhendis</li>
-            <li>Sõlmede lähivaated ja kinnitusvahendid</li>
-            <li>Failid müügiks, tootelehele ja sisekoolitusse</li>
+            <li data-en="Exploded view: every part with its own number">Plahvatusvaade: iga detail oma numbriga</li>
+            <li data-en="Assembly order exactly as in the installation manual">Koostejärjekord täpselt nagu paigaldusjuhendis</li>
+            <li data-en="Close-ups of the joints and the fasteners">Sõlmede lähivaated ja kinnitusvahendid</li>
+            <li data-en="Files for sales, for the product page and for in-house training">Failid müügiks, tootelehele ja sisekoolitusse</li>
           </ul>
         </div>
         <div class="show-media">
-          <span class="play"><i></i> Animatsioon</span>
+          <span class="play" data-en="<i></i> Animation"><i></i> Animatsioon</span>
           <video id="klipp-koost" src="video/camilla-koost.mp4" poster="pildid/anim-koost.jpg"
                  autoplay muted loop playsinline preload="metadata"
-                 aria-label="Koosteanimatsioon — Camilla 160–220"></video>
-          <span class="media-note">Koosteanimatsioon · Camilla 160–220 · 12× kiirendatud</span>
+                 aria-label="Koosteanimatsioon — Camilla 160–220" data-en-aria-label="Assembly animation — Camilla 160–220"></video>
+          <span class="media-note" data-en="Assembly animation · Camilla 160–220 · 12× speed">Koosteanimatsioon · Camilla 160–220 · 12× kiirendatud</span>
         </div>
       </article>
 
       <article class="show flip">
         <div class="show-copy">
-          <div class="eyebrow">Treeningmäng</div>
-          <h3>Paigaldaja õpib<br>enne platsile jõudmist.</h3>
-          <p>
+          <div class="eyebrow" data-en="Training game">Treeningmäng</div>
+          <h3 data-en="The installer learns<br>before reaching the site.">Paigaldaja õpib<br>enne platsile jõudmist.</h3>
+          <p data-en="We turn your product into a training game that runs in the browser. The user picks up parts, puts them in the right place in the right order, and gets feedback the moment a step goes wrong — so the first real installation is no longer the first time. The roof installation training is finished and playable.">
             Teeme tootest brauseris töötava treeningmängu. Kasutaja korjab detaile,
             paneb need õigesse kohta ja õiges järjekorras, ning saab vale sammu pealt
             kohe tagasisidet — nii et esimene päris paigaldus ei ole enam esimene kord.
             Katusepaigalduse treening on valmis ja mängitav.
           </p>
           <ul class="show-list">
-            <li>95 sammu: turvavarustus, ventiprofiilid, roovid, klambrid, paneelid</li>
-            <li>Õppevideod avanevad automaatselt enne uut töövõtet</li>
-            <li>Mõõtmisülesanne ja lõputest — 10 küsimust</li>
-            <li>Töötab brauseris, midagi ei pea installima</li>
+            <li data-en="95 steps: safety gear, vent profiles, battens, clips, panels">95 sammu: turvavarustus, ventiprofiilid, roovid, klambrid, paneelid</li>
+            <li data-en="Training videos open automatically before each new task">Õppevideod avanevad automaatselt enne uut töövõtet</li>
+            <li data-en="A measuring exercise and a final test — 10 questions">Mõõtmisülesanne ja lõputest — 10 küsimust</li>
+            <li data-en="Runs in the browser, nothing to install">Töötab brauseris, midagi ei pea installima</li>
           </ul>
           <a class="btn btn-primary" href="https://alari-holaroof.github.io/holaroof-game/"
-             target="_blank" rel="noopener">Proovi treeningmängu →</a>
+             target="_blank" rel="noopener" data-en="Try the training game →">Proovi treeningmängu →</a>
         </div>
         <div class="show-media">
-          <span class="play"><i></i> Treeningmäng</span>
+          <span class="play" data-en="<i></i> Training game"><i></i> Treeningmäng</span>
           <video id="klipp-mang" src="video/treening.mp4" poster="pildid/mang-hud.jpg"
                  muted loop playsinline preload="metadata" class="viewplay"
-                 aria-label="Treeningmäng — katusepaigaldus"></video>
-          <span class="media-note">Katusepaigalduse treening · Unity, brauseris mängitav</span>
+                 aria-label="Treeningmäng — katusepaigaldus" data-en-aria-label="Training game — roof installation"></video>
+          <span class="media-note" data-en="Roof installation training · Unity, playable in the browser">Katusepaigalduse treening · Unity, brauseris mängitav</span>
         </div>
       </article>
     </div>
@@ -1527,23 +1695,23 @@ model-viewer::part(default-progress-bar){height:3px}
   <div class="container">
     <div class="feature">
       <div class="feature-copy">
-        <div class="eyebrow">Miks Joonisekoda?</div>
-        <h2>Üks mudel.<br>Üks tõde.</h2>
-        <p>
+        <div class="eyebrow" data-en="Why Joonisekoda?">Miks Joonisekoda?</div>
+        <h2 data-en="One model.<br>One source of truth.">Üks mudel.<br>Üks tõde.</h2>
+        <p data-en="When design, production, installation and training all work from different files, mistakes follow. Our aim is to keep the whole body of technical information around one logical model — from the drawing all the way to the animation and the training game.">
           Kui projekteerimine, tootmine, paigaldus ja koolitus kasutavad erinevaid faile,
           tekivad vead. Meie eesmärk on hoida kogu tehniline info ühe loogilise mudeli
           ümber — joonisest animatsiooni ja treeningmänguni välja.
         </p>
         <ul class="checks">
-          <li><span class="check">✓</span> Vähem ümbertegemist tootmises</li>
-          <li><span class="check">✓</span> Vähem küsimusi paigaldusplatsil</li>
-          <li><span class="check">✓</span> Täpsem materjalikulu</li>
-          <li><span class="check">✓</span> Sama detailinumber joonisel, juhendis ja mängus</li>
+          <li data-en="<span class=&quot;check&quot;>✓</span> Less rework in production"><span class="check">✓</span> Vähem ümbertegemist tootmises</li>
+          <li data-en="<span class=&quot;check&quot;>✓</span> Fewer questions on the installation site"><span class="check">✓</span> Vähem küsimusi paigaldusplatsil</li>
+          <li data-en="<span class=&quot;check&quot;>✓</span> More accurate material consumption"><span class="check">✓</span> Täpsem materjalikulu</li>
+          <li data-en="<span class=&quot;check&quot;>✓</span> The same part number on the drawing, in the manual and in the game"><span class="check">✓</span> Sama detailinumber joonisel, juhendis ja mängus</li>
         </ul>
-        <a class="btn btn-primary" href="#kontakt">Räägime projektist →</a>
+        <a class="btn btn-primary" href="#kontakt" data-en="Let's talk about your project →">Räägime projektist →</a>
       </div>
       <div class="feature-photo">
-        <img src="pildid/tootmisjoonis.jpg" alt="Tootmisjoonis — koosted pos 30 ja 31">
+        <img src="pildid/tootmisjoonis.jpg" alt="Tootmisjoonis — koosted pos 30 ja 31" data-en-alt="Production drawing — assemblies pos 30 and 31">
       </div>
     </div>
   </div>
@@ -1553,27 +1721,27 @@ model-viewer::part(default-progress-bar){height:3px}
   <div class="container">
     <div class="section-top">
       <div>
-        <div class="eyebrow">Protsess</div>
-        <h2 class="section-title">Lihtne protsess.<br>Täpne tulemus.</h2>
+        <div class="eyebrow" data-en="Process">Protsess</div>
+        <h2 class="section-title" data-en="A simple process.<br>An exact result.">Lihtne protsess.<br>Täpne tulemus.</h2>
       </div>
-      <p class="section-intro">Sina annad lähteinfo. Meie viime selle tootmiseks, paigalduseks ja koolituseks kasutatavasse vormi.</p>
+      <p class="section-intro" data-en="You provide the source information. We turn it into a form that production, installation and training can actually use.">Sina annad lähteinfo. Meie viime selle tootmiseks, paigalduseks ja koolituseks kasutatavasse vormi.</p>
     </div>
 
     <div class="process">
       <article class="step">
         <div class="step-num">01</div>
-        <h3>Lähteülesanne</h3>
-        <p>Vaatame üle olemasolevad projektid, mõõdud, konstruktsiooni ja tootmise vajadused.</p>
+        <h3 data-en="Brief">Lähteülesanne</h3>
+        <p data-en="We go through the existing projects, the dimensions, the structure and the needs of production.">Vaatame üle olemasolevad projektid, mõõdud, konstruktsiooni ja tootmise vajadused.</p>
       </article>
       <article class="step">
         <div class="step-num">02</div>
-        <h3>Mudel &amp; dokumentatsioon</h3>
-        <p>Loome 3D-mudeli ning tuletame sellest detailid, joonised, lõikelehed ja materjaliandmed.</p>
+        <h3 data-en="Model &amp; documentation">Mudel &amp; dokumentatsioon</h3>
+        <p data-en="We build the 3D model and derive the parts, drawings, cutting lists and material data from it.">Loome 3D-mudeli ning tuletame sellest detailid, joonised, lõikelehed ja materjaliandmed.</p>
       </article>
       <article class="step">
         <div class="step-num">03</div>
-        <h3>Väljundid &amp; üleandmine</h3>
-        <p>Anname üle tootmis- ja paigalduspaketi ning soovi korral animatsiooni ja treeningmängu.</p>
+        <h3 data-en="Outputs &amp; handover">Väljundid &amp; üleandmine</h3>
+        <p data-en="We hand over the production and installation package, and on request the animation and the training game.">Anname üle tootmis- ja paigalduspaketi ning soovi korral animatsiooni ja treeningmängu.</p>
       </article>
     </div>
   </div>
@@ -1583,181 +1751,181 @@ model-viewer::part(default-progress-bar){height:3px}
   <div class="container">
     <div class="section-top">
       <div>
-        <div class="eyebrow">Tehtud tööd</div>
-        <h2 class="section-title">Mängumaja Oliver —<br>terve pakett.</h2>
+        <div class="eyebrow" data-en="Work">Tehtud tööd</div>
+        <h2 class="section-title" data-en="Playhouse Oliver —<br>the whole package.">Mängumaja Oliver —<br>terve pakett.</h2>
       </div>
-      <p class="section-intro">Üks toode algusest lõpuni: mudel, koostejoonised, lõikelehed, paigaldusjuhend ja ohutusala. Allpool valik teisi töid.</p>
+      <p class="section-intro" data-en="One product from start to finish: model, assembly drawings, cutting lists, installation manual and safety zone. A selection of other work below.">Üks toode algusest lõpuni: mudel, koostejoonised, lõikelehed, paigaldusjuhend ja ohutusala. Allpool valik teisi töid.</p>
     </div>
 
     <div class="stats">
-      <div class="stat"><b>42</b><span>positsiooni detailide loendis</span></div>
-      <div class="stat"><b>371</b><span>lõigatavat detaili</span></div>
-      <div class="stat"><b>277 m</b><span>puitu kokku</span></div>
-      <div class="stat"><b>29</b><span>sammu paigaldusjuhendis</span></div>
+      <div class="stat"><b>42</b><span data-en="positions in the parts list">positsiooni detailide loendis</span></div>
+      <div class="stat"><b>371</b><span data-en="parts to be cut">lõigatavat detaili</span></div>
+      <div class="stat"><b>277 m</b><span data-en="of timber in total">puitu kokku</span></div>
+      <div class="stat"><b>29</b><span data-en="steps in the installation manual">sammu paigaldusjuhendis</span></div>
     </div>
 
     <div class="portfolio">
       <article class="project wide">
         <div class="project-media">
-          <img src="pildid/valmis.jpg" alt="Mängumaja Oliver — viimane paigaldussamm">
+          <img src="pildid/valmis.jpg" alt="Mängumaja Oliver — viimane paigaldussamm" data-en-alt="Playhouse Oliver — the final installation step">
         </div>
         <div class="project-info">
-          <small>Mängumaja</small>
-          <h3>Oliver — täispakett</h3>
-          <p>3D-mudel, tootmisjoonised, lõikelehed, paigaldusjuhend ja ohutusala ühes loogikas.</p>
+          <small data-en="Playhouse">Mängumaja</small>
+          <h3 data-en="Oliver — full package">Oliver — täispakett</h3>
+          <p data-en="3D model, production drawings, cutting lists, installation manual and safety zone in one logic.">3D-mudel, tootmisjoonised, lõikelehed, paigaldusjuhend ja ohutusala ühes loogikas.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <img src="pildid/bom.jpg" alt="Detailide loend — positsioonid 1 kuni 26">
+          <img src="pildid/bom.jpg" alt="Detailide loend — positsioonid 1 kuni 26" data-en-alt="Parts list — positions 1 to 26">
         </div>
         <div class="project-info">
-          <small>Detailide loend</small>
-          <h3>Kõik 42 positsiooni</h3>
-          <p>Iga detail mõõdus, kogusega ja pildiga.</p>
+          <small data-en="Parts list">Detailide loend</small>
+          <h3 data-en="All 42 positions">Kõik 42 positsiooni</h3>
+          <p data-en="Every part with its dimensions, quantity and picture.">Iga detail mõõdus, kogusega ja pildiga.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <img src="pildid/joonis-pos25.jpg" alt="Tootmisjoonis — koosted pos 25 ja 26">
+          <img src="pildid/joonis-pos25.jpg" alt="Tootmisjoonis — koosted pos 25 ja 26" data-en-alt="Production drawing — assemblies pos 25 and 26">
         </div>
         <div class="project-info">
-          <small>Tootmisjoonis</small>
-          <h3>Koostelehed</h3>
-          <p>20 eelkokkupandavat koostet, iga tükk oma tähisega.</p>
+          <small data-en="Production drawing">Tootmisjoonis</small>
+          <h3 data-en="Assembly sheets">Koostelehed</h3>
+          <p data-en="20 pre-assembled sub-assemblies, every piece with its own mark.">20 eelkokkupandavat koostet, iga tükk oma tähisega.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <img src="pildid/loikeleht.jpg" alt="Lõikeleht — lahtised detailid">
+          <img src="pildid/loikeleht.jpg" alt="Lõikeleht — lahtised detailid" data-en-alt="Cutting list — loose parts">
         </div>
         <div class="project-info">
-          <small>Lõikeleht</small>
-          <h3>Saeliini nimekiri</h3>
-          <p>Lõikemõõdud ristlõigete kaupa, nurgad ja väljalõiked eraldi välja toodud.</p>
+          <small data-en="Cutting list">Lõikeleht</small>
+          <h3 data-en="Saw line list">Saeliini nimekiri</h3>
+          <p data-en="Cutting dimensions by cross-section, with angles and cut-outs listed separately.">Lõikemõõdud ristlõigete kaupa, nurgad ja väljalõiked eraldi välja toodud.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <img src="pildid/samm-sein.jpg" alt="Paigaldusjuhendi samm — seinte paigaldus">
+          <img src="pildid/samm-sein.jpg" alt="Paigaldusjuhendi samm — seinte paigaldus" data-en-alt="Installation manual step — installing the walls">
         </div>
         <div class="project-info">
-          <small>Paigaldusjuhend</small>
-          <h3>29 sammu</h3>
-          <p>Iga samm oma detailide ja kinnitusvahenditega.</p>
+          <small data-en="Installation manual">Paigaldusjuhend</small>
+          <h3 data-en="29 steps">29 sammu</h3>
+          <p data-en="Every step with its own parts and fasteners.">Iga samm oma detailide ja kinnitusvahenditega.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <img src="pildid/ohutusala.jpg" alt="Ohutusala plaan">
+          <img src="pildid/ohutusala.jpg" alt="Ohutusala plaan" data-en-alt="Safety zone plan">
         </div>
         <div class="project-info">
-          <small>Ohutus</small>
-          <h3>Ohutusala</h3>
-          <p>Vaba ala toote ümber — plaanina paigaldusjuhendi lõpus.</p>
+          <small data-en="Safety">Ohutus</small>
+          <h3 data-en="Safety zone">Ohutusala</h3>
+          <p data-en="The clear area around the product — as a plan at the end of the installation manual.">Vaba ala toote ümber — plaanina paigaldusjuhendi lõpus.</p>
         </div>
       </article>
     </div>
 
     <div class="subhead">
-      <h3>Teised tööd</h3>
-      <p>Mängutooted, carport ja tooterenderid — sama loogika, teine toode.</p>
+      <h3 data-en="Other work">Teised tööd</h3>
+      <p data-en="Play products, a carport and product renders — same logic, different product.">Mängutooted, carport ja tooterenderid — sama loogika, teine toode.</p>
     </div>
 
     <div class="portfolio">
       <article class="project wide">
         <div class="project-media">
-          <img src="pildid/mang-video.jpg" alt="Treeningmäng — õppevideo avaneb mängu sees">
+          <img src="pildid/mang-video.jpg" alt="Treeningmäng — õppevideo avaneb mängu sees" data-en-alt="Training game — a lesson video opens inside the game">
         </div>
         <div class="project-info">
-          <small>Treeningmäng</small>
-          <h3>Katusepaigalduse treening</h3>
-          <p>Unity-mäng brauseris: 95 sammu, õppevideod töövõtete kohta, mõõtmisülesanne ja lõputest.</p>
+          <small data-en="Training game">Treeningmäng</small>
+          <h3 data-en="Roof installation training">Katusepaigalduse treening</h3>
+          <p data-en="A Unity game in the browser: 95 steps, training videos for each task, a measuring exercise and a final test.">Unity-mäng brauseris: 95 sammu, õppevideod töövõtete kohta, mõõtmisülesanne ja lõputest.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <img src="pildid/mang-oige.jpg" alt="Treeningmängu tagasiside — detail õigesse kohta">
+          <img src="pildid/mang-oige.jpg" alt="Treeningmängu tagasiside — detail õigesse kohta" data-en-alt="Training game feedback — a part in the right place">
         </div>
         <div class="project-info">
-          <small>Mängu tagasiside</small>
-          <h3>Õige või vale kohe</h3>
-          <p>Iga detail annab paigaldamisel kinnituse — vead jäävad ekraanile.</p>
+          <small data-en="In-game feedback">Mängu tagasiside</small>
+          <h3 data-en="Right or wrong, at once">Õige või vale kohe</h3>
+          <p data-en="Every part confirms itself as it is placed — the mistakes stay on the screen.">Iga detail annab paigaldamisel kinnituse — vead jäävad ekraanile.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <img src="pildid/toby.jpg" alt="Mängumaja Toby — paigaldusjuhendi vaade">
+          <img src="pildid/toby.jpg" alt="Mängumaja Toby — paigaldusjuhendi vaade" data-en-alt="Playhouse Toby — installation manual view">
         </div>
         <div class="project-info">
-          <small>Mängumaja</small>
-          <h3>Toby terrassiga</h3>
-          <p>Paigaldusjuhend 13 lehel — detailide loend, sammud ja ohutusala.</p>
+          <small data-en="Playhouse">Mängumaja</small>
+          <h3 data-en="Toby with a terrace">Toby terrassiga</h3>
+          <p data-en="A 13-page installation manual — parts list, steps and safety zone.">Paigaldusjuhend 13 lehel — detailide loend, sammud ja ohutusala.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <img src="pildid/piraat.jpg" alt="Piraadilaev — mängutorni paigaldusjuhend">
+          <img src="pildid/piraat.jpg" alt="Piraadilaev — mängutorni paigaldusjuhend" data-en-alt="Pirate ship — play tower installation manual">
         </div>
         <div class="project-info">
-          <small>Mängutorn</small>
-          <h3>Piraadilaev</h3>
-          <p>Paigaldusjuhend V1.8 — 23 joonist, iga detail oma numbriga.</p>
+          <small data-en="Play tower">Mängutorn</small>
+          <h3 data-en="Pirate ship">Piraadilaev</h3>
+          <p data-en="Installation manual V1.8 — 23 drawings, every part with its own number.">Paigaldusjuhend V1.8 — 23 joonist, iga detail oma numbriga.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <span class="play"><i></i> Hõlju</span>
+          <span class="play" data-en="<i></i> Hover"><i></i> Hõlju</span>
           <video class="hoverplay" src="video/solar-katus.mp4" poster="pildid/anim-str.jpg"
                  muted loop playsinline preload="none"
-                 aria-label="Paigaldusanimatsioon — Solar Full Roof"></video>
+                 aria-label="Paigaldusanimatsioon — Solar Full Roof" data-en-aria-label="Installation animation — Solar Full Roof"></video>
         </div>
         <div class="project-info">
-          <small>Animatsioon</small>
+          <small data-en="Animation">Animatsioon</small>
           <h3>Solar Full Roof</h3>
-          <p>Paigaldusanimatsioon: aluskate, roovid ja päikesekivid õiges järjekorras.</p>
+          <p data-en="Installation animation: underlay, battens and solar tiles in the right order.">Paigaldusanimatsioon: aluskate, roovid ja päikesekivid õiges järjekorras.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <img src="pildid/carport.jpg" alt="Solar Carport — tooterender">
+          <img src="pildid/carport.jpg" alt="Solar Carport — tooterender" data-en-alt="Solar Carport — product render">
         </div>
         <div class="project-info">
           <small>Carport</small>
           <h3>Solar Carport</h3>
-          <p>Tehniline andmeleht ja 20-leheline paigaldusjuhend.</p>
+          <p data-en="A technical datasheet and a 20-page installation manual.">Tehniline andmeleht ja 20-leheline paigaldusjuhend.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <img src="pildid/plahvatus.jpg" alt="Katusepaketi plahvatusvaade — kihid eraldi">
+          <img src="pildid/plahvatus.jpg" alt="Katusepaketi plahvatusvaade — kihid eraldi" data-en-alt="Exploded view of the roof package — layers separated">
         </div>
         <div class="project-info">
-          <small>Plahvatusvaade</small>
-          <h3>Katusepakett kihtidena</h3>
-          <p>Sama vaade, mis animatsiooni aluseks — iga kiht eraldi.</p>
+          <small data-en="Exploded view">Plahvatusvaade</small>
+          <h3 data-en="The roof package in layers">Katusepakett kihtidena</h3>
+          <p data-en="The same view the animation is based on — every layer separately.">Sama vaade, mis animatsiooni aluseks — iga kiht eraldi.</p>
         </div>
       </article>
 
       <article class="project">
         <div class="project-media">
-          <img src="pildid/anim-valmis.jpg" alt="Camilla — koosteanimatsiooni viimane kaader">
+          <img src="pildid/anim-valmis.jpg" alt="Camilla — koosteanimatsiooni viimane kaader" data-en-alt="Camilla — the final frame of the assembly animation">
         </div>
         <div class="project-info">
-          <small>Tooterender + animatsioon</small>
+          <small data-en="Product render + animation">Tooterender + animatsioon</small>
           <h3>Camilla</h3>
-          <p>Renderid ja koosteanimatsioon kahes mõõdus — 160–220 ja 240.</p>
+          <p data-en="Renders and an assembly animation in two sizes — 160–220 and 240.">Renderid ja koosteanimatsioon kahes mõõdus — 160–220 ja 240.</p>
         </div>
       </article>
     </div>
@@ -1768,8 +1936,8 @@ model-viewer::part(default-progress-bar){height:3px}
   <div class="container">
     <div class="cta">
       <div>
-        <h2>Kas sul on toode,<br>mis vajab jooniseid?</h2>
-        <p>Saada mudel või lähteinfo. Vaatame koos, mida on vaja — joonised, animatsioon või mäng.</p>
+        <h2 data-en="Do you have a product<br>that needs drawings?">Kas sul on toode,<br>mis vajab jooniseid?</h2>
+        <p data-en="Send us the model or the source information. We will work out together what is needed — drawings, animation or a game.">Saada mudel või lähteinfo. Vaatame koos, mida on vaja — joonised, animatsioon või mäng.</p>
       </div>
       <div class="cta-kontakt">
         <a class="btn" href="mailto:visionframe3d@gmail.com">visionframe3d@gmail.com →</a>
@@ -1786,27 +1954,27 @@ model-viewer::part(default-progress-bar){height:3px}
     <div class="footer-grid">
       <div>
         <div class="logo footer-logo"><span class="logo-mark"></span>Joonisekoda</div>
-        <p class="footer-copy">Mänguväljakute ja puittoodete tehniline dokumentatsioon — mudelist tootmise, paigalduse ja koolituseni.</p>
+        <p class="footer-copy" data-en="Technical documentation for playgrounds and timber products — from the model through to production, installation and training.">Mänguväljakute ja puittoodete tehniline dokumentatsioon — mudelist tootmise, paigalduse ja koolituseni.</p>
       </div>
       <div class="footer-col">
-        <h4>Menüü</h4>
-        <a href="#teenused">Teenused</a>
-        <a href="#interaktiivne">Konfiguraator &amp; AR</a>
-        <a href="#animatsioon">Animatsioon &amp; mäng</a>
-        <a href="#protsess">Protsess</a>
-        <a href="#tehtud">Tehtud tööd</a>
+        <h4 data-en="Menu">Menüü</h4>
+        <a href="#teenused" data-en="Services">Teenused</a>
+        <a href="#interaktiivne" data-en="Configurator &amp; AR">Konfiguraator &amp; AR</a>
+        <a href="#animatsioon" data-en="Animation &amp; game">Animatsioon &amp; mäng</a>
+        <a href="#protsess" data-en="Process">Protsess</a>
+        <a href="#tehtud" data-en="Work">Tehtud tööd</a>
       </div>
       <div class="footer-col">
-        <h4>Kontakt</h4>
+        <h4 data-en="Contact">Kontakt</h4>
         <a href="mailto:visionframe3d@gmail.com">visionframe3d@gmail.com</a>
         <a href="tel:+37258257130">+372 5825 7130</a>
         <p>VISIONFRAME3D OÜ</p>
-        <p>Eesti</p>
+        <p data-en="Estonia">Eesti</p>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 VISIONFRAME3D OÜ</span>
-      <span>Tehniline dokumentatsioon puittoodetele</span>
+      <span data-en="Technical documentation for timber products">Tehniline dokumentatsioon puittoodetele</span>
     </div>
   </div>
 </footer>
