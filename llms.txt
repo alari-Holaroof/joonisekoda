@@ -3,17 +3,19 @@
 > Tehniline tootmisdokumentatsioon puittoodetele ja mänguväljakutele.
 > Kaubamärk kuulub ettevõttele VISIONFRAME3D OÜ (registrikood 17123646, Elva, Eesti).
 
-Ühest 3D-mudelist tehakse korraga tootmisjoonised, lõikeleht, paigaldusjuhend ja
-ohutusala plaan — kõik sama detailinumbriga. Samast mudelist saab ka koosteanimatsiooni,
-paigaldaja treeningmängu, brauseris töötava tootekonfiguraatori ja liitreaalsuse.
+Põhifookus on interaktiivsel osal: brauseris töötavad tootekonfiguraatorid,
+liitreaalsus ja paigaldaja treeningmängud. Samast 3D-mudelist tulevad ka
+tootmisjoonised, lõikeleht, paigaldusjuhend ja ohutusala plaan — kõik sama
+detailinumbriga.
 
-## Teenused
-- Tootmisjoonised ja lõikelehed (cut-list, BOM)
-- Paigaldusjuhendid ja ohutusala plaanid
-- Koosteanimatsioonid
+## Teenused (tähtsuse järjekorras)
+- 3D-tootekonfiguraatorid brauseris — ostja paneb toote ise kokku, ilma pilve-GPU-ta
+- Liitreaalsus (AR) — toode 1:1 kliendi õues, telefonis, ilma rakenduseta
+- 3D-tootevaatur tootelehele — üks fail, töötab igal pool
 - Treeningmängud paigaldajale (Unity, brauseris)
-- 3D-konfiguraatorid (brauseris, ilma pilve-GPU-ta)
-- 3D-vaatur ja liitreaalsus (AR) telefonis, ilma rakenduseta
+- Koosteanimatsioonid
+- Paigaldusjuhendid ja ohutusala plaanid (EN 1176)
+- Tootmisjoonised ja lõikelehed (cut-list, BOM)
 
 ## Töötavad näidised
 - Koduleht ja portfoolio: https://joonisekoda.ee/
