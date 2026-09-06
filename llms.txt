@@ -20,7 +20,7 @@ detailinumbriga.
 ## Töötavad näidised
 - Koduleht ja portfoolio: https://joonisekoda.ee/
 - Tootekonfiguraator: https://demo.joonisekoda.ee/
-- AR-kataloog, 67 mudelit: https://ar.joonisekoda.ee/
+- 3D-vaatur ja liitreaalsus: https://joonisekoda.ee/#interaktiivne
 
 ## Kontakt
 - E-post: visionframe3d@gmail.com
