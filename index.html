@@ -838,9 +838,10 @@ footer{background:var(--ink);color:#fff;padding:65px 0 28px}
    juhtnupud selle kohale. --- */
 @media(max-width:760px){
   .media-note{left:12px;right:12px;bottom:12px;text-align:center}
-  .ar-nupp{bottom:66px}
-  .konf-kate{padding-bottom:64px}
   .show.lai .show-media{aspect-ratio:auto;min-height:340px}
+  /* `.ar-nupp` ja `.konf-kate` reeglid EI SAA olla siin — need on defineeritud
+     teises stiiliplokis allpool ja hilisem reegel voidab sama spetsiifilisuse
+     juures. Vt "Mobiil, teine katse" selle teise ploki lopus. */
 }
 
 /* --- Kontaktivorm --- */
@@ -1410,6 +1411,19 @@ model-viewer::part(default-progress-bar){height:3px}
 
 @media(max-width:860px){
   model-viewer{min-height:320px}
+}
+
+/* --- Mobiil, teine katse. Esimene ebaonnestus, sest sama reegel oli kirjas
+   peas oleva stiiliploki sees, siin defineeritud `.ar-nupp{bottom:22px}`
+   ees — ja hilisem reegel voidab. Seetottu on need siin, ploki lopus, ja
+   `.show-media` eesliitega (spetsiifilisus 0,2,0 vs 0,1,0), et jarjekord
+   ei saaks enam ainsaks otsustajaks.
+
+   `.ar-nupp` elab `<model-viewer>` sees ja moodustab OMA pinukonteksti,
+   seega z-index siin ei aita — ainult positsioon. --- */
+@media(max-width:760px){
+  .show-media .ar-nupp{bottom:74px}
+  .show-media .konf-kate{padding-bottom:64px}
 }
 </style>
 
