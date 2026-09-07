@@ -2112,5 +2112,11 @@ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
 }
 </script>
 
+<!-- Cloudflare Web Analytics — kupsiseid EI kasuta, seega kupsiseteadet ei ole vaja.
+     Laetakse `defer`-loogikaga mooduliskriptina, ehk ei blokeeri lehe kuvamist.
+     Kui see kunagi ara kaob, ei mojuta see lehe tood kuidagi. -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "6061e44404aa4c4ebcd8f092c57a8175"}'></script>
+
 </body>
 </html>
