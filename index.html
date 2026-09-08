@@ -2112,6 +2112,31 @@ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
 }
 </script>
 
+<script>
+/* --- Vormi rampsukaitse ilma captchata -------------------------------------
+   Esimene rampsukiri tuli lapi vormi ~paev parast avaldamist. Peidetud
+   loksvali (`_honey`) uksi ei piisanud. Siia lisandub kaks tingimust, mis
+   inimest ei sega, aga lihtsa roboti peatavad:
+     1) vorm ei tohi laekuda alla 4 sekundi parast lehe avamist
+     2) vormiga peab olema enne saatmist kuidagi suheldud (klahv, klikk, puude)
+   Kumbki EI SAADA lisavalju — kontroll on ainult siin, brauseris.
+
+   Aus piirang: robot, mis lehe pariselt renderdab ja JS-i jooksutab, laheb
+   nendest labi. Selle vastu aitab ainult captcha (`_captcha` -> true), mis
+   lisab pariskliendile vahelehe. Seda ei tehtud, sest rampsu on uks kiri. */
+(function(){
+  var v = document.querySelector('.kontaktvorm');
+  if (!v) return;
+  var avatud = Date.now(), suheldud = false;
+  ['pointerdown','keydown','touchstart'].forEach(function(s){
+    v.addEventListener(s, function(){ suheldud = true; }, {once:true, passive:true});
+  });
+  v.addEventListener('submit', function(e){
+    if (Date.now() - avatud < 4000 || !suheldud) e.preventDefault();
+  });
+})();
+</script>
+
 <!-- Cloudflare Web Analytics — kupsiseid EI kasuta, seega kupsiseteadet ei ole vaja.
      Laetakse `defer`-loogikaga mooduliskriptina, ehk ei blokeeri lehe kuvamist.
      Kui see kunagi ara kaob, ei mojuta see lehe tood kuidagi. -->
