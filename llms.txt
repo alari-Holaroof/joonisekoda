@@ -20,7 +20,6 @@ detailinumbriga.
 ## Töötavad näidised
 - Koduleht ja portfoolio: https://joonisekoda.ee/
 - Sama leht inglise keeles / English version: https://joonisekoda.ee/?lang=en
-- Tootekonfiguraator: https://demo.joonisekoda.ee/
 - 3D-vaatur ja liitreaalsus: https://joonisekoda.ee/#interaktiivne
 
 ## Kontakt
