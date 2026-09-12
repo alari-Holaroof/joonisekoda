@@ -1,16 +1,25 @@
 User-agent: *
 Allow: /
+Disallow: /k/
 
 # Otsingu- ja AI-robotid on teretulnud
 User-agent: GPTBot
 Allow: /
+Disallow: /k/
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /k/
 User-agent: ClaudeBot
 Allow: /
+Disallow: /k/
 User-agent: PerplexityBot
 Allow: /
+Disallow: /k/
 User-agent: Google-Extended
 Allow: /
+Disallow: /k/
+
+# /k/ = kampaanialehed, mis ainult suunavad pealehele ja moodavad,
+# millise kirja peale klopsati. Sisu neil ei ole.
 
 Sitemap: https://joonisekoda.ee/sitemap.xml
