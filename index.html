@@ -391,6 +391,11 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 .reel-video video.akt{opacity:1;transform:scale(1);transition:transform 7s linear;z-index:2}
 .reel-video video.sisse{animation:reelSisse 1s cubic-bezier(.77,0,.18,1) both;z-index:3}
 .reel-video video.valja{opacity:1;transform:scale(1.03);z-index:1;transition:transform 1s ease}
+/* Kasutajaliidese klipil EI suumi: aeglane skaleerimine paneb väikese UI-teksti
+   pikslid virvendama (kasutaja 23.09: „väriseb imelikult”). Ainult wipe. */
+.reel-video video.ui-klipp,.reel-video video.ui-klipp.akt,.reel-video video.ui-klipp.valja{transform:none;transition:none}
+.reel-video video.ui-klipp.sisse{animation-name:reelSisseUI}
+@keyframes reelSisseUI{from{clip-path:polygon(115% 0,135% 0,115% 100%,95% 100%)}to{clip-path:polygon(-20% 0,135% 0,115% 100%,-40% 100%)}}
 @keyframes reelSisse{
   from{clip-path:polygon(115% 0,135% 0,115% 100%,95% 100%);transform:scale(1.12)}
   to{clip-path:polygon(-20% 0,135% 0,115% 100%,-40% 100%);transform:scale(1)}
@@ -727,7 +732,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   <div class="container">
     <div class="reel" id="reel">
       <div class="reel-video">
-        <video data-algus="0" data-kestus="8.2" src="video/konfiguraator.mp4" poster="pildid/konf-arvuti-960.webp" muted playsinline preload="none"></video>
+        <video class="ui-klipp" data-algus="0" data-kestus="8.2" src="video/konfiguraator.mp4" poster="pildid/konf-arvuti-960.webp" muted playsinline preload="none"></video>
         <video data-algus="3" data-kestus="6" src="video/camilla-koost.mp4" poster="pildid/anim-koost.jpg" muted playsinline preload="none"></video>
         <video data-algus="1" data-kestus="6.5" src="video/solar-katus.mp4" poster="pildid/anim-str.jpg" muted playsinline preload="none"></video>
         <video data-algus="2" data-kestus="6" src="video/treening.mp4" poster="pildid/mang-hud.jpg" muted playsinline preload="none"></video>
