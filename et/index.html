@@ -128,8 +128,7 @@ nav a:hover{color:#fff}
 .hero-fakt span:before{content:"✓";color:var(--lime);font-weight:800;margin-right:7px}
 
 /* HERO 3D */
-.hero3d{position:relative;aspect-ratio:1.08/1;min-height:420px;border-radius:24px;
-  background:radial-gradient(90% 80% at 50% 60%,rgba(22,39,61,.9),rgba(7,17,31,0) 72%)}
+.hero3d{position:relative;aspect-ratio:1.08/1;min-height:420px;}
 .hero3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none}
 .hero3d-vara{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .6s}
 .hero3d.vara .hero3d-vara{opacity:1}
@@ -682,7 +681,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
     </div>
 
     <div class="hero3d" id="hero3d" data-src="/mudel/paviljon.glb" aria-label="Animatsioon: moodulpaviljon joonistatakse, pannakse kokku, seadistatakse ja paigutatakse mõõtkavas 1:1" data-et-aria-label="Animatsioon: moodulpaviljon joonistatakse, pannakse kokku, seadistatakse ja paigutatakse mõõtkavas 1:1" role="img">
-      <img class="hero3d-vara" src="/pildid/hero-3d.jpg" alt="" loading="lazy">
+      <img class="hero3d-vara" src="/pildid/hero-3d.webp" alt="" loading="lazy">
       <div class="valik-kaart" id="valik-kaart" aria-hidden="true">
         <small data-et="Laudis">Laudis</small>
         <div class="valik-rida"><i style="background:#997857"></i><span data-et="Termopuit">Termopuit</span></div>
@@ -1427,7 +1426,7 @@ document.querySelectorAll('video.hoverplay').forEach(v => {
        8–12,5  konfiguraator: laudise toon vahetub, kaart näitab valikut
        12,5–16 AR: maapinna sihik + mõõdud (mõõdetud karkassi kastist, mitte kirjutatud)
        16–18   osad tõusevad ära, jooned kustuvad -> algusest
-     Kui WebGL või CDN ei tööta, jääb nähtavale pildid/hero-3d.jpg. -->
+     Kui WebGL või CDN ei tööta, jääb nähtavale pildid/hero-3d.webp. -->
 <script type="importmap">
 { "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
