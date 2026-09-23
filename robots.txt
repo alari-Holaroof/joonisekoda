@@ -2,24 +2,40 @@ User-agent: *
 Allow: /
 Disallow: /k/
 
-# Otsingu- ja AI-robotid on teretulnud
+# Otsingu- ja AI-robotid on teretulnud (nii treening-, otsingu- kui kasutaja päringu robotid).
+# NB: Disallow peab olema IGAS grupis — see kehtib ainult oma User-agent grupi kohta.
 User-agent: GPTBot
 Allow: /
 Disallow: /k/
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /k/
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /k/
 User-agent: ClaudeBot
+Allow: /
+Disallow: /k/
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /k/
+User-agent: Claude-User
 Allow: /
 Disallow: /k/
 User-agent: PerplexityBot
 Allow: /
 Disallow: /k/
+User-agent: Perplexity-User
+Allow: /
+Disallow: /k/
 User-agent: Google-Extended
 Allow: /
 Disallow: /k/
+User-agent: Bingbot
+Allow: /
+Disallow: /k/
 
-# /k/ = kampaanialehed, mis ainult suunavad pealehele ja moodavad,
-# millise kirja peale klopsati. Sisu neil ei ole.
+# /k/ = kampaanialehed, mis ainult suunavad pealehele ja mõõdavad,
+# millise kirja peale klõpsati. Sisu neil ei ole.
 
 Sitemap: https://joonisekoda.ee/sitemap.xml

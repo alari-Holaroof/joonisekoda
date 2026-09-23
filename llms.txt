@@ -1,28 +1,37 @@
 # Joonisekoda
 
-> Tehniline tootmisdokumentatsioon puittoodetele ja mänguväljakutele.
-> Kaubamärk kuulub ettevõttele VISIONFRAME3D OÜ (registrikood 17123646, Elva, Eesti).
+> Joonisekoda (legal name VISIONFRAME3D OÜ, Elva, Estonia) builds browser-based 3D product configurators, web augmented reality (AR) without an app, 3D product viewers and installer training games for manufacturers. Production drawings, cutting lists and installation manuals are made from the same 3D model.
 
-Põhifookus on interaktiivsel osal: brauseris töötavad tootekonfiguraatorid,
-liitreaalsus ja paigaldaja treeningmängud. Samast 3D-mudelist tulevad ka
-tootmisjoonised, lõikeleht, paigaldusjuhend ja ohutusala plaan — kõik sama
-detailinumbriga.
+## What we make
+- **3D product configurator**: runs in the browser on desktop and mobile (Unity WebGL). The buyer chooses the model, size, materials, finishes and extras, and every choice swaps real geometry, not a picture. A summary of the choices goes with the enquiry, by email or into the manufacturer's form or CRM. It goes onto WordPress, Shopify, Wix or any other site with one embed line, or at its own address.
+- **Web AR (augmented reality)**: the product at a locked 1:1 scale in the buyer's yard or room, with no app. It uses Google Scene Viewer on Android and Apple AR Quick Look in Safari on iPhone.
+- **3D product viewer**: a rotating, zoomable model on the product page, added with one line of code.
+- **Installer training game**: a browser game where the installer places parts in the right order and gets immediate feedback. The existing roof installation training has 95 steps, training videos, a measuring exercise and a 10-question test.
+- **Product and assembly animation**: for sales, product pages, manuals, trade shows and in-house training.
+- **Technical documentation**: 3D modelling, production (assembly) drawings, parts lists (BOM), cutting lists and saw-line lists, step-by-step installation manuals and safety zone plans. A documentation audit is also available.
 
-## Teenused (tähtsuse järjekorras)
-- 3D-tootekonfiguraatorid brauseris — ostja paneb toote ise kokku, ilma pilve-GPU-ta
-- Liitreaalsus (AR) — toode 1:1 kliendi õues, telefonis, ilma rakenduseta
-- 3D-tootevaatur tootelehele — üks fail, töötab igal pool
-- Treeningmängud paigaldajale (Unity, brauseris)
-- Koosteanimatsioonid
-- Paigaldusjuhendid ja ohutusala plaanid (EN 1176)
-- Tootmisjoonised ja lõikelehed (cut-list, BOM)
+## Who it is for
+Manufacturers whose products come in many variants or are installed by someone else. This includes makers of saunas, garden rooms, pavilions, modular and log cabins, sheds, carports and shelters, fences and gates, outdoor furniture, trailers and boats, and makers of roofing, façade and window products (training games).
 
-## Töötavad näidised
-- Koduleht ja portfoolio: https://joonisekoda.ee/
-- Sama leht inglise keeles / English version: https://joonisekoda.ee/?lang=en
-- 3D-vaatur ja liitreaalsus: https://joonisekoda.ee/#interaktiivne
+## How it works
+1. Brief: the manufacturer sends a 3D model (SketchUp, FBX, STEP, IFC, Revit or similar), production drawings, or photos with main dimensions, plus the list of options.
+2. Model: we build or clean up the 3D model with the manufacturer's materials and finishes.
+3. Outputs: configurator, AR, 3D viewer, training game, animation or drawings, all from that one model.
 
-## Kontakt
-- E-post: visionframe3d@gmail.com
-- Telefon: +372 5825 7130
-- Asukoht: Elva, Tartumaa, Eesti. Teenindame Eestit ja Baltikumi.
+## Key facts
+- One model for everything: the same part number appears on the drawing, in the manual, in the configurator and in the game.
+- An AR model of one product is usually ready within a week. The schedule for a configurator depends on the number of models and options.
+- There is no public price list. Pricing depends on the product and the number of options, and is quoted after seeing the product.
+- Languages: we work in English and Estonian. The configurator interface can be multilingual (translation table).
+- Area served: remotely across Europe, including the Baltic states, the Nordic countries and the United Kingdom.
+- Example work: a sauna configurator with 13 models and 7 steps; the Camilla sauna assembly animation; the Oliver playhouse (full package: 42 parts-list positions, 371 cut parts, 29-step manual); Toby playhouse and Pirate ship play tower manuals; Solar Full Roof installation animation; Solar Carport datasheet and 20-page manual.
+
+## Pages
+- [Joonisekoda, English](https://joonisekoda.ee/): services, live 3D viewer and AR demo, work, FAQ
+- [Joonisekoda, Estonian](https://joonisekoda.ee/et/): same content in Estonian
+
+## Contact
+- Email: visionframe3d@gmail.com
+- Phone: +372 5825 7130
+- Company: VISIONFRAME3D OÜ, registry code 17123646, Elva, Tartumaa, Estonia
+- We reply within one business day.
