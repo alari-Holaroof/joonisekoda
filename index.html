@@ -63,6 +63,14 @@
 <script type="application/ld+json" id="kkk-ld">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a 3D product configurator, and who is it for?","acceptedAnswer":{"@type":"Answer","text":"A 3D view on the web where the buyer chooses the model, size, materials, colours and extras and sees the result from every side straight away. It suits any manufacturer whose product comes in many variants: saunas, garden rooms, modular and log cabins, sheds, shelters, carports, fences and gates, outdoor furniture, play equipment, trailers and boats."}},{"@type":"Question","name":"Does the buyer need to install anything?","acceptedAnswer":{"@type":"Answer","text":"No. The configurator, the 3D viewer and AR all run in an ordinary browser on desktop and mobile. AR uses the viewer already built into the phone: Google Scene Viewer on Android, Apple AR Quick Look on iPhone (in Safari)."}},{"@type":"Question","name":"What do you need from us to start?","acceptedAnswer":{"@type":"Answer","text":"Ideally an existing 3D model — SketchUp, FBX, STEP, IFC, Revit or similar. Production drawings, or even photos with the main dimensions, also work. Plus the list of options (what can be changed) and images of the materials or finishes."}},{"@type":"Question","name":"How long does it take?","acceptedAnswer":{"@type":"Answer","text":"An AR model of one product is usually ready within a week. A configurator depends on the number of models and options — we give a concrete schedule once we've seen the product. A good start is one model with all its variations; the rest of the range then slots into the same framework."}},{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"We don't have a price list, because the price depends on the product and the number of options. Send us one product (a model or a link to the product page) and tell us what you'd like — we reply the next business day with an exact figure."}},{"@type":"Question","name":"We don't have a 3D model. Can we still start?","acceptedAnswer":{"@type":"Answer","text":"Yes. We build the model from production drawings, or from photos with the main dimensions. 3D modelling, drawings and cutting lists are our core work, so the model is built accurately enough to produce production documentation from it later."}},{"@type":"Question","name":"What happens when our products change?","acceptedAnswer":{"@type":"Answer","text":"The change is made in the one 3D model, and the configurator, AR, drawings and manual are updated from it. A new option, such as a new finish or heater model, is added as one part and the combinations follow on their own — nothing has to be photographed or rendered again."}},{"@type":"Question","name":"Can the configurator show our prices?","acceptedAnswer":{"@type":"Answer","text":"The configurator shows whatever data you give it: prices, product codes, lead times or a \"request a quote\" note, including in the summary that goes out with the enquiry. If you'd rather not show prices publicly, the summary lists only the chosen specification."}},{"@type":"Question","name":"Which devices does it work on?","acceptedAnswer":{"@type":"Answer","text":"The configurator and the 3D viewer run in an ordinary browser on desktop, tablet and phone. AR needs a phone: on Android, Chrome and the \"Google Play Services for AR\" app; on iPhone, Safari and an iPhone 6s or newer. On a computer you can turn and zoom the model, but not use AR, because there is no camera."}},{"@type":"Question","name":"Will it work on our existing website?","acceptedAnswer":{"@type":"Answer","text":"Yes. The configurator and the 3D viewer go onto your page with one embed line, whether the site runs on WordPress, Shopify, Wix or anything else. The configurator can also live at its own address, such as configurator.yourcompany.com."}},{"@type":"Question","name":"How do configurator enquiries reach us?","acceptedAnswer":{"@type":"Answer","text":"The last step of the configurator is a summary of the chosen model and every option. From there the enquiry goes by email or into your existing form or CRM — the salesperson sees at once exactly what is being asked for."}},{"@type":"Question","name":"Do you also make production drawings and installation manuals?","acceptedAnswer":{"@type":"Answer","text":"Yes — that is where we started. Assembly drawings, parts lists, cutting lists, the installation manual and the safety zone plan all come from the same 3D model. Once the model exists, the configurator, AR and training game are a continuation of the same work."}},{"@type":"Question","name":"Where are you based, and which languages do you work in?","acceptedAnswer":{"@type":"Answer","text":"We are based in Elva, Estonia (VISIONFRAME3D OÜ, registry code 17123646). We work in English and Estonian, remotely across Europe — the Baltics, the Nordics and the UK. The configurator interface can be in several languages."}}]}
 </script>
+<!-- Importmap PEAB olema enne ühtegi moodulskripti (model-viewer, hero): Firefox ignoreerib
+     hilisemat importmap-i ja hero 3D ei käivitu („bare specifier three”, kasutaja 24.09). -->
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -439,6 +447,10 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   .reel-tekstid{left:6%;right:6%;width:auto;top:auto;bottom:52px;height:200px}
   .reel-tekst{top:auto;bottom:0;transform:none}
   .reel-tekst h3{font-size:34px;margin:12px 0 10px}
+  /* Konfiguraatori klipis on saun vasakul (~36% laiusest), paneel paremal — keskelt
+     lõigates jäi saun poolenisti välja (kasutaja 24.09). Näitame tervikuna ülal, tekst all. */
+  .reel-video video.ui-klipp{object-fit:contain;object-position:50% 3%;background:#171717}
+  .reel-lugeja{display:none}
   .reel-riba{bottom:14px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -1487,12 +1499,6 @@ document.querySelectorAll('video.hoverplay').forEach(v => {
        12,5–16 AR: maapinna sihik + mõõdud (mõõdetud karkassi kastist, mitte kirjutatud)
        16–18   osad tõusevad ära, jooned kustuvad -> algusest
      Kui WebGL või CDN ei tööta, jääb nähtavale pildid/hero-3d.webp. -->
-<script type="importmap">
-{ "imports": {
-  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
-  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
-} }
-</script>
 <script type="module">
 const kast = document.getElementById('hero3d');
 const vara = () => kast.classList.add('vara');

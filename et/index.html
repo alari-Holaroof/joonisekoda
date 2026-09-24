@@ -60,6 +60,14 @@
 }
 </script>
 <script type="application/ld+json" id="kkk-ld">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mis on 3D-tootekonfiguraator ja kellele see sobib?","acceptedAnswer":{"@type":"Answer","text":"Veebis töötav 3D-vaade, kus ostja valib toote mudeli, mõõdu, materjalid, värvid ja lisad ning näeb kohe tulemust igast küljest. See sobib tootjale, kelle tootel on palju variante: saunad, aiamajad, moodul- ja palkmajad, kuurid, varjualused, carport'id, piirded ja väravad, õuemööbel, mänguväljakud, haagised, paadid."}},{"@type":"Question","name":"Kas ostja peab midagi installima?","acceptedAnswer":{"@type":"Answer","text":"Ei. Konfiguraator, 3D-vaatur ja AR töötavad tavalises brauseris arvutis ja telefonis. AR kasutab telefoni sisseehitatud vaadet: Androidis Google Scene Viewer, iPhone'is Apple AR Quick Look (Safaris)."}},{"@type":"Question","name":"Mida te meilt alustamiseks vajate?","acceptedAnswer":{"@type":"Answer","text":"Parim on olemasolev 3D-mudel — SketchUp, FBX, STEP, IFC, Revit või muu. Sobivad ka tootmisjoonised või isegi fotod koos põhimõõtudega. Lisaks valikute nimekiri (mis on vahetatav) ja pildid materjalidest või toonidest."}},{"@type":"Question","name":"Kui kaua see aega võtab?","acceptedAnswer":{"@type":"Answer","text":"Ühe toote AR-mudel on tavaliselt valmis nädalaga. Konfiguraatori aeg sõltub mudelite ja valikute arvust — konkreetse ajakava anname siis, kui oleme toodet näinud. Hea algus on üks mudel koos kõigi variatsioonidega; ülejäänud tooted lisanduvad samasse raami."}},{"@type":"Question","name":"Mis see maksab?","acceptedAnswer":{"@type":"Answer","text":"Hinnakirja meil ei ole, sest hind sõltub tootest ja valikute arvust. Saada üks toode (mudel või link tootelehele) ja kirjuta, mida tahaksid — vastame järgmisel tööpäeval täpse numbriga."}},{"@type":"Question","name":"Meil ei ole 3D-mudelit. Kas saame ikka alustada?","acceptedAnswer":{"@type":"Answer","text":"Jah. Teeme mudeli tootmisjooniste põhjal või ka fotode ja põhimõõtude põhjal. 3D-mudeldamine, joonised ja lõikelehed on meie põhitöö, nii et mudel tehakse kohe nii täpne, et sellest saab hiljem ka tootmisdokumentatsiooni teha."}},{"@type":"Question","name":"Mis juhtub, kui meie tooted muutuvad?","acceptedAnswer":{"@type":"Answer","text":"Muudatus tehakse ühte 3D-mudelisse ning konfiguraator, AR, joonised ja juhend uuendatakse sealt. Uus valik, näiteks uus toon või kerise mudel, lisatakse ühe detailina ja kombinatsioonid tekivad ise — midagi ei ole vaja uuesti pildistada ega renderdada."}},{"@type":"Question","name":"Kas konfiguraator saab näidata meie hindu?","acceptedAnswer":{"@type":"Answer","text":"Konfiguraator näitab neid andmeid, mis sa talle annad: hinnad, tootekoodid, tarneajad või märkus „küsi pakkumist”, ka päringuga kaasa minevas kokkuvõttes. Kui sa ei taha hindu avalikult näidata, jääb kokkuvõttesse ainult valitud komplekt."}},{"@type":"Question","name":"Millistes seadmetes see töötab?","acceptedAnswer":{"@type":"Answer","text":"Konfiguraator ja 3D-vaatur töötavad tavalises brauseris arvutis, tahvlis ja telefonis. AR vajab telefoni: Androidis Chrome'i ja rakendust „Google Play teenused AR-i jaoks”, iPhone'is Safarit ja iPhone 6s-i või uuemat. Arvutis saab mudelit keerata ja suumida, aga AR-i mitte, sest kaamera puudub."}},{"@type":"Question","name":"Kas see sobib meie olemasolevale kodulehele?","acceptedAnswer":{"@type":"Answer","text":"Jah. Konfiguraator ja 3D-vaatur lähevad lehele ühe manustusreaga, ükskõik kas leht on WordPressis, Shopifys, Wixis või muus süsteemis. Konfiguraator võib elada ka eraldi aadressil, näiteks konfiguraator.sinufirma.ee."}},{"@type":"Question","name":"Kuidas konfiguraatori päringud meieni jõuavad?","acceptedAnswer":{"@type":"Answer","text":"Konfiguraatori viimane samm on kokkuvõte valitud mudeli ja kõigi valikutega. Sealt läheb päring e-postiga või sinu olemasolevasse vormi või CRM-i — müüja näeb kohe, mida täpselt küsitakse."}},{"@type":"Question","name":"Kas teete ka tootmisjooniseid ja paigaldusjuhendeid?","acceptedAnswer":{"@type":"Answer","text":"Jah — sellest me alustasime. Samast 3D-mudelist tulevad koostejoonised, detailide loend, lõikelehed, paigaldusjuhend ja ohutusala plaan. Kui mudel on korra tehtud, on konfiguraator, AR ja treeningmäng sama töö jätk."}},{"@type":"Question","name":"Kus te asute ja mis keeltes töötate?","acceptedAnswer":{"@type":"Answer","text":"Asume Elvas, Eestis (VISIONFRAME3D OÜ, registrikood 17123646). Töötame inglise ja eesti keeles ning kaugtööna üle Euroopa — Baltikum, Põhjamaad ja Suurbritannia. Konfiguraatori liides võib olla mitmes keeles."}}]}</script>
+<!-- Importmap PEAB olema enne ühtegi moodulskripti (model-viewer, hero): Firefox ignoreerib
+     hilisemat importmap-i ja hero 3D ei käivitu („bare specifier three”, kasutaja 24.09). -->
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
@@ -436,6 +444,10 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   .reel-tekstid{left:6%;right:6%;width:auto;top:auto;bottom:52px;height:200px}
   .reel-tekst{top:auto;bottom:0;transform:none}
   .reel-tekst h3{font-size:34px;margin:12px 0 10px}
+  /* Konfiguraatori klipis on saun vasakul (~36% laiusest), paneel paremal — keskelt
+     lõigates jäi saun poolenisti välja (kasutaja 24.09). Näitame tervikuna ülal, tekst all. */
+  .reel-video video.ui-klipp{object-fit:contain;object-position:50% 3%;background:#171717}
+  .reel-lugeja{display:none}
   .reel-riba{bottom:14px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -1435,12 +1447,6 @@ document.querySelectorAll('video.hoverplay').forEach(v => {
        12,5–16 AR: maapinna sihik + mõõdud (mõõdetud karkassi kastist, mitte kirjutatud)
        16–18   osad tõusevad ära, jooned kustuvad -> algusest
      Kui WebGL või CDN ei tööta, jääb nähtavale pildid/hero-3d.webp. -->
-<script type="importmap">
-{ "imports": {
-  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
-  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
-} }
-</script>
 <script type="module">
 const kast = document.getElementById('hero3d');
 const vara = () => kast.classList.add('vara');
