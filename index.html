@@ -970,7 +970,10 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   s.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
   s.onload = function(){
     try {
-      new QRCode(siht, { text: location.href.split('#')[0] + '#ar', width: 96, height: 96,
+      // QR viitab ALATI avalikule aadressile (canonical), mitte location.href-ile:
+      // kohalikust eelvaatest (127.0.0.1) skannitud kood ei jõua telefonist kohale (kasutaja 24.09).
+      var avalik = (document.querySelector('link[rel="canonical"]') || {}).href || location.href.split('#')[0];
+      new QRCode(siht, { text: avalik + '#ar', width: 96, height: 96,
         colorDark: '#0b1727', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
       plokk.style.display = 'flex';
       if (margis) margis.style.display = 'none';
