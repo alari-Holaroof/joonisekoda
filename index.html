@@ -743,7 +743,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 </div>
 
 <!-- SHOWREEL ------------------------------------------------------------------
-     Kuus klippi ühes raamis. Vahetus = diagonaalne wipe + laimiroheline
+     Seitse klippi ühes raamis. Vahetus = diagonaalne wipe + laimiroheline
      pühkjoon; pealkirjad tulevad rida-realt maski tagant. Tekst on HTML-is, mitte
      videosse küpsetatud: jääb teravaks, tõlgitav (data-et) ja otsingud loevad seda.
      Iga klipp mängib oma lõigu (data-algus, data-kestus sekundites) ja läheb edasi. -->
@@ -757,6 +757,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         <video data-algus="1" data-kestus="6.5" src="video/solar-katus.mp4" poster="pildid/anim-str.jpg" muted playsinline preload="none"></video>
         <video data-algus="2" data-kestus="6" src="video/treening.mp4" poster="pildid/mang-hud.jpg" muted playsinline preload="none"></video>
         <video class="ui-klipp" data-algus="0" data-kestus="8.6" src="video/haagis.mp4" poster="pildid/haagis-arvuti-960.webp" muted playsinline preload="none"></video>
+        <video class="ui-klipp" data-algus="0" data-kestus="8.8" src="video/aiamaja.mp4" poster="pildid/aiamaja-arvuti-960.webp" muted playsinline preload="none"></video>
         <i class="reel-pyhk" aria-hidden="true"></i>
       </div>
       <div class="reel-kate" aria-hidden="true"></div>
@@ -791,6 +792,11 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
           <h3><span class="rea"><span data-et="Kate, toon,">Cover, colour,</span></span><span class="rea"><span data-et="&lt;em&gt;teine telg.&lt;/em&gt;"><em>a second axle.</em></span></span></h3>
           <p data-et="Tent lendab paika, toon vahetub, tandem veereb sisse — hind käib kaasas.">The tarp flies into place, the colour changes, the tandem rolls in — the price keeps up.</p>
         </div>
+        <div class="reel-tekst">
+          <span class="reel-silt"><b>07</b><span data-et="Aiamaja konfiguraator">Garden house configurator</span></span>
+          <h3><span class="rea"><span data-et="Katus, vooder,">Roof, cladding,</span></span><span class="rea"><span data-et="&lt;em&gt;terrass.&lt;/em&gt;"><em>a terrace.</em></span></span></h3>
+          <p data-et="Katus vahetub lennates, vooder läheb mustaks, terrass ja varikatus tulevad paika — hind käib kaasas.">The roof swaps in mid-air, the cladding turns black, a terrace and canopy fly in — the price keeps up.</p>
+        </div>
       </div>
       <div class="reel-riba">
         <button type="button" class="reel-nupp" aria-label="Configurator" data-et-aria-label="Konfiguraator"><i></i></button>
@@ -799,8 +805,9 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         <button type="button" class="reel-nupp" aria-label="Installation animation" data-et-aria-label="Paigaldusanimatsioon"><i></i></button>
         <button type="button" class="reel-nupp" aria-label="Training game" data-et-aria-label="Treeningmäng"><i></i></button>
         <button type="button" class="reel-nupp" aria-label="Trailer configurator" data-et-aria-label="Haagisekonfiguraator"><i></i></button>
+        <button type="button" class="reel-nupp" aria-label="Garden house configurator" data-et-aria-label="Aiamaja konfiguraator"><i></i></button>
       </div>
-      <span class="reel-lugeja" aria-hidden="true"><b>01</b> / 06</span>
+      <span class="reel-lugeja" aria-hidden="true"><b>01</b> / 07</span>
     </div>
   </div>
 </section>
@@ -955,6 +962,51 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
               <img src="pildid/haagis-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async"
                    alt="The trailer configurator on a phone: a single-axle box trailer with a green tarp, cover options below"
                    data-et-alt="Haagisekonfiguraator telefonis: rohelise tendiga ühe teljega kastihaagis, all katte valikud">
+            </picture>
+          </figure>
+          <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Example brand · desktop and phone · Unity WebGL</span>
+        </div>
+      </article>
+
+      <!-- 1d. AIAMAJA KONFIGURAATOR (avalik näidis, väljamõeldud bränd „PESA”; peegelpaigutus,
+           et plokid vahelduksid: 1 tava, 1b peegel, 1c tava, 1d peegel). Nupu link: EN ?keel=en, ET data-et-href. -->
+      <article class="show lai vastupidi">
+        <div class="show-copy">
+          <div>
+            <div class="eyebrow" data-et="Aiamaja konfiguraator">Garden house configurator</div>
+            <h3 data-et="Sama põhimõte,<br>terve maja.">The same idea,<br>a whole house.</h3>
+            <p data-et="Ostja valib suuruse, katuse, voodri ja esiseina ning iga osa lendab ise paika. Pindala, mõõdud, harja kõrgus ja hind muutuvad iga valikuga, maja saab keerata igast küljest ja telefonis panna AR-is oma aeda 1:1. Avalik näidis, proovi ise.">
+              The buyer picks a size, a roof, the cladding and the front wall, and every part
+              flies into place. Floor area, dimensions, ridge height and price change with each
+              choice, the house turns to any side, and on a phone it stands in their own garden
+              in AR at 1:1. A public demo, try it yourself.
+            </p>
+          </div>
+          <div>
+            <ul class="show-list">
+              <li data-et="3 suurust: 9, 15 ja 20 m²">3 sizes: 9, 15 and 20 m²</li>
+              <li data-et="Viil-, kald- või lamekatus; rõhtne või püstine vooder viies toonis">Gable, mono-pitch or flat roof; horizontal or vertical cladding in 5 tones</li>
+              <li data-et="Uks, topeltuks või klaassein, terrass, varikatus ja aknad lendavad ise paika">Door, double door or glass wall, terrace, canopy and windows fly into place</li>
+              <li data-et="Pindala, mõõdud, harja kõrgus ja hind uuenevad kohe">Floor area, dimensions, ridge height and price update live</li>
+              <li data-et="360° vaade; telefonis AR-is oma aias 1:1">360° view; on a phone, AR at 1:1 in your own garden</li>
+            </ul>
+            <a class="btn btn-primary" href="https://diivan-proov.avalda.workers.dev/aiamaja/?keel=en" data-et-href="https://diivan-proov.avalda.workers.dev/aiamaja/" target="_blank" rel="noopener" data-et="Proovi konfiguraatorit →">Try the configurator →</a>
+          </div>
+        </div>
+        <div class="konf-kuvad">
+          <figure class="konf-pc">
+            <div class="konf-riba" aria-hidden="true"><i></i><i></i><i></i></div>
+            <video class="viewplay" src="video/aiamaja.mp4" poster="pildid/aiamaja-arvuti-1600.webp"
+                   muted loop playsinline preload="none" width="1280" height="720"
+                   aria-label="The garden house configurator on a computer: the gable roof swaps for a mono-pitch roof, the cladding turns black, then a terrace and canopy fly in"
+                   data-et-aria-label="Aiamaja konfiguraator arvutis: viilkatus vahetub kaldkatuse vastu, vooder muutub mustaks, siis lendavad paika terrass ja varikatus"></video>
+          </figure>
+          <figure class="konf-tel">
+            <picture>
+              <source type="image/webp" srcset="pildid/aiamaja-telefon-390.webp 390w, pildid/aiamaja-telefon-780.webp 780w" sizes="(max-width:860px) 58vw, 21vw">
+              <img src="pildid/aiamaja-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async"
+                   alt="The garden house configurator on a phone: a red garden house with vertical cladding and white frames, roof and cladding options below"
+                   data-et-alt="Aiamaja konfiguraator telefonis: punane püstise voodri ja valgete raamidega aiamaja, all katuse ja voodri valikud">
             </picture>
           </figure>
           <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Example brand · desktop and phone · Unity WebGL</span>
