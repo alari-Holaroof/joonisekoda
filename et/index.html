@@ -440,7 +440,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 .reel-nupp i{display:block;height:4px;border-radius:3px;background:rgba(255,255,255,.22);overflow:hidden;position:relative}
 .reel-nupp i:after{content:"";position:absolute;inset:0;background:var(--lime);transform:scaleX(var(--p,0));transform-origin:left}
 .reel-nupp:hover i{background:rgba(255,255,255,.4)}
-.reel-lugeja{position:absolute;z-index:7;right:5%;top:22px;font:600 13px "Space Grotesk",sans-serif;color:#8fa0b1;letter-spacing:.06em}
+.reel-lugeja{position:absolute;z-index:7;right:5%;top:22px;font:600 13px "Space Grotesk",sans-serif;color:#8fa0b1;letter-spacing:.06em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .reel-lugeja b{color:#fff}
 @media(max-width:860px){
   .reel-sekt{padding:10px 0 50px}
@@ -571,7 +571,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   function eesti(doc){
     doc = doc || document;
     doc.querySelectorAll('[data-et]').forEach(function(el){ el.innerHTML = el.getAttribute('data-et'); });
-    ['alt','aria-label','placeholder'].forEach(function(a){
+    ['alt','aria-label','placeholder','href'].forEach(function(a){
       doc.querySelectorAll('[data-et-' + a + ']').forEach(function(el){ el.setAttribute(a, el.getAttribute('data-et-' + a)); });
     });
     var t = doc.querySelector('title'); if (t) t.textContent = META_ET.title;
@@ -735,7 +735,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 </div>
 
 <!-- SHOWREEL ------------------------------------------------------------------
-     Viis klippi ühes raamis. Vahetus = diagonaalne wipe + laimiroheline
+     Kuus klippi ühes raamis. Vahetus = diagonaalne wipe + laimiroheline
      pühkjoon; pealkirjad tulevad rida-realt maski tagant. Tekst on HTML-is, mitte
      videosse küpsetatud: jääb teravaks, tõlgitav (data-et) ja otsingud loevad seda.
      Iga klipp mängib oma lõigu (data-algus, data-kestus sekundites) ja läheb edasi. -->
@@ -748,6 +748,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         <video data-algus="3" data-kestus="6" src="/video/camilla-koost.mp4" poster="/pildid/anim-koost.jpg" muted="" playsinline="" preload="none"></video>
         <video data-algus="1" data-kestus="6.5" src="/video/solar-katus.mp4" poster="/pildid/anim-str.jpg" muted="" playsinline="" preload="none"></video>
         <video data-algus="2" data-kestus="6" src="/video/treening.mp4" poster="/pildid/mang-hud.jpg" muted="" playsinline="" preload="none"></video>
+        <video class="ui-klipp" data-algus="0" data-kestus="8.6" src="/video/haagis.mp4" poster="/pildid/haagis-arvuti-960.webp" muted="" playsinline="" preload="none"></video>
         <i class="reel-pyhk" aria-hidden="true"></i>
       </div>
       <div class="reel-kate" aria-hidden="true"></div>
@@ -777,6 +778,11 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
           <h3><span class="rea"><span data-et="Vead ekraanil,">Vead ekraanil,</span></span><span class="rea"><span data-et="&lt;em&gt;mitte platsil.&lt;/em&gt;"><em>mitte platsil.</em></span></span></h3>
           <p data-et="95 sammu, õppevideod ja lõputest — brauseris.">95 sammu, õppevideod ja lõputest — brauseris.</p>
         </div>
+        <div class="reel-tekst">
+          <span class="reel-silt"><b>06</b><span data-et="Haagisekonfiguraator">Haagisekonfiguraator</span></span>
+          <h3><span class="rea"><span data-et="Kate, toon,">Kate, toon,</span></span><span class="rea"><span data-et="&lt;em&gt;teine telg.&lt;/em&gt;"><em>teine telg.</em></span></span></h3>
+          <p data-et="Tent lendab paika, toon vahetub, tandem veereb sisse — hind käib kaasas.">Tent lendab paika, toon vahetub, tandem veereb sisse — hind käib kaasas.</p>
+        </div>
       </div>
       <div class="reel-riba">
         <button type="button" class="reel-nupp" aria-label="Konfiguraator" data-et-aria-label="Konfiguraator"><i></i></button>
@@ -784,8 +790,9 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         <button type="button" class="reel-nupp" aria-label="Koosteanimatsioon" data-et-aria-label="Koosteanimatsioon"><i></i></button>
         <button type="button" class="reel-nupp" aria-label="Paigaldusanimatsioon" data-et-aria-label="Paigaldusanimatsioon"><i></i></button>
         <button type="button" class="reel-nupp" aria-label="Treeningmäng" data-et-aria-label="Treeningmäng"><i></i></button>
+        <button type="button" class="reel-nupp" aria-label="Haagisekonfiguraator" data-et-aria-label="Haagisekonfiguraator"><i></i></button>
       </div>
-      <span class="reel-lugeja" aria-hidden="true"><b>01</b> / 05</span>
+      <span class="reel-lugeja" aria-hidden="true"><b>01</b> / 06</span>
     </div>
   </div>
 </section>
@@ -873,6 +880,41 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
             <picture>
               <source type="image/webp" srcset="/pildid/diivan-telefon-390.webp 390w, /pildid/diivan-telefon-780.webp 780w" sizes="(max-width:860px) 58vw, 21vw">
               <img src="/pildid/diivan-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Diivanikonfiguraator telefonis: kolmekohaline diivan konjakivärvi kordkangas, all kangavalikud" data-et-alt="Diivanikonfiguraator telefonis: kolmekohaline diivan konjakivärvi kordkangas, all kangavalikud">
+            </picture>
+          </figure>
+          <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Näidisbränd · arvuti ja telefon · Unity WebGL</span>
+        </div>
+      </article>
+
+      <!-- 1c. KASTIHAAGISE KONFIGURAATOR (avalik näidis, väljamõeldud bränd „KAST”; tavapaigutus,
+           et plokid vahelduksid: 1 tava, 1b peegel, 1c tava). Nupu link: EN ?keel=en, ET data-et-href. -->
+      <article class="show lai">
+        <div class="show-copy">
+          <div>
+            <div class="eyebrow" data-et="Kastihaagise konfiguraator">Kastihaagise konfiguraator</div>
+            <h3 data-et="Sama põhimõte,&lt;br&gt;nüüd ratastel.">Sama põhimõte,<br>nüüd ratastel.</h3>
+            <p data-et="Ostja valib mudeli, katte ja lisad ning iga osa lendab ise paika. Tehnilised andmed ja hind muutuvad iga valikuga, haagist saab keerata igast küljest ja telefonis panna AR-is oma hoovi 1:1. Avalik näidis, proovi ise.">Ostja valib mudeli, katte ja lisad ning iga osa lendab ise paika. Tehnilised andmed ja hind muutuvad iga valikuga, haagist saab keerata igast küljest ja telefonis panna AR-is oma hoovi 1:1. Avalik näidis, proovi ise.</p>
+          </div>
+          <div>
+            <ul class="show-list">
+              <li data-et="3 mudelit, sh pidurdatud tandemhaagis">3 mudelit, sh pidurdatud tandemhaagis</li>
+              <li data-et="Kõva kaas, tent kahes kõrguses ja viies toonis või võrkkõrgendus">Kõva kaas, tent kahes kõrguses ja viies toonis või võrkkõrgendus</li>
+              <li data-et="Kaldtee, varuratas, tugiratas ja kõrgendus lendavad ise paika">Kaldtee, varuratas, tugiratas ja kõrgendus lendavad ise paika</li>
+              <li data-et="Kandevõime, kogupikkus ja hind uuenevad kohe">Kandevõime, kogupikkus ja hind uuenevad kohe</li>
+              <li data-et="360° vaade; telefonis AR-is 1:1">360° vaade; telefonis AR-is 1:1</li>
+            </ul>
+            <a class="btn btn-primary" href="https://diivan-proov.avalda.workers.dev/haagis/" data-et-href="https://diivan-proov.avalda.workers.dev/haagis/" target="_blank" rel="noopener" data-et="Proovi konfiguraatorit →">Proovi konfiguraatorit →</a>
+          </div>
+        </div>
+        <div class="konf-kuvad">
+          <figure class="konf-pc">
+            <div class="konf-riba" aria-hidden="true"><i></i><i></i><i></i></div>
+            <video class="viewplay" src="/video/haagis.mp4" poster="/pildid/haagis-arvuti-1600.webp" muted="" loop="" playsinline="" preload="none" width="1280" height="720" aria-label="Haagisekonfiguraator arvutis: tent lendab paika ja muutub siniseks, siis veereb sisse tandemmudel" data-et-aria-label="Haagisekonfiguraator arvutis: tent lendab paika ja muutub siniseks, siis veereb sisse tandemmudel"></video>
+          </figure>
+          <figure class="konf-tel">
+            <picture>
+              <source type="image/webp" srcset="/pildid/haagis-telefon-390.webp 390w, /pildid/haagis-telefon-780.webp 780w" sizes="(max-width:860px) 58vw, 21vw">
+              <img src="/pildid/haagis-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Haagisekonfiguraator telefonis: rohelise tendiga ühe teljega kastihaagis, all katte valikud" data-et-alt="Haagisekonfiguraator telefonis: rohelise tendiga ühe teljega kastihaagis, all katte valikud">
             </picture>
           </figure>
           <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Näidisbränd · arvuti ja telefon · Unity WebGL</span>
