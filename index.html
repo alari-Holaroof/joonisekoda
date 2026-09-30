@@ -232,6 +232,10 @@ details.loe .loe-sisu h4{font-size:13px;color:#fff;margin-top:4px}
 .konf-riba i{width:9px;height:9px;border-radius:50%;background:#3a3a3a}
 .konf-tel{border-radius:28px;border:7px solid #0c0c0c}
 .konf-kuvad .media-note{background:rgba(20,20,20,.9);border-color:rgba(255,255,255,.12);color:#e6e2dc}
+/* peegelpilt: telefon vasakul, arvuti paremal, märkus paremal */
+.show.lai.vastupidi .konf-kuvad{grid-template-columns:minmax(140px,21%) minmax(0,1fr);background:#1a1a1a radial-gradient(85% 90% at 60% 60%,#3b3936 0%,#282725 45%,#171717 100%)}
+.show.lai.vastupidi .konf-tel{order:-1}
+.show.lai.vastupidi .konf-kuvad .media-note{left:auto;right:16px}
 
 /* 3D-vaatur + AR kõrvuti */
 .paar{display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -496,7 +500,9 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   .konf-kuvad{grid-template-columns:1fr;justify-items:center;padding:20px 16px 62px}
   .konf-pc{width:100%}
   .konf-tel{width:min(58%,230px);border-width:6px;border-radius:24px}
-  .media-note{left:12px;right:12px;bottom:12px;text-align:center}
+  .show.lai.vastupidi .konf-kuvad{grid-template-columns:1fr}
+  .show.lai.vastupidi .konf-tel{order:0}
+  .media-note,.show.lai.vastupidi .konf-kuvad .media-note{left:12px;right:12px;bottom:12px;text-align:center}
   .kaart3d .show-media .ar-nupp{bottom:62px}
   .stats{grid-template-columns:repeat(2,1fr)}
   .cta{padding:34px 24px}
@@ -737,7 +743,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 </div>
 
 <!-- SHOWREEL ------------------------------------------------------------------
-     Neli olemasolevat klippi ühes raamis. Vahetus = diagonaalne wipe + laimiroheline
+     Viis klippi ühes raamis. Vahetus = diagonaalne wipe + laimiroheline
      pühkjoon; pealkirjad tulevad rida-realt maski tagant. Tekst on HTML-is, mitte
      videosse küpsetatud: jääb teravaks, tõlgitav (data-et) ja otsingud loevad seda.
      Iga klipp mängib oma lõigu (data-algus, data-kestus sekundites) ja läheb edasi. -->
@@ -746,6 +752,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
     <div class="reel" id="reel">
       <div class="reel-video">
         <video class="ui-klipp" data-algus="0" data-kestus="8.2" src="video/konfiguraator.mp4" poster="pildid/konf-arvuti-960.webp" muted playsinline preload="none"></video>
+        <video class="ui-klipp" data-algus="0" data-kestus="8" src="video/diivan.mp4" poster="pildid/diivan-arvuti-960.webp" muted playsinline preload="none"></video>
         <video data-algus="3" data-kestus="6" src="video/camilla-koost.mp4" poster="pildid/anim-koost.jpg" muted playsinline preload="none"></video>
         <video data-algus="1" data-kestus="6.5" src="video/solar-katus.mp4" poster="pildid/anim-str.jpg" muted playsinline preload="none"></video>
         <video data-algus="2" data-kestus="6" src="video/treening.mp4" poster="pildid/mang-hud.jpg" muted playsinline preload="none"></video>
@@ -759,28 +766,34 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
           <p data-et="Mudelid, seinad, lavad — päris geomeetria, otse brauseris.">Models, walls, benches — real geometry, live in the browser.</p>
         </div>
         <div class="reel-tekst">
-          <span class="reel-silt"><b>02</b><span data-et="Koosteanimatsioon">Assembly animation</span></span>
+          <span class="reel-silt"><b>02</b><span data-et="Diivanikonfiguraator">Sofa configurator</span></span>
+          <h3><span class="rea"><span data-et="Moodul, kangas,">Module, fabric,</span></span><span class="rea"><span data-et="&lt;em&gt;hind — kohe.&lt;/em&gt;"><em>price — live.</em></span></span></h3>
+          <p data-et="Moodulid liuguvad paika, kangas ja hind uuenevad kohe.">Modules slide into place, fabric and price update live.</p>
+        </div>
+        <div class="reel-tekst">
+          <span class="reel-silt"><b>03</b><span data-et="Koosteanimatsioon">Assembly animation</span></span>
           <h3><span class="rea"><span data-et="Detail detaili">Part by part,</span></span><span class="rea"><span data-et="haaval, &lt;em&gt;õiges järjekorras.&lt;/em&gt;"><em>in the right order.</em></span></span></h3>
           <p data-et="Sama järjekord nagu päris paigalduses.">The same order as the real installation.</p>
         </div>
         <div class="reel-tekst">
-          <span class="reel-silt"><b>03</b><span data-et="Paigaldusanimatsioon">Installation animation</span></span>
+          <span class="reel-silt"><b>04</b><span data-et="Paigaldusanimatsioon">Installation animation</span></span>
           <h3><span class="rea"><span data-et="Iga kiht,">Every layer,</span></span><span class="rea"><span data-et="&lt;em&gt;iga roov.&lt;/em&gt;"><em>every batten.</em></span></span></h3>
           <p data-et="Katusepakett aluskattest päikesekivideni.">A roof package from underlay to solar tiles.</p>
         </div>
         <div class="reel-tekst">
-          <span class="reel-silt"><b>04</b><span data-et="Treeningmäng">Training game</span></span>
+          <span class="reel-silt"><b>05</b><span data-et="Treeningmäng">Training game</span></span>
           <h3><span class="rea"><span data-et="Vead ekraanil,">Mistakes on screen,</span></span><span class="rea"><span data-et="&lt;em&gt;mitte platsil.&lt;/em&gt;"><em>not on site.</em></span></span></h3>
           <p data-et="95 sammu, õppevideod ja lõputest — brauseris.">95 steps, training videos and a final test — in the browser.</p>
         </div>
       </div>
       <div class="reel-riba">
         <button type="button" class="reel-nupp" aria-label="Configurator" data-et-aria-label="Konfiguraator"><i></i></button>
+        <button type="button" class="reel-nupp" aria-label="Sofa configurator" data-et-aria-label="Diivanikonfiguraator"><i></i></button>
         <button type="button" class="reel-nupp" aria-label="Assembly animation" data-et-aria-label="Koosteanimatsioon"><i></i></button>
         <button type="button" class="reel-nupp" aria-label="Installation animation" data-et-aria-label="Paigaldusanimatsioon"><i></i></button>
         <button type="button" class="reel-nupp" aria-label="Training game" data-et-aria-label="Treeningmäng"><i></i></button>
       </div>
-      <span class="reel-lugeja" aria-hidden="true"><b>01</b> / 04</span>
+      <span class="reel-lugeja" aria-hidden="true"><b>01</b> / 05</span>
     </div>
   </div>
 </section>
@@ -851,6 +864,48 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
             </picture>
           </figure>
           <span class="media-note" data-et="Päris kasutajaliides · arvuti ja telefon · Unity WebGL">The real interface · desktop and phone · Unity WebGL</span>
+        </div>
+      </article>
+
+      <!-- 1b. MOODULDIIVANI KONFIGURAATOR (avalik näidis, väljamõeldud bränd „LAINE”) -->
+      <article class="show lai vastupidi">
+        <div class="show-copy">
+          <div>
+            <div class="eyebrow" data-et="Mooduldiivani konfiguraator">Modular sofa configurator</div>
+            <h3 data-et="Sama põhimõte,<br>hoopis teine toode.">The same idea,<br>a very different product.</h3>
+            <p data-et="Ostja lisab mooduleid, valib kanga ja näeb mõõte ja hinda iga valikuga muutumas. Telefonis paneb ta diivani AR-is oma tuppa 1:1 — enne, kui midagi tellib. Avalik näidis, proovi ise.">
+              The buyer adds modules, picks a fabric and watches the dimensions and price
+              change with every choice. On a phone they place the sofa in their own room in
+              AR at 1:1 — before ordering anything. A public demo, try it yourself.
+            </p>
+          </div>
+          <div>
+            <ul class="show-list">
+              <li data-et="Keskmoodul, šeeslong, nurgamoodul ja tumba liuguvad ise paika">Middle seat, chaise, corner and ottoman slide into place by themselves</li>
+              <li data-et="5 kangast Martindale'i ja hinnagrupiga">5 fabrics with Martindale rating and price group</li>
+              <li data-et="Mõõdud ja hind uuenevad iga valikuga">Dimensions and price update with every choice</li>
+              <li data-et="Telefonis: diivan AR-is oma toas, 1:1">On a phone: the sofa in your own room in AR, 1:1</li>
+            </ul>
+            <a class="btn btn-primary" href="https://diivan-proov.avalda.workers.dev" target="_blank" rel="noopener" data-et="Proovi konfiguraatorit →">Try the configurator →</a>
+          </div>
+        </div>
+        <div class="konf-kuvad">
+          <figure class="konf-pc">
+            <div class="konf-riba" aria-hidden="true"><i></i><i></i><i></i></div>
+            <video class="viewplay" src="video/diivan.mp4" poster="pildid/diivan-arvuti-1600.webp"
+                   muted loop playsinline preload="none" width="1280" height="720"
+                   aria-label="The sofa configurator on a computer: adding a chaise and switching fabric"
+                   data-et-aria-label="Diivanikonfiguraator arvutis: šeeslongi lisamine ja kanga vahetus"></video>
+          </figure>
+          <figure class="konf-tel">
+            <picture>
+              <source type="image/webp" srcset="pildid/diivan-telefon-390.webp 390w, pildid/diivan-telefon-780.webp 780w" sizes="(max-width:860px) 58vw, 21vw">
+              <img src="pildid/diivan-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async"
+                   alt="The sofa configurator on a phone: a three-seater in cognac corduroy, fabric options below"
+                   data-et-alt="Diivanikonfiguraator telefonis: kolmekohaline diivan konjakivärvi kordkangas, all kangavalikud">
+            </picture>
+          </figure>
+          <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Example brand · desktop and phone · Unity WebGL</span>
         </div>
       </article>
 

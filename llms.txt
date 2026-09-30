@@ -25,6 +25,7 @@ Manufacturers whose products come in many variants or are installed by someone e
 - Languages: we work in English and Estonian. The configurator interface can be multilingual (translation table).
 - Area served: remotely across Europe, including the Baltic states, the Nordic countries and the United Kingdom.
 - Example work: a sauna configurator with 13 models and 7 steps; the Camilla sauna assembly animation; the Oliver playhouse (full package: 42 parts-list positions, 371 cut parts, 29-step manual); Toby playhouse and Pirate ship play tower manuals; Solar Full Roof installation animation; Solar Carport datasheet and 20-page manual.
+- Public demo: a modular sofa configurator for a fictional brand (modules, 5 fabrics, live dimensions and price, AR on phone) at https://diivan-proov.avalda.workers.dev
 
 ## Pages
 - [Joonisekoda, English](https://joonisekoda.ee/): services, live 3D viewer and AR demo, work, FAQ
