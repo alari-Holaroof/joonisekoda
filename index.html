@@ -237,6 +237,25 @@ details.loe .loe-sisu h4{font-size:13px;color:#fff;margin-top:4px}
 .show.lai.vastupidi .konf-tel{order:-1}
 .show.lai.vastupidi .konf-kuvad .media-note{left:auto;right:16px}
 
+/* Konfiguraatorid ühes aknas: sakid + üks paneel korraga (04.10.2026) */
+.konf-aken{background:var(--ink);border-radius:24px;overflow:hidden;min-width:0}
+.konf-sakid{display:flex;gap:6px;padding:10px;background:#0b192b;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.konf-sakid::-webkit-scrollbar{display:none}
+.konf-sakk{flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:10px;padding:8px 14px 8px 8px;border:1px solid transparent;border-radius:13px;background:none;color:#8fa0b1;
+  font:700 14px "DM Sans",sans-serif;cursor:pointer;transition:background .25s,color .25s,border-color .25s;scroll-snap-align:start;white-space:nowrap}
+.konf-sakk img{width:64px;height:36px;object-fit:cover;object-position:30% 50%;border-radius:7px;opacity:.55;transition:opacity .25s;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.konf-sakk:hover{color:#fff;background:rgba(255,255,255,.04)}
+.konf-sakk:hover img{opacity:.85}
+.konf-sakk[aria-selected="true"]{color:#fff;background:rgba(163,230,53,.1);border-color:rgba(163,230,53,.35)}
+.konf-sakk[aria-selected="true"] img{opacity:1}
+.konf-sakk:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+.konf-aken .show{border-radius:0}
+.konf-paneel[hidden]{display:none}
+.konf-paneel.on{animation:konfSisse .45s cubic-bezier(.2,.8,.2,1)}
+.konf-paneel:focus-visible{outline:2px solid var(--lime);outline-offset:-4px}
+@keyframes konfSisse{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.konf-paneel.on{animation:none}}
+
 /* 3D-vaatur + AR kõrvuti */
 .paar{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .kaart3d{background:var(--ink);color:#fff;border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
@@ -509,6 +528,9 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   .footer-grid{grid-template-columns:1fr;gap:26px}
 }
 @media(max-width:560px){
+  .konf-sakid{padding:8px;gap:4px}
+  .konf-sakk{flex:0 0 auto;padding:6px 12px 6px 6px;font-size:13px;gap:8px}
+  .konf-sakk img{width:44px;height:28px}
   .hero h1{font-size:40px}
   .hero-copy{font-size:16px}
   .logo{font-size:18px;gap:9px}
@@ -743,7 +765,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 </div>
 
 <!-- SHOWREEL ------------------------------------------------------------------
-     Seitse klippi ühes raamis. Vahetus = diagonaalne wipe + laimiroheline
+     Kaheksa klippi ühes raamis. Vahetus = diagonaalne wipe + laimiroheline
      pühkjoon; pealkirjad tulevad rida-realt maski tagant. Tekst on HTML-is, mitte
      videosse küpsetatud: jääb teravaks, tõlgitav (data-et) ja otsingud loevad seda.
      Iga klipp mängib oma lõigu (data-algus, data-kestus sekundites) ja läheb edasi. -->
@@ -758,6 +780,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         <video data-algus="2" data-kestus="6" src="video/treening.mp4" poster="pildid/mang-hud.jpg" muted playsinline preload="none"></video>
         <video class="ui-klipp" data-algus="0" data-kestus="8.6" src="video/haagis.mp4" poster="pildid/haagis-arvuti-960.webp" muted playsinline preload="none"></video>
         <video class="ui-klipp" data-algus="0" data-kestus="8.8" src="video/aiamaja.mp4" poster="pildid/aiamaja-arvuti-960.webp" muted playsinline preload="none"></video>
+        <video class="ui-klipp" data-algus="0" data-kestus="8.8" src="video/kaater.mp4" poster="pildid/kaater-arvuti-960.webp" muted playsinline preload="none"></video>
         <i class="reel-pyhk" aria-hidden="true"></i>
       </div>
       <div class="reel-kate" aria-hidden="true"></div>
@@ -797,6 +820,11 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
           <h3><span class="rea"><span data-et="Katus, vooder,">Roof, cladding,</span></span><span class="rea"><span data-et="&lt;em&gt;terrass.&lt;/em&gt;"><em>a terrace.</em></span></span></h3>
           <p data-et="Katus vahetub lennates, vooder läheb mustaks, terrass ja varikatus tulevad paika — hind käib kaasas.">The roof swaps in mid-air, the cladding turns black, a terrace and canopy fly in — the price keeps up.</p>
         </div>
+        <div class="reel-tekst">
+          <span class="reel-silt"><b>08</b><span data-et="Kaatri konfiguraator">Boat configurator</span></span>
+          <h3><span class="rea"><span data-et="Kere, katus,">Hull, top,</span></span><span class="rea"><span data-et="&lt;em&gt;vesi all.&lt;/em&gt;"><em>water below.</em></span></span></h3>
+          <p data-et="Kere muutub jääsiniseks, T-top ja hardtop lendavad paika, kaamera tiirutab ümber kaatri — hind käib kaasas.">The hull turns ice blue, a T-top and a hardtop fly in, the camera circles the boat — the price keeps up.</p>
+        </div>
       </div>
       <div class="reel-riba">
         <button type="button" class="reel-nupp" aria-label="Configurator" data-et-aria-label="Konfiguraator"><i></i></button>
@@ -806,8 +834,9 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         <button type="button" class="reel-nupp" aria-label="Training game" data-et-aria-label="Treeningmäng"><i></i></button>
         <button type="button" class="reel-nupp" aria-label="Trailer configurator" data-et-aria-label="Haagisekonfiguraator"><i></i></button>
         <button type="button" class="reel-nupp" aria-label="Garden house configurator" data-et-aria-label="Aiamaja konfiguraator"><i></i></button>
+        <button type="button" class="reel-nupp" aria-label="Boat configurator" data-et-aria-label="Kaatri konfiguraator"><i></i></button>
       </div>
-      <span class="reel-lugeja" aria-hidden="true"><b>01</b> / 07</span>
+      <span class="reel-lugeja" aria-hidden="true"><b>01</b> / 08</span>
     </div>
   </div>
 </section>
@@ -828,8 +857,204 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 
     <div class="showcase">
 
-      <!-- 1. KONFIGURAATOR -->
-      <article class="show lai">
+      <!-- KONFIGURAATORID ÜHES AKNAS (04.10.2026, kasutaja: „konfiguraatoreid on palju — liidaks ühte aknasse").
+           Sakid üleval, all üks paneel korraga. Paneelid on endised plokid 1, 1b, 1c, 1d + kaater, tekstid ja kaadrid
+           muutmata. Nupu link: EN ?keel=en, ET data-et-href. Saun = päris kliendi kaadrid, live-linki EI OLE (vt 1.). -->
+      <div class="konf-aken" id="konf-aken">
+        <div class="konf-sakid" role="tablist" aria-label="Configurators" data-et-aria-label="Konfiguraatorid">
+          <button type="button" role="tab" class="konf-sakk" id="konf-t-diivan" aria-controls="konf-p-diivan" aria-selected="true" tabindex="0">
+            <img src="pildid/diivan-arvuti-960.webp" alt="" width="64" height="36" loading="lazy" decoding="async"><span data-et="Diivan">Sofa</span>
+          </button>
+          <button type="button" role="tab" class="konf-sakk" id="konf-t-haagis" aria-controls="konf-p-haagis" aria-selected="false" tabindex="-1">
+            <img src="pildid/haagis-arvuti-960.webp" alt="" width="64" height="36" loading="lazy" decoding="async"><span data-et="Haagis">Trailer</span>
+          </button>
+          <button type="button" role="tab" class="konf-sakk" id="konf-t-aiamaja" aria-controls="konf-p-aiamaja" aria-selected="false" tabindex="-1">
+            <img src="pildid/aiamaja-arvuti-960.webp" alt="" width="64" height="36" loading="lazy" decoding="async"><span data-et="Aiamaja">Garden house</span>
+          </button>
+          <button type="button" role="tab" class="konf-sakk" id="konf-t-kaater" aria-controls="konf-p-kaater" aria-selected="false" tabindex="-1">
+            <img src="pildid/kaater-arvuti-960.webp" alt="" width="64" height="36" loading="lazy" decoding="async"><span data-et="Kaater">Boat</span>
+          </button>
+          <button type="button" role="tab" class="konf-sakk" id="konf-t-saun" aria-controls="konf-p-saun" aria-selected="false" tabindex="-1">
+            <img src="pildid/konf-arvuti-960.webp" alt="" width="64" height="36" loading="lazy" decoding="async"><span data-et="Saun">Sauna</span>
+          </button>
+        </div>
+
+      <!-- 1b. MOODULDIIVANI KONFIGURAATOR (avalik näidis, väljamõeldud bränd „LAINE”) -->
+      <article class="show lai konf-paneel on" role="tabpanel" id="konf-p-diivan" aria-labelledby="konf-t-diivan" tabindex="0">
+        <div class="show-copy">
+          <div>
+            <div class="eyebrow" data-et="Mooduldiivani konfiguraator">Modular sofa configurator</div>
+            <h3 data-et="Sama põhimõte,<br>hoopis teine toode.">The same idea,<br>a very different product.</h3>
+            <p data-et="Ostja lisab mooduleid, valib kanga ja näeb mõõte ja hinda iga valikuga muutumas. Telefonis paneb ta diivani AR-is oma tuppa 1:1 — enne, kui midagi tellib. Avalik näidis, proovi ise.">
+              The buyer adds modules, picks a fabric and watches the dimensions and price
+              change with every choice. On a phone they place the sofa in their own room in
+              AR at 1:1 — before ordering anything. A public demo, try it yourself.
+            </p>
+          </div>
+          <div>
+            <ul class="show-list">
+              <li data-et="Keskmoodul, šeeslong, nurgamoodul ja tumba liuguvad ise paika">Middle seat, chaise, corner and ottoman slide into place by themselves</li>
+              <li data-et="5 kangast Martindale'i ja hinnagrupiga">5 fabrics with Martindale rating and price group</li>
+              <li data-et="Mõõdud ja hind uuenevad iga valikuga">Dimensions and price update with every choice</li>
+              <li data-et="Telefonis: diivan AR-is oma toas, 1:1">On a phone: the sofa in your own room in AR, 1:1</li>
+            </ul>
+            <a class="btn btn-primary" href="https://3d.joonisekoda.ee/diivan/" target="_blank" rel="noopener" data-et="Proovi konfiguraatorit →">Try the configurator →</a>
+          </div>
+        </div>
+        <div class="konf-kuvad">
+          <figure class="konf-pc">
+            <div class="konf-riba" aria-hidden="true"><i></i><i></i><i></i></div>
+            <video class="viewplay" src="video/diivan.mp4" poster="pildid/diivan-arvuti-1600.webp"
+                   muted loop playsinline preload="none" width="1280" height="720"
+                   aria-label="The sofa configurator on a computer: adding a chaise and switching fabric"
+                   data-et-aria-label="Diivanikonfiguraator arvutis: šeeslongi lisamine ja kanga vahetus"></video>
+          </figure>
+          <figure class="konf-tel">
+            <picture>
+              <source type="image/webp" srcset="pildid/diivan-telefon-390.webp 390w, pildid/diivan-telefon-780.webp 780w" sizes="(max-width:860px) 58vw, 21vw">
+              <img src="pildid/diivan-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async"
+                   alt="The sofa configurator on a phone: a three-seater in cognac corduroy, fabric options below"
+                   data-et-alt="Diivanikonfiguraator telefonis: kolmekohaline diivan konjakivärvi kordkangas, all kangavalikud">
+            </picture>
+          </figure>
+          <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Example brand · desktop and phone · Unity WebGL</span>
+        </div>
+      </article>
+
+      <!-- 1c. KASTIHAAGISE KONFIGURAATOR (avalik näidis, väljamõeldud bränd „KAST”) -->
+      <article class="show lai konf-paneel" role="tabpanel" id="konf-p-haagis" aria-labelledby="konf-t-haagis" tabindex="0" hidden>
+        <div class="show-copy">
+          <div>
+            <div class="eyebrow" data-et="Kastihaagise konfiguraator">Box trailer configurator</div>
+            <h3 data-et="Sama põhimõte,<br>nüüd ratastel.">The same idea,<br>now on wheels.</h3>
+            <p data-et="Ostja valib mudeli, katte ja lisad ning iga osa lendab ise paika. Tehnilised andmed ja hind muutuvad iga valikuga, haagist saab keerata igast küljest ja telefonis panna AR-is oma hoovi 1:1. Avalik näidis, proovi ise.">
+              The buyer picks a model, a cover and extras, and every part flies into place.
+              The spec table and price change with each choice, the trailer turns to any
+              side, and on a phone it stands in their own yard in AR at 1:1. A public demo,
+              try it yourself.
+            </p>
+          </div>
+          <div>
+            <ul class="show-list">
+              <li data-et="3 mudelit, sh pidurdatud tandemhaagis">3 models, including a braked tandem</li>
+              <li data-et="Kõva kaas, tent kahes kõrguses ja viies toonis või võrkkõrgendus">Hard lid, a tarp in 2 heights and 5 colours, or a mesh extension</li>
+              <li data-et="Kaldtee, varuratas, tugiratas ja kõrgendus lendavad ise paika">Ramp, spare wheel, jockey wheel and side extension fly into place</li>
+              <li data-et="Kandevõime, kogupikkus ja hind uuenevad kohe">Payload, overall length and price update live</li>
+              <li data-et="360° vaade; telefonis AR-is 1:1">360° view; on a phone, AR at 1:1</li>
+            </ul>
+            <a class="btn btn-primary" href="https://3d.joonisekoda.ee/haagis/?keel=en" data-et-href="https://3d.joonisekoda.ee/haagis/" target="_blank" rel="noopener" data-et="Proovi konfiguraatorit →">Try the configurator →</a>
+          </div>
+        </div>
+        <div class="konf-kuvad">
+          <figure class="konf-pc">
+            <div class="konf-riba" aria-hidden="true"><i></i><i></i><i></i></div>
+            <video class="viewplay" src="video/haagis.mp4" poster="pildid/haagis-arvuti-1600.webp"
+                   muted loop playsinline preload="none" width="1280" height="720"
+                   aria-label="The trailer configurator on a computer: a tarp flies into place, turns blue, then the tandem model rolls in"
+                   data-et-aria-label="Haagisekonfiguraator arvutis: tent lendab paika ja muutub siniseks, siis veereb sisse tandemmudel"></video>
+          </figure>
+          <figure class="konf-tel">
+            <picture>
+              <source type="image/webp" srcset="pildid/haagis-telefon-390.webp 390w, pildid/haagis-telefon-780.webp 780w" sizes="(max-width:860px) 58vw, 21vw">
+              <img src="pildid/haagis-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async"
+                   alt="The trailer configurator on a phone: a single-axle box trailer with a green tarp, cover options below"
+                   data-et-alt="Haagisekonfiguraator telefonis: rohelise tendiga ühe teljega kastihaagis, all katte valikud">
+            </picture>
+          </figure>
+          <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Example brand · desktop and phone · Unity WebGL</span>
+        </div>
+      </article>
+
+      <!-- 1d. AIAMAJA KONFIGURAATOR (avalik näidis, väljamõeldud bränd „PESA”) -->
+      <article class="show lai konf-paneel" role="tabpanel" id="konf-p-aiamaja" aria-labelledby="konf-t-aiamaja" tabindex="0" hidden>
+        <div class="show-copy">
+          <div>
+            <div class="eyebrow" data-et="Aiamaja konfiguraator">Garden house configurator</div>
+            <h3 data-et="Sama põhimõte,<br>terve maja.">The same idea,<br>a whole house.</h3>
+            <p data-et="Ostja valib suuruse, katuse, voodri ja esiseina ning iga osa lendab ise paika. Pindala, mõõdud, harja kõrgus ja hind muutuvad iga valikuga, maja saab keerata igast küljest ja telefonis panna AR-is oma aeda 1:1. Avalik näidis, proovi ise.">
+              The buyer picks a size, a roof, the cladding and the front wall, and every part
+              flies into place. Floor area, dimensions, ridge height and price change with each
+              choice, the house turns to any side, and on a phone it stands in their own garden
+              in AR at 1:1. A public demo, try it yourself.
+            </p>
+          </div>
+          <div>
+            <ul class="show-list">
+              <li data-et="3 suurust: 9, 15 ja 20 m²">3 sizes: 9, 15 and 20 m²</li>
+              <li data-et="Viil-, kald- või lamekatus; rõhtne või püstine vooder viies toonis">Gable, mono-pitch or flat roof; horizontal or vertical cladding in 5 tones</li>
+              <li data-et="Uks, topeltuks või klaassein, terrass, varikatus ja aknad lendavad ise paika">Door, double door or glass wall, terrace, canopy and windows fly into place</li>
+              <li data-et="Pindala, mõõdud, harja kõrgus ja hind uuenevad kohe">Floor area, dimensions, ridge height and price update live</li>
+              <li data-et="360° vaade; telefonis AR-is oma aias 1:1">360° view; on a phone, AR at 1:1 in your own garden</li>
+            </ul>
+            <a class="btn btn-primary" href="https://3d.joonisekoda.ee/aiamaja/?keel=en" data-et-href="https://3d.joonisekoda.ee/aiamaja/" target="_blank" rel="noopener" data-et="Proovi konfiguraatorit →">Try the configurator →</a>
+          </div>
+        </div>
+        <div class="konf-kuvad">
+          <figure class="konf-pc">
+            <div class="konf-riba" aria-hidden="true"><i></i><i></i><i></i></div>
+            <video class="viewplay" src="video/aiamaja.mp4" poster="pildid/aiamaja-arvuti-1600.webp"
+                   muted loop playsinline preload="none" width="1280" height="720"
+                   aria-label="The garden house configurator on a computer: the gable roof swaps for a mono-pitch roof, the cladding turns black, then a terrace and canopy fly in"
+                   data-et-aria-label="Aiamaja konfiguraator arvutis: viilkatus vahetub kaldkatuse vastu, vooder muutub mustaks, siis lendavad paika terrass ja varikatus"></video>
+          </figure>
+          <figure class="konf-tel">
+            <picture>
+              <source type="image/webp" srcset="pildid/aiamaja-telefon-390.webp 390w, pildid/aiamaja-telefon-780.webp 780w" sizes="(max-width:860px) 58vw, 21vw">
+              <img src="pildid/aiamaja-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async"
+                   alt="The garden house configurator on a phone: a red garden house with vertical cladding and white frames, roof and cladding options below"
+                   data-et-alt="Aiamaja konfiguraator telefonis: punane püstise voodri ja valgete raamidega aiamaja, all katuse ja voodri valikud">
+            </picture>
+          </figure>
+          <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Example brand · desktop and phone · Unity WebGL</span>
+        </div>
+      </article>
+
+      <!-- 1e. KAATRI KONFIGURAATOR (avalik näidis, väljamõeldud bränd „VOOG”, mudel VOOG 22 Cat) -->
+      <article class="show lai konf-paneel" role="tabpanel" id="konf-p-kaater" aria-labelledby="konf-t-kaater" tabindex="0" hidden>
+        <div class="show-copy">
+          <div>
+            <div class="eyebrow" data-et="Kaatri konfiguraator">Boat configurator</div>
+            <h3 data-et="Sama põhimõte,<br>nüüd vee peal.">The same idea,<br>now on the water.</h3>
+            <p data-et="Ostja valib mootori, kere tooni, katuse, istmed ja lisad ning kaater muutub vee peal tema silme all. Hind ja andmed käivad iga valikuga kaasa, kaptenivaates saab istuda rooli taha ja telefonis panna kaatri AR-iga oma hoovi. Avalik näidis, proovi ise.">
+              The buyer picks the engine, hull colour, top, seating and extras, and the boat
+              changes on the water in front of them. Price and spec follow every choice, the
+              helm view puts them behind the wheel, and on a phone the boat stands in their
+              driveway in AR. A public demo, try it yourself.
+            </p>
+          </div>
+          <div>
+            <ul class="show-list">
+              <li data-et="Kaksikkerekaater VOOG 22 Cat, 6 sammu">VOOG 22 Cat catamaran, 6 steps</li>
+              <li data-et="4 mootorivalikut, 5 kere tooni ja triip">4 engine options, 5 hull colours and a stripe</li>
+              <li data-et="Ilma katuseta, bimini, T-top või hardtop">No top, bimini, T-top or hardtop</li>
+              <li data-et="Roolikoht, vööri istmed ja lisad; kaptenivaade">Helm and bow seating, extras; helm view</li>
+              <li data-et="Telefonis: kaater AR-is oma hoovis, 1:1">On a phone: the boat in your driveway in AR, 1:1</li>
+            </ul>
+            <a class="btn btn-primary" href="https://3d.joonisekoda.ee/kaater/?keel=en" data-et-href="https://3d.joonisekoda.ee/kaater/" target="_blank" rel="noopener" data-et="Proovi konfiguraatorit →">Try the configurator →</a>
+          </div>
+        </div>
+        <div class="konf-kuvad">
+          <figure class="konf-pc">
+            <div class="konf-riba" aria-hidden="true"><i></i><i></i><i></i></div>
+            <video class="viewplay" src="video/kaater.mp4" poster="pildid/kaater-arvuti-1600.webp"
+                   muted loop playsinline preload="none" width="1280" height="720"
+                   aria-label="The boat configurator on a computer: the hull turns ice blue, then a T-top and a hardtop fly into place as the camera circles the boat"
+                   data-et-aria-label="Kaatrikonfiguraator arvutis: kere muutub jääsiniseks, siis lendavad paika T-top ja hardtop, kaamera tiirutab ümber kaatri"></video>
+          </figure>
+          <figure class="konf-tel">
+            <picture>
+              <source type="image/webp" srcset="pildid/kaater-telefon-390.webp 390w, pildid/kaater-telefon-780.webp 780w" sizes="(max-width:860px) 58vw, 21vw">
+              <img src="pildid/kaater-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async"
+                   alt="The boat configurator on a phone: an ice-blue catamaran with a T-top on the water, top options below"
+                   data-et-alt="Kaatrikonfiguraator telefonis: jääsinise kere ja T-topiga kaksikkerekaater vee peal, all katuse valikud">
+            </picture>
+          </figure>
+          <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Example brand · desktop and phone · Unity WebGL</span>
+        </div>
+      </article>
+
+      <!-- 1. SAUNAKONFIGURAATOR (päris klient; ainult kaadrid, live-linki ei ole) -->
+      <article class="show lai konf-paneel" role="tabpanel" id="konf-p-saun" aria-labelledby="konf-t-saun" tabindex="0" hidden>
         <div class="show-copy">
           <div>
             <div class="eyebrow" data-et="3D-tootekonfiguraator">3D product configurator</div>
@@ -880,138 +1105,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
           <span class="media-note" data-et="Päris kasutajaliides · arvuti ja telefon · Unity WebGL">The real interface · desktop and phone · Unity WebGL</span>
         </div>
       </article>
-
-      <!-- 1b. MOODULDIIVANI KONFIGURAATOR (avalik näidis, väljamõeldud bränd „LAINE”) -->
-      <article class="show lai vastupidi">
-        <div class="show-copy">
-          <div>
-            <div class="eyebrow" data-et="Mooduldiivani konfiguraator">Modular sofa configurator</div>
-            <h3 data-et="Sama põhimõte,<br>hoopis teine toode.">The same idea,<br>a very different product.</h3>
-            <p data-et="Ostja lisab mooduleid, valib kanga ja näeb mõõte ja hinda iga valikuga muutumas. Telefonis paneb ta diivani AR-is oma tuppa 1:1 — enne, kui midagi tellib. Avalik näidis, proovi ise.">
-              The buyer adds modules, picks a fabric and watches the dimensions and price
-              change with every choice. On a phone they place the sofa in their own room in
-              AR at 1:1 — before ordering anything. A public demo, try it yourself.
-            </p>
-          </div>
-          <div>
-            <ul class="show-list">
-              <li data-et="Keskmoodul, šeeslong, nurgamoodul ja tumba liuguvad ise paika">Middle seat, chaise, corner and ottoman slide into place by themselves</li>
-              <li data-et="5 kangast Martindale'i ja hinnagrupiga">5 fabrics with Martindale rating and price group</li>
-              <li data-et="Mõõdud ja hind uuenevad iga valikuga">Dimensions and price update with every choice</li>
-              <li data-et="Telefonis: diivan AR-is oma toas, 1:1">On a phone: the sofa in your own room in AR, 1:1</li>
-            </ul>
-            <a class="btn btn-primary" href="https://3d.joonisekoda.ee/diivan/" target="_blank" rel="noopener" data-et="Proovi konfiguraatorit →">Try the configurator →</a>
-          </div>
-        </div>
-        <div class="konf-kuvad">
-          <figure class="konf-pc">
-            <div class="konf-riba" aria-hidden="true"><i></i><i></i><i></i></div>
-            <video class="viewplay" src="video/diivan.mp4" poster="pildid/diivan-arvuti-1600.webp"
-                   muted loop playsinline preload="none" width="1280" height="720"
-                   aria-label="The sofa configurator on a computer: adding a chaise and switching fabric"
-                   data-et-aria-label="Diivanikonfiguraator arvutis: šeeslongi lisamine ja kanga vahetus"></video>
-          </figure>
-          <figure class="konf-tel">
-            <picture>
-              <source type="image/webp" srcset="pildid/diivan-telefon-390.webp 390w, pildid/diivan-telefon-780.webp 780w" sizes="(max-width:860px) 58vw, 21vw">
-              <img src="pildid/diivan-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async"
-                   alt="The sofa configurator on a phone: a three-seater in cognac corduroy, fabric options below"
-                   data-et-alt="Diivanikonfiguraator telefonis: kolmekohaline diivan konjakivärvi kordkangas, all kangavalikud">
-            </picture>
-          </figure>
-          <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Example brand · desktop and phone · Unity WebGL</span>
-        </div>
-      </article>
-
-      <!-- 1c. KASTIHAAGISE KONFIGURAATOR (avalik näidis, väljamõeldud bränd „KAST”; tavapaigutus,
-           et plokid vahelduksid: 1 tava, 1b peegel, 1c tava). Nupu link: EN ?keel=en, ET data-et-href. -->
-      <article class="show lai">
-        <div class="show-copy">
-          <div>
-            <div class="eyebrow" data-et="Kastihaagise konfiguraator">Box trailer configurator</div>
-            <h3 data-et="Sama põhimõte,<br>nüüd ratastel.">The same idea,<br>now on wheels.</h3>
-            <p data-et="Ostja valib mudeli, katte ja lisad ning iga osa lendab ise paika. Tehnilised andmed ja hind muutuvad iga valikuga, haagist saab keerata igast küljest ja telefonis panna AR-is oma hoovi 1:1. Avalik näidis, proovi ise.">
-              The buyer picks a model, a cover and extras, and every part flies into place.
-              The spec table and price change with each choice, the trailer turns to any
-              side, and on a phone it stands in their own yard in AR at 1:1. A public demo,
-              try it yourself.
-            </p>
-          </div>
-          <div>
-            <ul class="show-list">
-              <li data-et="3 mudelit, sh pidurdatud tandemhaagis">3 models, including a braked tandem</li>
-              <li data-et="Kõva kaas, tent kahes kõrguses ja viies toonis või võrkkõrgendus">Hard lid, a tarp in 2 heights and 5 colours, or a mesh extension</li>
-              <li data-et="Kaldtee, varuratas, tugiratas ja kõrgendus lendavad ise paika">Ramp, spare wheel, jockey wheel and side extension fly into place</li>
-              <li data-et="Kandevõime, kogupikkus ja hind uuenevad kohe">Payload, overall length and price update live</li>
-              <li data-et="360° vaade; telefonis AR-is 1:1">360° view; on a phone, AR at 1:1</li>
-            </ul>
-            <a class="btn btn-primary" href="https://3d.joonisekoda.ee/haagis/?keel=en" data-et-href="https://3d.joonisekoda.ee/haagis/" target="_blank" rel="noopener" data-et="Proovi konfiguraatorit →">Try the configurator →</a>
-          </div>
-        </div>
-        <div class="konf-kuvad">
-          <figure class="konf-pc">
-            <div class="konf-riba" aria-hidden="true"><i></i><i></i><i></i></div>
-            <video class="viewplay" src="video/haagis.mp4" poster="pildid/haagis-arvuti-1600.webp"
-                   muted loop playsinline preload="none" width="1280" height="720"
-                   aria-label="The trailer configurator on a computer: a tarp flies into place, turns blue, then the tandem model rolls in"
-                   data-et-aria-label="Haagisekonfiguraator arvutis: tent lendab paika ja muutub siniseks, siis veereb sisse tandemmudel"></video>
-          </figure>
-          <figure class="konf-tel">
-            <picture>
-              <source type="image/webp" srcset="pildid/haagis-telefon-390.webp 390w, pildid/haagis-telefon-780.webp 780w" sizes="(max-width:860px) 58vw, 21vw">
-              <img src="pildid/haagis-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async"
-                   alt="The trailer configurator on a phone: a single-axle box trailer with a green tarp, cover options below"
-                   data-et-alt="Haagisekonfiguraator telefonis: rohelise tendiga ühe teljega kastihaagis, all katte valikud">
-            </picture>
-          </figure>
-          <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Example brand · desktop and phone · Unity WebGL</span>
-        </div>
-      </article>
-
-      <!-- 1d. AIAMAJA KONFIGURAATOR (avalik näidis, väljamõeldud bränd „PESA”; peegelpaigutus,
-           et plokid vahelduksid: 1 tava, 1b peegel, 1c tava, 1d peegel). Nupu link: EN ?keel=en, ET data-et-href. -->
-      <article class="show lai vastupidi">
-        <div class="show-copy">
-          <div>
-            <div class="eyebrow" data-et="Aiamaja konfiguraator">Garden house configurator</div>
-            <h3 data-et="Sama põhimõte,<br>terve maja.">The same idea,<br>a whole house.</h3>
-            <p data-et="Ostja valib suuruse, katuse, voodri ja esiseina ning iga osa lendab ise paika. Pindala, mõõdud, harja kõrgus ja hind muutuvad iga valikuga, maja saab keerata igast küljest ja telefonis panna AR-is oma aeda 1:1. Avalik näidis, proovi ise.">
-              The buyer picks a size, a roof, the cladding and the front wall, and every part
-              flies into place. Floor area, dimensions, ridge height and price change with each
-              choice, the house turns to any side, and on a phone it stands in their own garden
-              in AR at 1:1. A public demo, try it yourself.
-            </p>
-          </div>
-          <div>
-            <ul class="show-list">
-              <li data-et="3 suurust: 9, 15 ja 20 m²">3 sizes: 9, 15 and 20 m²</li>
-              <li data-et="Viil-, kald- või lamekatus; rõhtne või püstine vooder viies toonis">Gable, mono-pitch or flat roof; horizontal or vertical cladding in 5 tones</li>
-              <li data-et="Uks, topeltuks või klaassein, terrass, varikatus ja aknad lendavad ise paika">Door, double door or glass wall, terrace, canopy and windows fly into place</li>
-              <li data-et="Pindala, mõõdud, harja kõrgus ja hind uuenevad kohe">Floor area, dimensions, ridge height and price update live</li>
-              <li data-et="360° vaade; telefonis AR-is oma aias 1:1">360° view; on a phone, AR at 1:1 in your own garden</li>
-            </ul>
-            <a class="btn btn-primary" href="https://3d.joonisekoda.ee/aiamaja/?keel=en" data-et-href="https://3d.joonisekoda.ee/aiamaja/" target="_blank" rel="noopener" data-et="Proovi konfiguraatorit →">Try the configurator →</a>
-          </div>
-        </div>
-        <div class="konf-kuvad">
-          <figure class="konf-pc">
-            <div class="konf-riba" aria-hidden="true"><i></i><i></i><i></i></div>
-            <video class="viewplay" src="video/aiamaja.mp4" poster="pildid/aiamaja-arvuti-1600.webp"
-                   muted loop playsinline preload="none" width="1280" height="720"
-                   aria-label="The garden house configurator on a computer: the gable roof swaps for a mono-pitch roof, the cladding turns black, then a terrace and canopy fly in"
-                   data-et-aria-label="Aiamaja konfiguraator arvutis: viilkatus vahetub kaldkatuse vastu, vooder muutub mustaks, siis lendavad paika terrass ja varikatus"></video>
-          </figure>
-          <figure class="konf-tel">
-            <picture>
-              <source type="image/webp" srcset="pildid/aiamaja-telefon-390.webp 390w, pildid/aiamaja-telefon-780.webp 780w" sizes="(max-width:860px) 58vw, 21vw">
-              <img src="pildid/aiamaja-telefon-780.jpg" width="780" height="1688" loading="lazy" decoding="async"
-                   alt="The garden house configurator on a phone: a red garden house with vertical cladding and white frames, roof and cladding options below"
-                   data-et-alt="Aiamaja konfiguraator telefonis: punane püstise voodri ja valgete raamidega aiamaja, all katuse ja voodri valikud">
-            </picture>
-          </figure>
-          <span class="media-note" data-et="Näidisbränd · arvuti ja telefon · Unity WebGL">Example brand · desktop and phone · Unity WebGL</span>
-        </div>
-      </article>
+      </div>
 
       <!-- 2. + 3. 3D-VAATUR JA AR -->
       <div class="paar">
@@ -1564,6 +1658,36 @@ const io = new IntersectionObserver(es => es.forEach(e => {
 }), {threshold:.25});
 if (!vahenda) document.querySelectorAll('video.viewplay').forEach(v => io.observe(v));
 else document.querySelectorAll('video').forEach(v => { v.controls = true; });
+
+/* Konfiguraatorite aken: sakid (klikk + nooled/Home/End), üks paneel korraga.
+   Peidetud paneeli video ei ristu vaateväljaga -> IntersectionObserver paneb selle ise pausile. */
+(function(){
+  var aken = document.getElementById('konf-aken');
+  if (!aken) return;
+  var sakid = [].slice.call(aken.querySelectorAll('[role="tab"]'));
+  function vali(sakk, fookus){
+    sakid.forEach(function(s){
+      var on = s === sakk, p = document.getElementById(s.getAttribute('aria-controls'));
+      s.setAttribute('aria-selected', String(on));
+      s.tabIndex = on ? 0 : -1;
+      p.hidden = !on;
+      p.classList.toggle('on', on);
+      if (!on) p.querySelectorAll('video').forEach(function(v){ v.pause(); });
+    });
+    if (fookus) sakk.focus();
+    var r = aken.querySelector('.konf-sakid');   // telefonis kerib valitud saki nähtavale
+    if (r.scrollWidth > r.clientWidth) r.scrollTo({ left: sakk.offsetLeft - 16, behavior: 'smooth' });
+  }
+  sakid.forEach(function(s, i){
+    s.addEventListener('click', function(){ vali(s, false); });
+    s.addEventListener('keydown', function(e){
+      var j = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: sakid.length - 1 }[e.key];
+      if (j === undefined) return;
+      e.preventDefault();
+      vali(sakid[(j + sakid.length) % sakid.length], true);
+    });
+  });
+})();
 
 document.querySelectorAll('video.hoverplay').forEach(v => {
   const card = v.closest('.project') || v;

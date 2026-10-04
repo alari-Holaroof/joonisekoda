@@ -28,6 +28,7 @@ Manufacturers whose products come in many variants or are installed by someone e
 - Public demo: a modular sofa configurator for a fictional brand (modules, 5 fabrics, live dimensions and price, AR on phone) at https://3d.joonisekoda.ee/diivan/
 - Public demo: a box trailer configurator for a fictional brand (3 models incl. a braked tandem, hard lid / tarp / mesh covers, ramp and extras, live payload, length and price, 360° view, AR on phone) at https://3d.joonisekoda.ee/haagis/
 - Public demo: a garden house configurator for a fictional brand (3 sizes 9/15/20 m², gable / mono-pitch / flat roof, horizontal or vertical cladding in 5 tones, door / double door / glass wall, terrace, canopy and windows, live floor area, dimensions, ridge height and price, 360° view, AR on phone) at https://3d.joonisekoda.ee/aiamaja/
+- Public demo: a boat configurator for a fictional brand (VOOG 22 Cat centre-console catamaran: 4 engine options, 5 hull colours and a stripe, no top / bimini / T-top / hardtop, helm and bow seating, extras, live price and spec, helm view, AR on phone) at https://3d.joonisekoda.ee/kaater/
 
 ## Pages
 - [Joonisekoda, English](https://joonisekoda.ee/): services, live 3D viewer and AR demo, work, FAQ
