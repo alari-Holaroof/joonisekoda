@@ -11,7 +11,9 @@
 <link rel="alternate" hreflang="et" href="https://joonisekoda.ee/et/">
 <link rel="alternate" hreflang="x-default" href="https://joonisekoda.ee/">
 <meta name="theme-color" content="#07111f">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2307111f'/%3E%3Cpath d='M8 23V9h4v10a4 4 0 0 1-4 4z' fill='%23a3e635'/%3E%3Cpath d='M15 9h9v3h-9zM15 15h9v3h-9zM15 21h6v3h-6z' fill='%23f8fafc'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://joonisekoda.ee/">
@@ -64,8 +66,7 @@
 <script type="application/ld+json" id="kkk-ld">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a 3D product configurator, and who is it for?","acceptedAnswer":{"@type":"Answer","text":"A 3D view on the web where the buyer chooses the model, size, materials, colours and extras and sees the result from every side straight away. It suits any manufacturer whose product comes in many variants: saunas, garden rooms, modular and log cabins, sheds, shelters, carports, fences and gates, outdoor furniture, play equipment, trailers and boats."}},{"@type":"Question","name":"Does the buyer need to install anything?","acceptedAnswer":{"@type":"Answer","text":"No. The configurator, the 3D viewer and AR all run in an ordinary browser on desktop and mobile. AR uses the viewer already built into the phone: Google Scene Viewer on Android, Apple AR Quick Look on iPhone (in Safari)."}},{"@type":"Question","name":"What do you need from us to start?","acceptedAnswer":{"@type":"Answer","text":"Ideally an existing 3D model — SketchUp, FBX, STEP, IFC, Revit or similar. Production drawings, or even photos with the main dimensions, also work. Plus the list of options (what can be changed) and images of the materials or finishes."}},{"@type":"Question","name":"How long does it take?","acceptedAnswer":{"@type":"Answer","text":"An AR model of one product is usually ready within a week. A configurator depends on the number of models and options — we give a concrete schedule once we've seen the product. A good start is one model with all its variations; the rest of the range then slots into the same framework."}},{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"We don't have a price list, because the price depends on the product and the number of options. Send us one product (a model or a link to the product page) and tell us what you'd like — we reply the next business day with an exact figure."}},{"@type":"Question","name":"We don't have a 3D model. Can we still start?","acceptedAnswer":{"@type":"Answer","text":"Yes. We build the model from production drawings, or from photos with the main dimensions. 3D modelling, drawings and cutting lists are our core work, so the model is built accurately enough to produce production documentation from it later."}},{"@type":"Question","name":"What happens when our products change?","acceptedAnswer":{"@type":"Answer","text":"The change is made in the one 3D model, and the configurator, AR, drawings and manual are updated from it. A new option, such as a new finish or heater model, is added as one part and the combinations follow on their own — nothing has to be photographed or rendered again."}},{"@type":"Question","name":"Can the configurator show our prices?","acceptedAnswer":{"@type":"Answer","text":"The configurator shows whatever data you give it: prices, product codes, lead times or a \"request a quote\" note, including in the summary that goes out with the enquiry. If you'd rather not show prices publicly, the summary lists only the chosen specification."}},{"@type":"Question","name":"Which devices does it work on?","acceptedAnswer":{"@type":"Answer","text":"The configurator and the 3D viewer run in an ordinary browser on desktop, tablet and phone. AR needs a phone: on Android, Chrome and the \"Google Play Services for AR\" app; on iPhone, Safari and an iPhone 6s or newer. On a computer you can turn and zoom the model, but not use AR, because there is no camera."}},{"@type":"Question","name":"Will it work on our existing website?","acceptedAnswer":{"@type":"Answer","text":"Yes. The configurator and the 3D viewer go onto your page with one embed line, whether the site runs on WordPress, Shopify, Wix or anything else. The configurator can also live at its own address, such as configurator.yourcompany.com."}},{"@type":"Question","name":"How do configurator enquiries reach us?","acceptedAnswer":{"@type":"Answer","text":"The last step of the configurator is a summary of the chosen model and every option. From there the enquiry goes by email or into your existing form or CRM — the salesperson sees at once exactly what is being asked for."}},{"@type":"Question","name":"Do you also make production drawings and installation manuals?","acceptedAnswer":{"@type":"Answer","text":"Yes — that is where we started. Assembly drawings, parts lists, cutting lists, the installation manual and the safety zone plan all come from the same 3D model. Once the model exists, the configurator, AR and training game are a continuation of the same work."}},{"@type":"Question","name":"Where are you based, and which languages do you work in?","acceptedAnswer":{"@type":"Answer","text":"We are based in Elva, Estonia (VISIONFRAME3D OÜ, registry code 17123646). We work in English and Estonian, remotely across Europe — the Baltics, the Nordics and the UK. The configurator interface can be in several languages."}}]}
 </script>
-<!-- Importmap PEAB olema enne ühtegi moodulskripti (model-viewer, hero): Firefox ignoreerib
-     hilisemat importmap-i ja hero 3D ei käivitu („bare specifier three”, kasutaja 24.09). -->
+<!-- importmap must come before any module script -->
 <script type="importmap">
 { "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
@@ -712,26 +713,23 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 <main>
 
 <section class="hero">
-  <!-- JOONESTUSVAHENDID TAUSTAL — 14 s tsükkel, ainult CSS:
-       joonlaud libiseb paika → pliiats tõmbab mööda serva joone (+ mõõt 1820)
-       → mall pöördub, kaar ja 30° → pliiats tõmbab nurga all uue joone
-       → sirkel tõmbab kaare → kõik kustub, algusest. Läbipaistvus .tv{opacity}. -->
+  <!-- background drawing tools (CSS only) -->
   <svg class="tv" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <g transform="translate(230 88)">
-    <!-- joonlaud -->
+    
     <g class="tv-joonlaud">
       <rect x="90" y="640" width="760" height="70" rx="6"/>
       <path class="tv-mm" d="M110 640v12M130 640v12M150 640v22M170 640v12M190 640v12M210 640v22M230 640v12M250 640v12M270 640v22M290 640v12M310 640v12M330 640v22M350 640v12M370 640v12M390 640v22M410 640v12M430 640v12M450 640v22M470 640v12M490 640v12M510 640v22M530 640v12M550 640v12M570 640v22M590 640v12M610 640v12M630 640v22M650 640v12M670 640v12M690 640v22M710 640v12M730 640v12M750 640v22M770 640v12M790 640v12M810 640v22"/>
       <text x="146" y="690">0</text><text x="324" y="690">10</text><text x="504" y="690">20</text><text x="684" y="690">30</text>
     </g>
-    <!-- joon 1 + mõõt -->
+    
     <path class="tv-joon tv-j1" d="M140 634H760" pathLength="1"/>
     <g class="tv-moot">
       <path d="M140 596V620M760 596V620M140 606H760"/>
       <path d="M140 606l12-5v10zM760 606l-12-5v10z" class="tv-tais"/>
       <text x="425" y="594">1820</text>
     </g>
-    <!-- mall, kaar ja nurk -->
+    
     <g transform="translate(760 634)">
       <g class="tv-mall">
         <path d="M-160 0A160 160 0 0 1 160 0Z"/>
@@ -741,11 +739,11 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
       <path class="tv-joon tv-kaar" d="M70 0A70 70 0 0 0 60.6 -35" pathLength="1"/>
       <text class="tv-kraad" x="84" y="-18">30°</text>
     </g>
-    <!-- joon 2 nurga all -->
+    
     <path class="tv-joon tv-j2" d="M760 634L1124 424" pathLength="1"/>
-    <!-- sirkli kaar -->
+    
     <path class="tv-joon tv-j3" d="M1020 634A260 260 0 0 0 805 378" pathLength="1" stroke-dasharray="1"/>
-    <!-- sirkel: nõel keskpunktis, pliiatsijalg raadiusel -->
+    
     <g transform="translate(760 634)">
       <g class="tv-sirkel">
         <circle cx="130" cy="-230" r="12"/>
@@ -753,7 +751,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         <path d="M60-102l22 10M200-102l-22 10"/>
       </g>
     </g>
-    <!-- pliiats: teravik punktis (0,0) -->
+    
     <g class="tv-pliiats">
       <g transform="rotate(28)">
         <path d="M0 0L-12-42H12Z" class="tv-tais"/>
@@ -813,10 +811,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   </div>
 </div>
 
-<!-- TEENUSTE KARUSSELL -----------------------------------------------------------
-     Üheksa teenust 3D-rõngas. Kaardid on staatiline HTML (data-et), et /et/ generaator
-     tõlgiks ja otsingud loeksid. Tiirleb aeglaselt; lohistamine hooga, jääb lähima
-     kaardi ette; klõps toob kaardi ette, ees oleva kaardi klõps viib sektsiooni juurde. -->
+<!-- services carousel -->
 <section class="tk-sekt" id="karussell" aria-label="Services" data-et-aria-label="Teenused">
   <div class="container">
     <div class="tk-lava" id="tk-lava">
@@ -909,11 +904,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 })();
 </script>
 
-<!-- SHOWREEL ------------------------------------------------------------------
-     Kaheksa klippi ühes raamis. Vahetus = diagonaalne wipe + laimiroheline
-     pühkjoon; pealkirjad tulevad rida-realt maski tagant. Tekst on HTML-is, mitte
-     videosse küpsetatud: jääb teravaks, tõlgitav (data-et) ja otsingud loevad seda.
-     Iga klipp mängib oma lõigu (data-algus, data-kestus sekundites) ja läheb edasi. -->
+<!-- showreel -->
 <section class="reel-sekt" id="showreel" aria-label="Showreel">
   <div class="container">
     <div class="reel" id="reel">
@@ -1002,9 +993,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 
     <div class="showcase">
 
-      <!-- KONFIGURAATORID ÜHES AKNAS (04.10.2026, kasutaja: „konfiguraatoreid on palju — liidaks ühte aknasse").
-           Sakid üleval, all üks paneel korraga. Paneelid on endised plokid 1, 1b, 1c, 1d + kaater, tekstid ja kaadrid
-           muutmata. Nupu link: EN ?keel=en, ET data-et-href. Saun = päris kliendi kaadrid, live-linki EI OLE (vt 1.). -->
+      <!-- configurators (tabs) -->
       <div class="konf-aken" id="konf-aken">
         <div class="konf-sakid-pais"><span data-et="Vali konfiguraator">Pick a configurator</span><span><b>5</b> <span data-et="näidist">demos</span></span></div>
         <div class="konf-sakid" role="tablist" aria-label="Configurators" data-et-aria-label="Konfiguraatorid">
@@ -1025,7 +1014,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
           </button>
         </div>
 
-      <!-- 1b. MOODULDIIVANI KONFIGURAATOR (avalik näidis, väljamõeldud bränd „LAINE”) -->
+      <!-- sofa configurator demo -->
       <article class="show lai konf-paneel on" role="tabpanel" id="konf-p-diivan" aria-labelledby="konf-t-diivan" tabindex="0">
         <div class="show-copy">
           <div>
@@ -1067,7 +1056,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         </div>
       </article>
 
-      <!-- 1c. KASTIHAAGISE KONFIGURAATOR (avalik näidis, väljamõeldud bränd „KAST”) -->
+      <!-- trailer configurator demo -->
       <article class="show lai konf-paneel" role="tabpanel" id="konf-p-haagis" aria-labelledby="konf-t-haagis" tabindex="0" hidden>
         <div class="show-copy">
           <div>
@@ -1111,7 +1100,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         </div>
       </article>
 
-      <!-- 1d. AIAMAJA KONFIGURAATOR (avalik näidis, väljamõeldud bränd „PESA”) -->
+      <!-- garden house configurator demo -->
       <article class="show lai konf-paneel" role="tabpanel" id="konf-p-aiamaja" aria-labelledby="konf-t-aiamaja" tabindex="0" hidden>
         <div class="show-copy">
           <div>
@@ -1155,7 +1144,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         </div>
       </article>
 
-      <!-- 1e. KAATRI KONFIGURAATOR (avalik näidis, väljamõeldud bränd „VOOG”, mudel VOOG 22 Cat) -->
+      <!-- boat configurator demo -->
       <article class="show lai konf-paneel" role="tabpanel" id="konf-p-kaater" aria-labelledby="konf-t-kaater" tabindex="0" hidden>
         <div class="show-copy">
           <div>
@@ -1199,7 +1188,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         </div>
       </article>
 
-      <!-- 1. SAUNAKONFIGURAATOR (päris klient; ainult kaadrid, live-linki ei ole) -->
+      <!-- sauna configurator -->
       <article class="show lai konf-paneel" role="tabpanel" id="konf-p-saun" aria-labelledby="konf-t-saun" tabindex="0" hidden>
         <div class="show-copy">
           <div>
@@ -1253,7 +1242,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
       </article>
       </div>
 
-      <!-- 2. + 3. 3D-VAATUR JA AR -->
+      <!-- 3D viewer and AR -->
       <div class="paar">
         <article class="kaart3d">
           <div class="show-media">
@@ -1937,15 +1926,7 @@ document.querySelectorAll('video.hoverplay').forEach(v => {
 })();
 </script>
 
-<!-- HERO 3D-ANIMATSIOON ------------------------------------------------------
-     Sama paviljon (mudel/paviljon.glb), mis 3D-vaaturis allpool — brauser laeb
-     faili ühe korra. Tsükkel 18 s:
-       0–4 s   joonis: servajooned joonistuvad osade kaupa
-       4–8 s   mudel: osad kukuvad paika koostejärjekorras
-       8–12,5  konfiguraator: laudise toon vahetub, kaart näitab valikut
-       12,5–16 AR: maapinna sihik + mõõdud (mõõdetud karkassi kastist, mitte kirjutatud)
-       16–18   osad tõusevad ära, jooned kustuvad -> algusest
-     Kui WebGL või CDN ei tööta, jääb nähtavale pildid/hero-3d.webp. -->
+<!-- hero 3D animation -->
 <script type="module">
 const kast = document.getElementById('hero3d');
 const vara = () => kast.classList.add('vara');
@@ -2168,7 +2149,7 @@ try {
 }
 </script>
 
-<!-- Cloudflare Web Analytics — küpsiseid ei kasuta -->
+<!-- Cloudflare Web Analytics, no cookies -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
         data-cf-beacon='{"token": "6061e44404aa4c4ebcd8f092c57a8175"}'></script>
 
