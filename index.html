@@ -172,7 +172,7 @@ nav a:hover{color:#fff}
 .tk-kaart p{margin:0;color:var(--muted);font-size:13px;line-height:1.35}
 .tk-riba{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap}
 .tk-vihje{text-align:center;color:#8ea0b3;font-size:13px;margin:12px 0 0}
-@media (max-width:700px){.tk-lava{height:360px}.tk-rongas{width:170px;height:250px}.tk-kaart img{height:105px}}
+@media (max-width:700px){.tk-lava{height:300px;perspective:900px}.tk-rongas{width:140px;height:212px}.tk-kaart{padding:9px;gap:6px;border-radius:14px}.tk-kaart img{height:84px;border-radius:9px}.tk-kaart h3{font-size:14px}.tk-kaart p{font-size:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}
 .hero-fakt{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:30px;color:#8ea0b3;font-size:13px}
 .hero-fakt span:before{content:"✓";color:var(--lime);font-weight:800;margin-right:7px}
 
@@ -892,13 +892,14 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
     kaardid.forEach(function(el, i){
       var c = Math.cos((i * samm + nurk) * Math.PI / 180);
       el.style.transform = 'rotateY(' + (i * samm) + 'deg) translateZ(' + R + 'px)';
-      el.style.opacity = (0.3 + 0.7 * (c + 1) / 2).toFixed(3);
+      var n = (c + 1) / 2; el.style.opacity = (0.12 + 0.88 * n * n).toFixed(3);   // tagumised tuhmimaks, et tekst ei seguneks
       el.style.filter = c < 0 ? 'blur(' + (-c * 1.2).toFixed(2) + 'px)' : 'none';
       el.classList.toggle('ees', i === e);
     });
     requestAnimationFrame(kaader);
   }
-  function sobita(){ R = Math.min(300, innerWidth * 0.45); }
+  // raadius kaardi laiuse järgi: naaberkaardid ei kattu (laius / (2·tan(π/N)) + 10 % vahet)
+  function sobita(){ R = Math.round(rongas.offsetWidth / (2 * Math.tan(Math.PI / N)) * 1.1); }
   addEventListener('resize', sobita); sobita();
   requestAnimationFrame(kaader);
 })();
