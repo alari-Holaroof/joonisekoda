@@ -33,6 +33,10 @@ Manufacturers whose products come in many variants or are installed by someone e
 ## Pages
 - [Joonisekoda, English](https://joonisekoda.ee/): services, live 3D viewer and AR demo, work, FAQ
 - [Joonisekoda, Estonian](https://joonisekoda.ee/et/): same content in Estonian
+- [3D product configurator](https://joonisekoda.ee/3d-configurator/): what the buyer can choose, live price, enquiry with the combination, demos ([Estonian](https://joonisekoda.ee/et/3d-konfiguraator/))
+- [Augmented reality (AR)](https://joonisekoda.ee/augmented-reality/): the product at 1:1 scale in the buyer's yard or room, no app, iPhone and Android ([Estonian](https://joonisekoda.ee/et/liitreaalsus-ar/))
+- [Production drawings and cutting lists](https://joonisekoda.ee/production-drawings/): assembly drawings, parts lists (BOM), cutting and saw-line lists from one 3D model ([Estonian](https://joonisekoda.ee/et/tootmisjoonised/))
+- [Installation manuals](https://joonisekoda.ee/installation-manuals/): step-by-step manuals with parts, connections, fasteners and safety zone plans ([Estonian](https://joonisekoda.ee/et/paigaldusjuhendid/))
 
 ## Contact
 - Email: visionframe3d@gmail.com

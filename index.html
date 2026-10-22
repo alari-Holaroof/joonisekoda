@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joonisekoda — 3D product configurators, AR and training games for manufacturers</title>
-<meta name="description" content="Joonisekoda builds browser-based 3D product configurators, augmented reality (AR) and installer training games for manufacturers of saunas, garden rooms, modular cabins and other timber products. Production drawings, cutting lists and installation manuals from the same 3D model. Based in Estonia.">
+<title>3D configurators, AR &amp; technical documentation | Joonisekoda</title>
+<meta name="description" content="3D product configurators, web AR, production drawings and installation manuals for manufacturers, all from one 3D model. Elva, Estonia.">
 <link rel="canonical" href="https://joonisekoda.ee/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="alternate" hreflang="en" href="https://joonisekoda.ee/">
@@ -127,15 +127,51 @@ nav a:hover{color:#fff}
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:center}
 .kicker{display:inline-flex;align-items:center;gap:9px;color:var(--lime);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
 .kicker i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 5px rgba(163,230,53,.12)}
-.hero h1{font-size:clamp(44px,5.6vw,74px);line-height:.98;margin:20px 0 22px}
-.hero h1 span{color:var(--lime)}
+.hero .hero-loosung{font-family:"Space Grotesk",sans-serif;letter-spacing:-.04em;font-weight:700;font-size:clamp(44px,5.6vw,74px);line-height:.98;margin:20px 0 22px}
+.hero .hero-loosung span{color:var(--lime)}
+/* h1 = otsingusõnad (SEO 22.10), näeb välja nagu kicker; loosung on suur tekst h1 all */
+.hero h1.kicker{font-family:"DM Sans",sans-serif;letter-spacing:.12em;line-height:1.4;margin:0;max-width:640px;align-items:flex-start}
+.hero h1.kicker i{flex:none;margin-top:5px}
 .hero-copy{color:#aab8c7;font-size:17px;max-width:560px;margin-bottom:28px}
 .actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 20px;border-radius:10px;font-weight:700;font-size:14px;transition:.2s;border:0;cursor:pointer;font-family:inherit}
-.btn-primary{background:var(--lime);color:var(--ink)}
-.btn-primary:hover{background:#bef264;transform:translateY(-2px)}
-.btn-ghost{border:1px solid rgba(255,255,255,.2);color:#fff}
-.btn-ghost:hover{background:rgba(255,255,255,.07)}
+.btn{--fill:var(--ink);display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 20px;border-radius:10px;font-weight:700;font-size:14px;transition:.2s;cursor:pointer;font-family:inherit}
+.btn-primary{--fill:var(--lime);color:var(--ink)}
+.btn-primary:hover{--fill:#bef264;transform:translateY(-2px)}
+.btn-ghost{--fill:var(--ink);color:#fff}
+.btn-ghost:hover{--fill:#14243a}
+/* Pöörlev kuma nuppude ümber: serv = nupu enda taust (conic-gradient border-box),
+   kuma = hägune ::after, mille mask lõikab nupu ala välja (kuma ainult väljaspool). */
+@property --kuma{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes kuma{to{--kuma:360deg}}
+.btn{position:relative;isolation:isolate;border:2px solid transparent;
+  background:linear-gradient(var(--fill),var(--fill)) padding-box,
+    conic-gradient(from var(--kuma),var(--lime),rgba(163,230,53,.08) 30%,#d9f99d 50%,rgba(163,230,53,.08) 80%,var(--lime)) border-box;
+  animation:kuma 4s linear infinite}
+.btn:after{content:"";position:absolute;inset:-6px;padding:6px;border-radius:16px;z-index:-1;pointer-events:none;
+  background:conic-gradient(from var(--kuma),var(--lime),transparent 30%,#d9f99d 50%,transparent 80%,var(--lime));
+  filter:blur(4px);opacity:.35;animation:kuma 4s linear infinite;transition:opacity .2s;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.btn:hover:after{opacity:.6}
+.btn:hover,.btn:hover:after{animation-duration:2s}
+@media (prefers-reduced-motion:reduce){.btn,.btn:after{animation:none}}
+
+/* TEENUSTE KARUSSELL (showreeli kohal): 3D-rõngas, läbipaistvad kaardid, lohistatav */
+.tk-sekt{background:var(--ink);padding:10px 0 30px;overflow:hidden}
+.tk-lava{height:400px;perspective:1300px;display:grid;place-items:center;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.tk-lava.lohistab{cursor:grabbing}
+.tk-rongas{position:relative;width:200px;height:280px;transform-style:preserve-3d}
+.tk-kaart{position:absolute;inset:0;border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:9px;color:#fff;cursor:pointer;
+  background:linear-gradient(160deg,rgba(163,230,53,.09),rgba(12,27,46,.3));border:1px solid var(--line);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);transition:border-color .3s,box-shadow .3s}
+.tk-kaart.ees{border-color:rgba(163,230,53,.65);box-shadow:0 0 34px rgba(163,230,53,.2),inset 0 1px 0 rgba(255,255,255,.1)}
+.tk-kaart img{width:100%;height:130px;object-fit:cover;border-radius:12px;opacity:.85;pointer-events:none}
+.tk-kaart .tk-silt{font:700 12px/1 "Space Grotesk",sans-serif;letter-spacing:.08em;color:var(--lime)}
+.tk-kaart h3{margin:0;font-size:16px;line-height:1.2}
+.tk-kaart p{margin:0;color:var(--muted);font-size:13px;line-height:1.35}
+.tk-riba{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap}
+.tk-vihje{text-align:center;color:#8ea0b3;font-size:13px;margin:12px 0 0}
+@media (max-width:700px){.tk-lava{height:360px}.tk-rongas{width:170px;height:250px}.tk-kaart img{height:105px}}
 .hero-fakt{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:30px;color:#8ea0b3;font-size:13px}
 .hero-fakt span:before{content:"✓";color:var(--lime);font-weight:800;margin-right:7px}
 
@@ -239,15 +275,26 @@ details.loe .loe-sisu h4{font-size:13px;color:#fff;margin-top:4px}
 
 /* Konfiguraatorid ühes aknas: sakid + üks paneel korraga (04.10.2026) */
 .konf-aken{background:var(--ink);border-radius:24px;overflow:hidden;min-width:0}
-.konf-sakid{display:flex;gap:6px;padding:10px;background:#0b192b;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.konf-sakid-pais{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px 2px;background:#0b192b;color:#8ea0b3;font:600 12px/1 "Space Grotesk",sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.konf-sakid-pais span:first-child:before{content:"";display:inline-block;width:7px;height:7px;margin-right:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(163,230,53,.6);animation:sakkPulss 2s infinite;vertical-align:1px}
+.konf-sakid-pais b{color:var(--lime)}
+@keyframes sakkPulss{70%{box-shadow:0 0 0 8px rgba(163,230,53,0)}100%{box-shadow:0 0 0 0 rgba(163,230,53,0)}}
+.konf-sakid{display:flex;gap:8px;padding:12px;background:#0b192b;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
 .konf-sakid::-webkit-scrollbar{display:none}
-.konf-sakk{flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:10px;padding:8px 14px 8px 8px;border:1px solid transparent;border-radius:13px;background:none;color:#8fa0b1;
-  font:700 14px "DM Sans",sans-serif;cursor:pointer;transition:background .25s,color .25s,border-color .25s;scroll-snap-align:start;white-space:nowrap}
-.konf-sakk img{width:64px;height:36px;object-fit:cover;object-position:30% 50%;border-radius:7px;opacity:.55;transition:opacity .25s;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
-.konf-sakk:hover{color:#fff;background:rgba(255,255,255,.04)}
-.konf-sakk:hover img{opacity:.85}
-.konf-sakk[aria-selected="true"]{color:#fff;background:rgba(163,230,53,.1);border-color:rgba(163,230,53,.35)}
+/* Sakk näeb välja nagu valitav kaart: raam, hõljumisel tõuseb; valitud = pöörlev laimiserv (sama --kuma mis nuppudel) */
+.konf-sakk{flex:1 0 auto;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;padding:8px 14px 8px 8px;border:2px solid rgba(255,255,255,.1);border-radius:13px;background:rgba(255,255,255,.025);color:#b4c1cd;
+  font:700 14px "DM Sans",sans-serif;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .2s;scroll-snap-align:start;white-space:nowrap}
+.konf-sakk img{width:64px;height:36px;object-fit:cover;object-position:30% 50%;border-radius:7px;opacity:.8;transition:opacity .25s;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.konf-sakk:hover{color:#fff;background:rgba(163,230,53,.06);border-color:rgba(163,230,53,.45);transform:translateY(-2px)}
+.konf-sakk:hover img{opacity:1}
+.konf-sakk[aria-selected="true"]{color:#fff;border-color:transparent;transform:none;box-shadow:0 0 18px rgba(163,230,53,.18);
+  background:linear-gradient(#12241f,#12241f) padding-box,conic-gradient(from var(--kuma),var(--lime),rgba(163,230,53,.08) 30%,#d9f99d 50%,rgba(163,230,53,.08) 80%,var(--lime)) border-box;animation:kuma 4s linear infinite}
 .konf-sakk[aria-selected="true"] img{opacity:1}
+/* vihje: valgusjoon jookseb üle valimata sakkide, kui aken vaatesse tuleb */
+.konf-sakk:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 35%,rgba(163,230,53,.22) 50%,transparent 65%);transform:translateX(-120%)}
+.konf-sakid.vihje .konf-sakk:not([aria-selected="true"]):after{animation:sakkVihje 1.3s ease calc(var(--i) * .15s) 2}
+@keyframes sakkVihje{to{transform:translateX(120%)}}
+@media(prefers-reduced-motion:reduce){.konf-sakk[aria-selected="true"],.konf-sakid-pais span:first-child:before,.konf-sakid.vihje .konf-sakk:after{animation:none}}
 .konf-sakk:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
 .konf-aken .show{border-radius:0}
 .konf-paneel[hidden]{display:none}
@@ -295,6 +342,8 @@ model-viewer::part(default-progress-bar){height:3px}
 .teenus:first-of-type{border-top:0}
 .teenus-ikoon{width:44px;height:44px;border-radius:12px;background:#effbdc;color:#47750a;display:grid;place-items:center;font-weight:800;font-size:11px;letter-spacing:.02em}
 .teenus h4{font-size:15px;font-family:"Space Grotesk";letter-spacing:-.02em}
+.teenus-link{color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
+.teenus-link:hover{color:#3f6f06;border-bottom-color:#3f6f06}
 .teenus p{font-size:13.5px;color:var(--dark-muted)}
 
 .protsess{margin-top:18px;background:var(--ink);color:#fff;border-radius:var(--radius);padding:28px;display:grid;grid-template-columns:1.1fr repeat(3,1fr);gap:24px;align-items:start}
@@ -351,8 +400,8 @@ details.rohkem .portfolio{margin-top:0}
 .cta ul{list-style:none;margin-top:16px;display:grid;gap:6px;color:#2b420b;font-size:14px}
 .cta ul li:before{content:"→ ";font-weight:800}
 .cta-kontakt{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.cta .btn{background:var(--ink);color:#fff}
-.cta .btn:hover{background:#14243a;transform:translateY(-2px)}
+.cta .btn{--fill:var(--ink);color:#fff}
+.cta .btn:hover{--fill:#14243a;transform:translateY(-2px)}
 .kontaktvorm{flex:1 1 380px;min-width:0;background:#fff;border-radius:18px;padding:24px;display:grid;gap:13px;box-shadow:0 18px 45px rgba(7,17,31,.13)}
 .kontaktvorm label{display:block;font-size:12px;font-weight:700;color:#36510f;letter-spacing:.02em}
 .kontaktvorm input,.kontaktvorm textarea{width:100%;margin-top:6px;font-family:"DM Sans",sans-serif;font-size:14px;color:var(--ink);padding:11px 12px;background:#f5f8fa;border:1px solid #dbe3ea;border-radius:10px}
@@ -365,7 +414,7 @@ details.rohkem .portfolio{margin-top:0}
 
 /* FOOTER */
 footer{background:var(--ink);color:#fff;padding:56px 0 26px}
-.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:44px;padding-bottom:44px}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:44px;padding-bottom:44px}
 .footer-logo{font-size:23px}
 .footer-copy{color:#8293a6;max-width:380px;margin-top:14px;font-size:14px}
 .footer-col h4{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#65788e;margin-bottom:15px}
@@ -498,7 +547,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   /* Mobiilis animatsioon pealkirja ja teksti vahele, muidu jääb see esimesest ekraanist välja */
   .hero-tekst{display:contents}
   .hero .kicker{order:1}
-  .hero h1{order:2;margin:14px 0 0}
+  .hero .hero-loosung{order:2;margin:14px 0 0}
   .hero3d{order:3;aspect-ratio:1.15/1}
   .hero-copy{order:4;margin-bottom:22px}
   .hero .actions{order:5}
@@ -531,7 +580,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   .konf-sakid{padding:8px;gap:4px}
   .konf-sakk{flex:0 0 auto;padding:6px 12px 6px 6px;font-size:13px;gap:8px}
   .konf-sakk img{width:44px;height:28px}
-  .hero h1{font-size:40px}
+  .hero .hero-loosung{font-size:40px}
   .hero-copy{font-size:16px}
   .logo{font-size:18px;gap:9px}
   .logo-mark{width:26px;height:26px}
@@ -584,8 +633,8 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   };
 
   var META_ET = {
-    title: 'Joonisekoda — 3D-tootekonfiguraatorid, liitreaalsus ja treeningmängud tootjatele',
-    desc: 'Joonisekoda teeb brauseris töötavaid 3D-tootekonfiguraatoreid, liitreaalsust (AR) ja paigaldaja treeningmänge saunade, aiamajade, moodulmajade ja teiste puittoodete tootjatele. Samast 3D-mudelist ka tootmisjoonised, lõikelehed ja paigaldusjuhendid. Elva, Eesti.',
+    title: 'Konfiguraatorid, AR, joonised, dokumentatsioon | Joonisekoda',
+    desc: '3D-tootekonfiguraatorid, AR, tootmisjoonised ja paigaldusjuhendid tootjatele, kõik ühest 3D-mudelist. Tehniline dokumentatsioon, Elva, Eesti.',
     ogTitle: 'Joonisekoda — toode ekraanil, enne kui platsil',
     ogDesc: 'Konfiguraator, kus ostja paneb toote ise kokku. AR, mis paneb selle päris mõõdus tema õuele. Treeningmäng paigaldajale. Kõik ühest mudelist.',
     ogAlt: 'Moodulpaviljon joonistatakse, pannakse kokku ja seadistatakse 3D-s — Joonisekoda',
@@ -715,8 +764,8 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   </svg>
   <div class="container hero-grid">
     <div class="hero-tekst">
-      <div class="kicker" data-et="<i></i> Konfiguraatorid · liitreaalsus · treeningmängud"><i></i> Configurators · augmented reality · training games</div>
-      <h1 data-et="Toode ekraanil,<br><span>enne kui platsil.</span>">On screen first,<br><span>then on site.</span></h1>
+      <h1 class="kicker" data-et="<i></i> 3D-konfiguraatorid, AR, tootmisjoonised ja paigaldusjuhendid tootjatele"><i></i> 3D configurators, AR, production drawings and installation manuals for manufacturers</h1>
+      <p class="hero-loosung" data-et="Toode ekraanil,<br><span>enne kui platsil.</span>">On screen first,<br><span>then on site.</span></p>
       <p class="hero-copy" data-et="Teeme sinu tootest 3D-konfiguraatori, kus ostja paneb selle ise kokku, liitreaalsuse, mis paneb selle päris mõõdus tema õuele, ja treeningmängu, kus paigaldaja teeb vead ekraanil, mitte platsil. Kõik ühest mudelist — samast, millest tulevad ka joonised ja lõikelehed.">
         We turn your product into a 3D configurator where the buyer builds it themselves,
         augmented reality that puts it in their yard at full size, and a training game
@@ -763,6 +812,102 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
     <div class="trust-item"><strong data-et="1 tööpäev">1 business day</strong><span data-et="vastame päringule">to reply to your enquiry</span></div>
   </div>
 </div>
+
+<!-- TEENUSTE KARUSSELL -----------------------------------------------------------
+     Üheksa teenust 3D-rõngas. Kaardid on staatiline HTML (data-et), et /et/ generaator
+     tõlgiks ja otsingud loeksid. Tiirleb aeglaselt; lohistamine hooga, jääb lähima
+     kaardi ette; klõps toob kaardi ette, ees oleva kaardi klõps viib sektsiooni juurde. -->
+<section class="tk-sekt" id="karussell" aria-label="Services" data-et-aria-label="Teenused">
+  <div class="container">
+    <div class="tk-lava" id="tk-lava">
+      <div class="tk-rongas" id="tk-rongas">
+        <article class="tk-kaart" data-siht="#interaktiivne" data-leht-en="/3d-configurator/" data-leht-et="/et/3d-konfiguraator/"><img src="pildid/konf-telefon-390.webp" alt="3D product configurator" data-et-alt="3D-tootekonfiguraator" loading="lazy"><span class="tk-silt">CONF</span><h3 data-et="3D-tootekonfiguraator">3D product configurator</h3><p data-et="Ostja paneb toote ise kokku; päring tuleb valmis kombinatsiooniga.">The buyer builds the product; the enquiry arrives with the combination.</p></article>
+        <article class="tk-kaart" data-siht="#interaktiivne" data-leht-en="/augmented-reality/" data-leht-et="/et/liitreaalsus-ar/"><img src="pildid/aiamaja-telefon-390.webp" alt="Augmented reality (AR)" data-et-alt="Liitreaalsus (AR)" loading="lazy"><span class="tk-silt">AR</span><h3 data-et="Liitreaalsus (AR)">Augmented reality (AR)</h3><p data-et="Toode päris mõõdus ostja õues või toas, ilma rakenduseta.">The product at full size in the buyer's yard or room, no app.</p></article>
+        <article class="tk-kaart" data-siht="#interaktiivne"><img src="pildid/kaater-telefon-390.webp" alt="3D product viewer" data-et-alt="3D-tootevaatur" loading="lazy"><span class="tk-silt">360</span><h3 data-et="3D-tootevaatur">3D product viewer</h3><p data-et="Pöörlev ja suumitav toode tootelehel, üks koodirida.">A rotating, zoomable product on the product page — one line of code.</p></article>
+        <article class="tk-kaart" data-siht="#animatsioon"><img src="pildid/mang-hud.jpg" alt="Training game" data-et-alt="Treeningmäng" loading="lazy"><span class="tk-silt">GAME</span><h3 data-et="Treeningmäng">Training game</h3><p data-et="Paigaldaja paneb toote virtuaalselt kokku enne päris paigaldust.">The installer assembles the product virtually before the real job.</p></article>
+        <article class="tk-kaart" data-siht="#animatsioon"><img src="pildid/anim-koost.jpg" alt="Product and assembly animation" data-et-alt="Toote- ja koosteanimatsioon" loading="lazy"><span class="tk-silt">▶</span><h3 data-et="Toote- ja koosteanimatsioon">Product &amp; assembly animation</h3><p data-et="Müügiks, tootelehele, juhendisse ja sisekoolitusse.">For sales, the product page, the manual and in-house training.</p></article>
+        <article class="tk-kaart" data-siht="#teenused"><img src="pildid/plahvatus.jpg" alt="3D modelling" data-et-alt="3D-mudeldamine" loading="lazy"><span class="tk-silt">3D</span><h3 data-et="3D-mudeldamine">3D modelling</h3><p data-et="Detailne mudel konstruktsioonist ja sõlmedest — vead tulevad välja enne saagimist.">A detailed model of the structure and joints — problems surface before cutting.</p></article>
+        <article class="tk-kaart" data-siht="#teenused" data-leht-en="/production-drawings/" data-leht-et="/et/tootmisjoonised/"><img src="pildid/tootmisjoonis.jpg" alt="Production drawings and cutting lists" data-et-alt="Tootmisjoonised ja lõikelehed" loading="lazy"><span class="tk-silt">CUT</span><h3 data-et="Tootmisjoonised ja lõikelehed">Production drawings &amp; cutting lists</h3><p data-et="Koostejoonised, detailide loend ja saeliini nimekiri.">Assembly drawings, parts list (BOM) and saw-line lists.</p></article>
+        <article class="tk-kaart" data-siht="#teenused" data-leht-en="/installation-manuals/" data-leht-et="/et/paigaldusjuhendid/"><img src="pildid/samm-raam.jpg" alt="Installation manuals" data-et-alt="Paigaldusjuhendid" loading="lazy"><span class="tk-silt">→</span><h3 data-et="Paigaldusjuhendid">Installation manuals</h3><p data-et="Samm-sammult: detailid, asukohad, ühendused ja kinnitused.">Step by step: parts, positions, connections and fasteners.</p></article>
+        <article class="tk-kaart" data-siht="#teenused"><img src="pildid/joonis-pos25.jpg" alt="Documentation audit" data-et-alt="Dokumentatsiooni audit" loading="lazy"><span class="tk-silt">✓</span><h3 data-et="Dokumentatsiooni audit">Documentation audit</h3><p data-et="Olemasolevate projektide kontroll ja viimine ühtseks tootmisloogikaks.">Checking existing projects and bringing them into one production logic.</p></article>
+      </div>
+    </div>
+    <div class="tk-riba">
+      <button type="button" class="btn btn-ghost" id="tk-eelmine" data-et="‹ Eelmine">‹ Previous</button>
+      <button type="button" class="btn btn-ghost" id="tk-jargmine" data-et="Järgmine ›">Next ›</button>
+    </div>
+    <p class="tk-vihje" data-et="Lohista näpu või hiirega · klõpsa kaardil, et see ette tuua">Drag with your finger or mouse · click a card to bring it forward</p>
+  </div>
+</section>
+<script>
+(function(){
+  var lava = document.getElementById('tk-lava'), rongas = document.getElementById('tk-rongas');
+  var kaardid = [].slice.call(rongas.querySelectorAll('.tk-kaart'));
+  var N = kaardid.length, samm = 360 / N;
+  var nurk = 0, kiirus = 0, siht = null, ootab = 0, R = 300;
+  var AUTO = -4, OOTA_MS = 3000;      // tiirlemine kraadi/s; paus pärast kasutaja tegevust
+  var vahe = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function lahim(s){ return nurk + ((((s - nurk) % 360) + 540) % 360 - 180); }
+  function ees(){ return ((Math.round(-nurk / samm) % N) + N) % N; }
+  function tooEtte(i){ siht = lahim(-i * samm); kiirus = 0; ootab = performance.now() + OOTA_MS; }
+  kaardid.forEach(function(el, i){
+    el.addEventListener('click', function(){
+      if (lohistati) return;
+      if (i === ees() && siht === null) {
+        var leht = el.getAttribute('data-leht-' + (window.JK ? JK.keel() : 'en'));
+        if (leht) { location.href = leht; return; }
+        var s = document.querySelector(el.getAttribute('data-siht')); if (s) s.scrollIntoView({behavior:'smooth'});
+      }
+      else tooEtte(i);
+    });
+  });
+  document.getElementById('tk-eelmine').onclick = function(){ tooEtte((ees() - 1 + N) % N); };
+  document.getElementById('tk-jargmine').onclick = function(){ tooEtte((ees() + 1) % N); };
+
+  var x0 = null, nurk0 = 0, vX = 0, vT = 0, lohistati = false;
+  lava.addEventListener('pointerdown', function(e){ x0 = vX = e.clientX; vT = performance.now(); nurk0 = nurk; siht = null; kiirus = 0; lohistati = false; });
+  addEventListener('pointermove', function(e){
+    if (x0 === null) return;
+    var dx = e.clientX - x0;
+    if (!lohistati && Math.abs(dx) > 6) { lohistati = true; lava.classList.add('lohistab'); }
+    if (!lohistati) return;
+    nurk = nurk0 + dx * 0.3;
+    var t = performance.now(), dt = Math.max(8, t - vT);
+    kiirus = (e.clientX - vX) * 0.3 / dt * 1000; vX = e.clientX; vT = t;
+  });
+  addEventListener('pointerup', function(){
+    if (x0 === null) return;
+    x0 = null; lava.classList.remove('lohistab'); ootab = performance.now() + OOTA_MS;
+    if (lohistati && Math.abs(kiirus) <= 20) siht = lahim(-ees() * samm);
+    setTimeout(function(){ lohistati = false; }, 0);
+  });
+
+  var nahtav = true;
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(k){ nahtav = k[0].isIntersecting; }).observe(lava);
+  var eelm = performance.now();
+  function kaader(t){
+    var dt = Math.min(0.05, (t - eelm) / 1000); eelm = t;
+    if (x0 === null || !lohistati) {
+      if (siht !== null) { nurk += (siht - nurk) * Math.min(1, dt * 5); if (Math.abs(siht - nurk) < 0.05) { nurk = siht; siht = null; } }
+      else if (Math.abs(kiirus) > 20) { nurk += kiirus * dt; kiirus *= Math.pow(0.05, dt); if (Math.abs(kiirus) <= 20) { kiirus = 0; siht = lahim(-ees() * samm); } }
+      else if (t > ootab && x0 === null && nahtav && !vahe) nurk += AUTO * dt;
+    }
+    rongas.style.transform = 'translateZ(' + (-R) + 'px) rotateY(' + nurk + 'deg)';
+    var e = ees();
+    kaardid.forEach(function(el, i){
+      var c = Math.cos((i * samm + nurk) * Math.PI / 180);
+      el.style.transform = 'rotateY(' + (i * samm) + 'deg) translateZ(' + R + 'px)';
+      el.style.opacity = (0.3 + 0.7 * (c + 1) / 2).toFixed(3);
+      el.style.filter = c < 0 ? 'blur(' + (-c * 1.2).toFixed(2) + 'px)' : 'none';
+      el.classList.toggle('ees', i === e);
+    });
+    requestAnimationFrame(kaader);
+  }
+  function sobita(){ R = Math.min(300, innerWidth * 0.45); }
+  addEventListener('resize', sobita); sobita();
+  requestAnimationFrame(kaader);
+})();
+</script>
 
 <!-- SHOWREEL ------------------------------------------------------------------
      Kaheksa klippi ühes raamis. Vahetus = diagonaalne wipe + laimiroheline
@@ -861,6 +1006,7 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
            Sakid üleval, all üks paneel korraga. Paneelid on endised plokid 1, 1b, 1c, 1d + kaater, tekstid ja kaadrid
            muutmata. Nupu link: EN ?keel=en, ET data-et-href. Saun = päris kliendi kaadrid, live-linki EI OLE (vt 1.). -->
       <div class="konf-aken" id="konf-aken">
+        <div class="konf-sakid-pais"><span data-et="Vali konfiguraator">Pick a configurator</span><span><b>5</b> <span data-et="näidist">demos</span></span></div>
         <div class="konf-sakid" role="tablist" aria-label="Configurators" data-et-aria-label="Konfiguraatorid">
           <button type="button" role="tab" class="konf-sakk" id="konf-t-diivan" aria-controls="konf-p-diivan" aria-selected="true" tabindex="0">
             <img src="pildid/diivan-arvuti-960.webp" alt="" width="64" height="36" loading="lazy" decoding="async"><span data-et="Diivan">Sofa</span>
@@ -1368,8 +1514,8 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
       <div class="teenus-grupp">
         <h3 data-et="Müük ja koolitus">Sales &amp; training</h3>
         <p data-et="Interaktiivne — ostjale ja paigaldajale.">Interactive — for the buyer and the installer.</p>
-        <div class="teenus"><span class="teenus-ikoon">CONF</span><div><h4 data-et="3D-tootekonfiguraator">3D product configurator</h4><p data-et="Ostja paneb toote ise kokku; päring tuleb valmis kombinatsiooniga.">The buyer builds the product; the enquiry arrives with the combination.</p></div></div>
-        <div class="teenus"><span class="teenus-ikoon">AR</span><div><h4 data-et="Liitreaalsus (AR)">Augmented reality (AR)</h4><p data-et="Toode päris mõõdus ostja õues või toas, ilma rakenduseta.">The product at full size in the buyer's yard or room, no app.</p></div></div>
+        <div class="teenus"><span class="teenus-ikoon">CONF</span><div><h4><a class="teenus-link" href="/3d-configurator/" data-et-href="/et/3d-konfiguraator/" data-et="3D-tootekonfiguraator →">3D product configurator →</a></h4><p data-et="Ostja paneb toote ise kokku; päring tuleb valmis kombinatsiooniga.">The buyer builds the product; the enquiry arrives with the combination.</p></div></div>
+        <div class="teenus"><span class="teenus-ikoon">AR</span><div><h4><a class="teenus-link" href="/augmented-reality/" data-et-href="/et/liitreaalsus-ar/" data-et="Liitreaalsus (AR) →">Augmented reality (AR) →</a></h4><p data-et="Toode päris mõõdus ostja õues või toas, ilma rakenduseta.">The product at full size in the buyer's yard or room, no app.</p></div></div>
         <div class="teenus"><span class="teenus-ikoon">360</span><div><h4 data-et="3D-tootevaatur">3D product viewer</h4><p data-et="Pöörlev ja suumitav toode tootelehel, üks koodirida.">A rotating, zoomable product on the product page — one line of code.</p></div></div>
         <div class="teenus"><span class="teenus-ikoon">GAME</span><div><h4 data-et="Treeningmäng">Training game</h4><p data-et="Paigaldaja paneb toote virtuaalselt kokku enne päris paigaldust.">The installer assembles the product virtually before the real job.</p></div></div>
         <div class="teenus"><span class="teenus-ikoon">▶</span><div><h4 data-et="Toote- ja koosteanimatsioon">Product &amp; assembly animation</h4><p data-et="Müügiks, tootelehele, juhendisse ja sisekoolitusse.">For sales, the product page, the manual and in-house training.</p></div></div>
@@ -1378,8 +1524,8 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         <h3 data-et="Tootmine ja paigaldus">Production &amp; installation</h3>
         <p data-et="Tehniline dokumentatsioon samast mudelist.">Technical documentation from the same model.</p>
         <div class="teenus"><span class="teenus-ikoon">3D</span><div><h4 data-et="3D-mudeldamine">3D modelling</h4><p data-et="Detailne mudel konstruktsioonist ja sõlmedest — vead tulevad välja enne saagimist.">A detailed model of the structure and joints — problems surface before cutting.</p></div></div>
-        <div class="teenus"><span class="teenus-ikoon">CUT</span><div><h4 data-et="Tootmisjoonised ja lõikelehed">Production drawings &amp; cutting lists</h4><p data-et="Koostejoonised, detailide loend ja saeliini nimekiri.">Assembly drawings, parts list (BOM) and saw-line lists.</p></div></div>
-        <div class="teenus"><span class="teenus-ikoon">→</span><div><h4 data-et="Paigaldusjuhendid">Installation manuals</h4><p data-et="Samm-sammult: detailid, asukohad, ühendused ja kinnitused; ohutusala plaan.">Step by step: parts, positions, connections and fasteners; safety zone plan.</p></div></div>
+        <div class="teenus"><span class="teenus-ikoon">CUT</span><div><h4><a class="teenus-link" href="/production-drawings/" data-et-href="/et/tootmisjoonised/" data-et="Tootmisjoonised ja lõikelehed →">Production drawings &amp; cutting lists →</a></h4><p data-et="Koostejoonised, detailide loend ja saeliini nimekiri.">Assembly drawings, parts list (BOM) and saw-line lists.</p></div></div>
+        <div class="teenus"><span class="teenus-ikoon">→</span><div><h4><a class="teenus-link" href="/installation-manuals/" data-et-href="/et/paigaldusjuhendid/" data-et="Paigaldusjuhendid →">Installation manuals →</a></h4><p data-et="Samm-sammult: detailid, asukohad, ühendused ja kinnitused; ohutusala plaan.">Step by step: parts, positions, connections and fasteners; safety zone plan.</p></div></div>
         <div class="teenus"><span class="teenus-ikoon">✓</span><div><h4 data-et="Dokumentatsiooni audit">Documentation audit</h4><p data-et="Olemasolevate projektide kontroll ja viimine ühtseks tootmisloogikaks.">Checking existing projects and bringing them into one production logic.</p></div></div>
       </div>
     </div>
@@ -1622,6 +1768,13 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
         <a href="#kkk" data-et="KKK">FAQ</a>
       </div>
       <div class="footer-col">
+        <h4 data-et="Teenused">Services</h4>
+        <a href="/3d-configurator/" data-et-href="/et/3d-konfiguraator/" data-et="3D-tootekonfiguraator">3D product configurator</a>
+        <a href="/augmented-reality/" data-et-href="/et/liitreaalsus-ar/" data-et="Liitreaalsus (AR)">Augmented reality (AR)</a>
+        <a href="/production-drawings/" data-et-href="/et/tootmisjoonised/" data-et="Tootmisjoonised">Production drawings</a>
+        <a href="/installation-manuals/" data-et-href="/et/paigaldusjuhendid/" data-et="Paigaldusjuhendid">Installation manuals</a>
+      </div>
+      <div class="footer-col">
         <h4 data-et="Kontakt">Contact</h4>
         <a href="mailto:visionframe3d@gmail.com">visionframe3d@gmail.com</a>
         <a href="tel:+37258257130">+372 5825 7130</a>
@@ -1678,8 +1831,18 @@ else document.querySelectorAll('video').forEach(v => { v.controls = true; });
     var r = aken.querySelector('.konf-sakid');   // telefonis kerib valitud saki nähtavale
     if (r.scrollWidth > r.clientWidth) r.scrollTo({ left: sakk.offsetLeft - 16, behavior: 'smooth' });
   }
+  var riba = aken.querySelector('.konf-sakid');
+  sakid.forEach(function(s, i){ s.style.setProperty('--i', i); });
+  if ('IntersectionObserver' in window) {        // vihje: kord, kui aken vaatesse tuleb
+    var vaatleja = new IntersectionObserver(function(k){
+      if (!k[0].isIntersecting) return;
+      riba.classList.add('vihje'); vaatleja.disconnect();
+      setTimeout(function(){ riba.classList.remove('vihje'); }, 4500);
+    }, { threshold: .6 });
+    vaatleja.observe(riba);
+  }
   sakid.forEach(function(s, i){
-    s.addEventListener('click', function(){ vali(s, false); });
+    s.addEventListener('click', function(){ vali(s, false); riba.classList.remove('vihje'); });
     s.addEventListener('keydown', function(e){
       var j = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: sakid.length - 1 }[e.key];
       if (j === undefined) return;
