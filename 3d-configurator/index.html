@@ -20,9 +20,9 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:title" content="3D product configurator for manufacturers | Joonisekoda">
 <meta property="og:description" content="A browser-based 3D configurator where the buyer builds your product: models, sizes, materials and extras, live price and AR. No app. Built in Estonia.">
-<meta property="og:image" content="https://joonisekoda.ee/pildid/konf-arvuti-1600.webp">
+<meta property="og:image" content="https://joonisekoda.ee/pildid/naidis/naidis-saunashark.webp">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","@id":"https://joonisekoda.ee/3d-configurator/#teenus","name":"3D product configurator","serviceType":"3D product configurator","description":"A browser-based 3D configurator where the buyer builds your product: models, sizes, materials and extras, live price and AR. No app. Built in Estonia.","url":"https://joonisekoda.ee/3d-configurator/","inLanguage":"en","provider":{"@id":"https://joonisekoda.ee/#joonisekoda"},"areaServed":[{"@type":"Place","name":"Europe"}],"image":"https://joonisekoda.ee/pildid/konf-arvuti-1600.webp"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","@id":"https://joonisekoda.ee/3d-configurator/#teenus","name":"3D product configurator","serviceType":"3D product configurator","description":"A browser-based 3D configurator where the buyer builds your product: models, sizes, materials and extras, live price and AR. No app. Built in Estonia.","url":"https://joonisekoda.ee/3d-configurator/","inLanguage":"en","provider":{"@id":"https://joonisekoda.ee/#joonisekoda"},"areaServed":[{"@type":"Place","name":"Europe"}],"image":"https://joonisekoda.ee/pildid/naidis/naidis-saunashark.webp"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://joonisekoda.ee/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://joonisekoda.ee/#teenused"},{"@type":"ListItem","position":3,"name":"3D product configurator","item":"https://joonisekoda.ee/3d-configurator/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Who is a configurator for?","acceptedAnswer":{"@type":"Answer","text":"For manufacturers whose product comes in many variants: saunas, garden rooms, modular and log cabins, sheds, carports, fences and gates, outdoor furniture, trailers and boats. If the buyer has to choose between sizes, materials and extras, a configurator shows the result instead of describing it."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. The configurator runs in an ordinary browser on desktop and mobile, and on a phone the buyer can also open the configured product in AR."}},{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"There is no public price list. The price depends on the product and the number of models and options, and we quote after seeing the product."}},{"@type":"Question","name":"Can it show our real prices?","acceptedAnswer":{"@type":"Answer","text":"Yes. Prices can come from a price table or from your webshop; the configurator shows the price of the exact combination the buyer has chosen."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -618,6 +618,8 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 .al-sammud b{display:block;font-family:"Space Grotesk";color:var(--lime);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
 .al-sammud p{color:#b9c6d2;font-size:14.5px}
 .al-naited .project-media{height:220px}
+.al-naited .project-media video.al-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:14px;opacity:0;transition:opacity .5s}
+.al-naited .project-media video.al-video.mangib{opacity:1}
 .al-naited .project-info a{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:#3f6f06}
 .al-blokk{margin-top:56px}
 .al-blokk > h2{font-size:clamp(26px,3vw,36px);margin-bottom:20px}
@@ -671,47 +673,47 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
       <h2>Examples</h2>
       <div class="portfolio al-naited">
         <article class="project">
-          <div class="project-media"><img src="/pildid/konf-arvuti-1600.webp" alt="Sauna configurator on desktop" loading="lazy" decoding="async"></div>
+          <div class="project-media"><img src="/pildid/naidis/naidis-saunashark.webp" alt="Sauna configurator on desktop" loading="lazy" decoding="async"><video class="al-video" data-src="/video/naidis/naidis-saunashark.mp4" muted loop playsinline preload="none"></video></div>
           <div class="project-info"><small>Sauna</small><h3>Sauna configurator</h3><p>13 models, walls, benches, heater and finishes in 7 steps — a real client project.</p></div>
         </article>
         <article class="project">
-          <div class="project-media"><img src="/pildid/diivan-arvuti-1600.webp" alt="Modular sofa configurator" loading="lazy" decoding="async"></div>
+          <div class="project-media"><img src="/pildid/naidis/naidis-diivan.webp" alt="Modular sofa configurator" loading="lazy" decoding="async"><video class="al-video" data-src="/video/naidis/naidis-diivan.mp4" muted loop playsinline preload="none"></video></div>
           <div class="project-info"><small>Demo</small><h3>Modular sofa</h3><p>Modules slide into place, 5 fabrics, live dimensions and price, AR on the phone.</p><a href="https://3d.joonisekoda.ee/diivan/?keel=en" target="_blank" rel="noopener">Open the demo →</a></div>
         </article>
         <article class="project">
-          <div class="project-media"><img src="/pildid/haagis-arvuti-1600.webp" alt="Box trailer configurator" loading="lazy" decoding="async"></div>
+          <div class="project-media"><img src="/pildid/naidis/naidis-haagis.webp" alt="Box trailer configurator" loading="lazy" decoding="async"><video class="al-video" data-src="/video/naidis/naidis-haagis.mp4" muted loop playsinline preload="none"></video></div>
           <div class="project-info"><small>Demo</small><h3>Box trailer</h3><p>3 models incl. a braked tandem, covers, ramp and extras, live payload and price.</p><a href="https://3d.joonisekoda.ee/haagis/?keel=en" target="_blank" rel="noopener">Open the demo →</a></div>
         </article>
         <article class="project">
-          <div class="project-media"><img src="/pildid/aiamaja-arvuti-1600.webp" alt="Garden house configurator" loading="lazy" decoding="async"></div>
+          <div class="project-media"><img src="/pildid/naidis/naidis-aiamaja.webp" alt="Garden house configurator" loading="lazy" decoding="async"><video class="al-video" data-src="/video/naidis/naidis-aiamaja.mp4" muted loop playsinline preload="none"></video></div>
           <div class="project-info"><small>Demo</small><h3>Garden house</h3><p>3 sizes, 3 roof types, cladding in 5 tones, doors, terrace and canopy, live floor area.</p><a href="https://3d.joonisekoda.ee/aiamaja/?keel=en" target="_blank" rel="noopener">Open the demo →</a></div>
         </article>
         <article class="project">
-          <div class="project-media"><img src="/pildid/kaater-arvuti-1600.webp" alt="Boat configurator" loading="lazy" decoding="async"></div>
+          <div class="project-media"><img src="/pildid/naidis/naidis-kaater.webp" alt="Boat configurator" loading="lazy" decoding="async"><video class="al-video" data-src="/video/naidis/naidis-kaater.mp4" muted loop playsinline preload="none"></video></div>
           <div class="project-info"><small>Demo</small><h3>Catamaran</h3><p>4 engine options, 5 hull colours, bimini, T-top or hardtop, helm view and live spec.</p><a href="https://3d.joonisekoda.ee/kaater/?keel=en" target="_blank" rel="noopener">Open the demo →</a></div>
         </article>
         <article class="project">
-          <div class="project-media"><img src="/pildid/toos/toos-riiul.webp" alt="Configurator in progress: shelving systems" loading="lazy" decoding="async"></div>
+          <div class="project-media"><img src="/pildid/toos/toos-riiul.webp" alt="Configurator in progress: shelving systems" loading="lazy" decoding="async"><video class="al-video" data-src="/video/toos/toos-riiul-960.mp4" muted loop playsinline preload="none"></video></div>
           <div class="project-info"><small>In progress</small><h3>Shelving systems</h3><p>Shelving system manufacturer — the buyer picks the size, wood finish and doors, and the shelf rebuilds itself in 3D instantly. The same shelf can be viewed in their own room in AR.</p></div>
         </article>
         <article class="project">
-          <div class="project-media"><img src="/pildid/toos/toos-palkmaja.webp" alt="Configurator in progress: log garden houses" loading="lazy" decoding="async"></div>
+          <div class="project-media"><img src="/pildid/toos/toos-palkmaja.webp" alt="Configurator in progress: log garden houses" loading="lazy" decoding="async"><video class="al-video" data-src="/video/toos/toos-palkmaja-960.mp4" muted loop playsinline preload="none"></video></div>
           <div class="project-info"><small>In progress</small><h3>Log garden houses</h3><p>Log house manufacturer — a ready-made garden house model where windows and doors slide along the wall and the log colour, frames and roofing change live in 3D.</p></div>
         </article>
         <article class="project">
-          <div class="project-media"><img src="/pildid/toos/toos-palkmaja-plaan.webp" alt="Configurator in progress: log garden houses" loading="lazy" decoding="async"></div>
+          <div class="project-media"><img src="/pildid/toos/toos-palkmaja-plaan.webp" alt="Configurator in progress: log garden houses" loading="lazy" decoding="async"><video class="al-video" data-src="/video/toos/toos-palkmaja-plaan-960.mp4" muted loop playsinline preload="none"></video></div>
           <div class="project-info"><small>In progress</small><h3>Log garden houses</h3><p>Log house manufacturer — the buyer draws their own floor plan (rectangle, L or T shape) and the walls, terrace and roof appear in 3D straight away.</p></div>
         </article>
         <article class="project">
-          <div class="project-media"><img src="/pildid/toos/toos-garderoob.webp" alt="Configurator in progress: made-to-measure wardrobes" loading="lazy" decoding="async"></div>
+          <div class="project-media"><img src="/pildid/toos/toos-garderoob.webp" alt="Configurator in progress: made-to-measure wardrobes" loading="lazy" decoding="async"><video class="al-video" data-src="/video/toos/toos-garderoob-960.mp4" muted loop playsinline preload="none"></video></div>
           <div class="project-info"><small>In progress</small><h3>Made-to-measure wardrobes</h3><p>Wardrobe maker — the buyer starts from their own empty niche: enters the dimensions, the frame grows into place, clothes and shelves fill it, then come the doors and evening LED light.</p></div>
         </article>
         <article class="project">
-          <div class="project-media"><img src="/pildid/toos/toos-kook.webp" alt="Configurator in progress: kitchen furniture" loading="lazy" decoding="async"></div>
+          <div class="project-media"><img src="/pildid/toos/toos-kook.webp" alt="Configurator in progress: kitchen furniture" loading="lazy" decoding="async"><video class="al-video" data-src="/video/toos/toos-kook-960.mp4" muted loop playsinline preload="none"></video></div>
           <div class="project-info"><small>In progress</small><h3>Kitchen furniture</h3><p>Kitchen furniture manufacturer — the kitchen fills with standard cabinets to fit the wall length; the buyer swaps cabinet types and fronts and adds an island in their own dimensions.</p></div>
         </article>
         <article class="project">
-          <div class="project-media"><img src="/pildid/toos/toos-aed.webp" alt="Configurator in progress: fences and gates" loading="lazy" decoding="async"></div>
+          <div class="project-media"><img src="/pildid/toos/toos-aed.webp" alt="Configurator in progress: fences and gates" loading="lazy" decoding="async"><video class="al-video" data-src="/video/toos/toos-aed-960.mp4" muted loop playsinline preload="none"></video></div>
           <div class="project-info"><small>In progress</small><h3>Fences and gates</h3><p>Fence builder — the buyer draws the fence on a map or a blank sheet, picks the fence, gates and motors, and watches the gates open in 3D at real motor speed. The price comes instantly and the enquiry goes straight to the installer.</p></div>
         </article>
       </div>
@@ -778,6 +780,13 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 <script>
   var h = document.getElementById('header');
   addEventListener('scroll', function(){ h.classList.toggle('scrolled', scrollY > 20); }, { passive: true });
+  (function(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ var v = e.target;
+      if (e.isIntersecting) { if (!v.getAttribute('src')) { v.src = v.dataset.src; v.addEventListener('playing', function(){ v.classList.add('mangib'); }, { once: true }); } v.play().catch(function(){}); }
+      else v.pause(); }); }, { threshold: .35 });
+    document.querySelectorAll('video.al-video').forEach(function(v){ io.observe(v); });
+  })();
 </script>
 </body>
 </html>
