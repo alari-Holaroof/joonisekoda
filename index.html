@@ -605,6 +605,33 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
 @media(max-width:380px){
   .header-cta{display:none}
 }
+.naidis{background:#fff;border:1px solid #e0e7ee;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.naidis:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.naidis[hidden]{display:none}
+.naidis-meedia{position:relative;display:block;aspect-ratio:16/10;background:#e9edf1;overflow:hidden}
+.naidis-meedia img,.naidis-meedia video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.naidis-meedia video{opacity:0;transition:opacity .5s}
+.naidis-meedia video.mangib{opacity:1}
+.naidis-meedia.lai{aspect-ratio:16/9;background:#f4f4f2}
+.olek{position:absolute;z-index:2;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;background:rgba(7,17,31,.86);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:7px 11px;border-radius:999px;backdrop-filter:blur(8px)}
+.olek i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(163,230,53,.6);animation:pulss 2s infinite}
+.olek.toos i{background:#fbbf24;animation:none}
+@keyframes pulss{0%{box-shadow:0 0 0 0 rgba(163,230,53,.55)}70%{box-shadow:0 0 0 9px rgba(163,230,53,0)}100%{box-shadow:0 0 0 0 rgba(163,230,53,0)}}
+.naidis-sisu{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.naidis-yla{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.silt{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#47750a;background:#effbdc;padding:5px 9px;border-radius:7px}
+.silt.hall{color:#566779;background:#eef2f5}
+.naidis h3{font-size:24px;line-height:1.1}
+.naidis p{font-size:14.5px;color:var(--dark-muted)}
+.oskused{display:flex;flex-wrap:wrap;gap:6px;list-style:none}
+.oskused li{font-size:12.5px;font-weight:600;color:var(--dark-text);border:1px solid #e0e7ee;padding:4px 9px;border-radius:7px}
+.naidis-jalus{margin-top:auto;padding-top:8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.naidis-jalus small{font-size:12px;color:#7d8fa0}
+.proovi{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;font-weight:700;font-size:14px;padding:12px 18px;border-radius:10px;transition:.2s}
+.proovi:hover{background:#14243a;transform:translateY(-2px)}
+.proovi svg{width:15px;height:15px}
+.nd-grid .naidis h3{font-size:21px;color:var(--dark-text)}
+.nd-grid .naidis-sisu{padding:18px 20px 20px}
 .tk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .tk{background:#fff;border:1px solid #e0e7ee;border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
 .tk-meedia{position:relative;aspect-ratio:16/9;background:#f4f4f2;overflow:hidden}
@@ -1398,6 +1425,158 @@ footer{background:var(--ink);color:#fff;padding:56px 0 26px}
   document.head.appendChild(s);
 })();
 </script>
+
+<section class="content" id="demod" style="padding-top:0">
+  <div class="container">
+    <div class="section-top">
+      <div>
+        <div class="eyebrow" data-et="Proovi ise">Try it yourself</div>
+        <h2 class="section-title" data-et="Konfiguraatorid,<br>mida saab proovida.">Configurators<br>you can try.</h2>
+      </div>
+      <p class="section-intro" data-et="Iga kaart näitab lühikest videot päris konfiguraatorist. Näidised avanevad uues aknas ja töötavad arvutis ning telefonis.">
+        Each card plays a short clip of the real configurator. The demos open in a new
+        window and work on desktop and phone.
+      </p>
+    </div>
+    <div class="tk-grid nd-grid">
+      <article class="naidis" data-haru="moobel">
+        <a class="naidis-meedia" href="https://3d.joonisekoda.ee/diivan/?keel=en" data-et-href="https://3d.joonisekoda.ee/diivan/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <picture>
+            <source type="image/webp" srcset="pildid/naidis/naidis-diivan.webp">
+            <img src="pildid/naidis/naidis-diivan.jpg" width="1200" height="750" loading="lazy" decoding="async"
+                 alt="Modular sofa configurator: a two-seater with a chaise and an ottoman in cognac corduroy, live dimensions and price"
+                 data-et-alt="Mooduldiivani konfiguraator: kahekohaline diivan šeeslongi ja tumbaga konjakivärvi kordkangas, mõõdud ja hind">
+          </picture>
+          <video class="tk-video" data-src="video/naidis/naidis-diivan.mp4" muted loop playsinline preload="none"></video>
+          <span class="olek"><i></i>Live</span>
+        </a>
+        <div class="naidis-sisu">
+          <div class="naidis-yla"><span class="silt" data-et="Mööbel · sisustus">Furniture · interiors</span><span class="silt hall" data-et="Näidisbränd">Example brand</span></div>
+          <h3 data-et="Mooduldiivan">Modular sofa</h3>
+          <p data-et="Lisa šeeslong, nurk või tumba ja moodulid liuguvad ise paika. Vaheta viie kanga vahel ja vaata, kuidas mõõdud ja hind iga valikuga kaasa tulevad.">Add a chaise, a corner or an ottoman and the modules slide into place. Switch between five fabrics and watch the dimensions and price follow every choice.</p>
+          <ul class="oskused">
+            <li data-et="4 moodulit">4 modules</li>
+            <li data-et="5 kangast">5 fabrics</li>
+            <li data-et="Hind kohe">Live price</li>
+            <li>AR 1:1</li>
+          </ul>
+          <div class="naidis-jalus">
+            <small data-et="Arvuti ja telefon · avaneb uues aknas">Desktop and phone · opens in a new window</small>
+            <a class="proovi" href="https://3d.joonisekoda.ee/diivan/?keel=en" data-et-href="https://3d.joonisekoda.ee/diivan/" target="_blank" rel="noopener"><span data-et="Proovi">Try it</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="naidis" data-haru="haagis">
+        <a class="naidis-meedia" href="https://3d.joonisekoda.ee/haagis/?keel=en" data-et-href="https://3d.joonisekoda.ee/haagis/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <picture>
+            <source type="image/webp" srcset="pildid/naidis/naidis-haagis.webp">
+            <img src="pildid/naidis/naidis-haagis.jpg" width="1200" height="750" loading="lazy" decoding="async"
+                 alt="Box trailer configurator: a braked tandem trailer with a blue tarp, spec table and price"
+                 data-et-alt="Kastihaagise konfiguraator: sinise tendiga pidurdatud tandemhaagis, tehnilised andmed ja hind">
+          </picture>
+          <video class="tk-video" data-src="video/naidis/naidis-haagis.mp4" muted loop playsinline preload="none"></video>
+          <span class="olek"><i></i>Live</span>
+        </a>
+        <div class="naidis-sisu">
+          <div class="naidis-yla"><span class="silt" data-et="Haagised">Trailers</span><span class="silt hall" data-et="Näidisbränd">Example brand</span></div>
+          <h3 data-et="Kastihaagis">Box trailer</h3>
+          <p data-et="Vali kolme mudeli vahel — sh pidurdatud tandem —, siis kõva kaas, tent või võrk, ja iga osa lendab ise paika. Kandevõime, pikkus ja hind uuenevad kaasa.">Choose one of three models — including a braked tandem — then a hard lid, a tarp or a mesh extension, and every part flies into place. Payload, length and price keep up.</p>
+          <ul class="oskused">
+            <li data-et="3 mudelit">3 models</li>
+            <li data-et="5 tenditooni">5 tarp colours</li>
+            <li data-et="Kandevõime kohe">Live payload</li>
+            <li>360° + AR</li>
+          </ul>
+          <div class="naidis-jalus">
+            <small data-et="Arvuti ja telefon · avaneb uues aknas">Desktop and phone · opens in a new window</small>
+            <a class="proovi" href="https://3d.joonisekoda.ee/haagis/?keel=en" data-et-href="https://3d.joonisekoda.ee/haagis/" target="_blank" rel="noopener"><span data-et="Proovi">Try it</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="naidis" data-haru="aiamaja">
+        <a class="naidis-meedia" href="https://3d.joonisekoda.ee/aiamaja/?keel=en" data-et-href="https://3d.joonisekoda.ee/aiamaja/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <picture>
+            <source type="image/webp" srcset="pildid/naidis/naidis-aiamaja.webp">
+            <img src="pildid/naidis/naidis-aiamaja.jpg" width="1200" height="750" loading="lazy" decoding="async"
+                 alt="Garden house configurator: a mono-pitch garden house with grey cladding and a deck, floor area and price"
+                 data-et-alt="Aiamaja konfiguraator: halli voodri ja terrassiga kaldkatusega aiamaja, pindala ja hind">
+          </picture>
+          <video class="tk-video" data-src="video/naidis/naidis-aiamaja.mp4" muted loop playsinline preload="none"></video>
+          <span class="olek"><i></i>Live</span>
+        </a>
+        <div class="naidis-sisu">
+          <div class="naidis-yla"><span class="silt" data-et="Aiamajad · moodulmajad">Garden buildings · cabins</span><span class="silt hall" data-et="Näidisbränd">Example brand</span></div>
+          <h3 data-et="Aiamaja">Garden house</h3>
+          <p data-et="Kolm suurust, kolm katusetüüpi, vooder viies toonis, terrass ja varikatus. Pindala, harja kõrgus ja hind muutuvad iga valikuga — ja telefonis seisab maja päris mõõdus sinu aias.">Three sizes, three roof types, cladding in five tones, a deck and a canopy. Floor area, ridge height and price change with every choice — and on a phone the house stands in your garden at full size.</p>
+          <ul class="oskused">
+            <li>9–20 m²</li>
+            <li data-et="3 katust">3 roofs</li>
+            <li data-et="Pindala kohe">Live floor area</li>
+            <li>AR 1:1</li>
+          </ul>
+          <div class="naidis-jalus">
+            <small data-et="Arvuti ja telefon · avaneb uues aknas">Desktop and phone · opens in a new window</small>
+            <a class="proovi" href="https://3d.joonisekoda.ee/aiamaja/?keel=en" data-et-href="https://3d.joonisekoda.ee/aiamaja/" target="_blank" rel="noopener"><span data-et="Proovi">Try it</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="naidis" data-haru="saun">
+        <div class="naidis-meedia">
+          <picture>
+            <source type="image/webp" srcset="pildid/naidis/naidis-saunashark.webp">
+            <img src="pildid/naidis/naidis-saunashark.jpg" width="1200" height="750" loading="lazy" decoding="async"
+                 alt="SaunaShark sauna configurator: the Camilla XL sauna with a glass door, the model list on the right"
+                 data-et-alt="SaunaSharki saunakonfiguraator: klaasuksega Camilla XL saun, paremal mudelite loend">
+          </picture>
+          <video class="tk-video" data-src="video/naidis/naidis-saunashark.mp4" muted loop playsinline preload="none"></video>
+          <span class="olek"><i></i>Live</span>
+        </div>
+        <div class="naidis-sisu">
+          <div class="naidis-yla"><span class="silt" data-et="Saunad">Saunas</span><span class="silt hall" data-et="Kliendiprojekt · SaunaShark">Client project · SaunaShark</span></div>
+          <h3 data-et="SaunaSharki saunakonfiguraator">SaunaShark sauna configurator</h3>
+          <p data-et="Päris tootja töötav konfiguraator: 13 saunamudelit, esi- ja tagasein, lavad, keris ja viimistlus samm-sammult. Ava uks, vaata sisse, lülita LED sisse — ja saada päring, kus valitud komplekt on juures.">A real manufacturer's live configurator: 13 sauna models, front and back walls, benches, heater and finish, step by step. Open the door, look inside, switch on the LED — then send the enquiry with the build attached.</p>
+          <ul class="oskused">
+            <li data-et="13 mudelit">13 models</li>
+            <li data-et="Kuni 7 sammu">Up to 7 steps</li>
+            <li data-et="Sisevaade">Interior view</li>
+            <li data-et="Päring kokkuvõttega">Enquiry with summary</li>
+          </ul>
+          <div class="naidis-jalus">
+            <small data-et="Päris kliendi projekt · ligipääs küsimisel">Real client project · access on request</small>
+            <a class="proovi" href="#kontakt"><span data-et="Küsi demo-ligipääsu">Ask for demo access</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="naidis" data-haru="paat" id="naidis-kaater">
+        <a class="naidis-meedia" href="https://3d.joonisekoda.ee/kaater/?keel=en" data-et-href="https://3d.joonisekoda.ee/kaater/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <picture>
+            <source type="image/webp" srcset="pildid/naidis/naidis-kaater.webp">
+            <img src="pildid/naidis/naidis-kaater.jpg" width="1200" height="750" loading="lazy" decoding="async"
+                 alt="Boat configurator: the VOOG 22 Cat catamaran with an ice-blue hull and a hardtop on the water, options and price on the right"
+                 data-et-alt="Kaatrikonfiguraator: jääsinise kere ja hardtopiga VOOG 22 Cat kaksikkerekaater vee peal, paremal valikud ja hind">
+          </picture>
+          <video class="tk-video" data-src="video/naidis/naidis-kaater.mp4" muted loop playsinline preload="none"></video>
+          <span class="olek"><i></i>Live</span>
+        </a>
+        <div class="naidis-sisu">
+          <div class="naidis-yla"><span class="silt" data-et="Paadid">Boats</span><span class="silt hall" data-et="Näidisbränd">Example brand</span></div>
+          <h3 data-et="Kaater VOOG 22 Cat">VOOG 22 Cat boat</h3>
+          <p data-et="Kuuesammuline kaksikkerekaater: mootor, kere toon ja triip, T-top või hardtop, roolikoht ja vööri istmed, lisad. Kaatrit saab vaadata ka kapteni kohalt — ja telefonis AR-iga oma hoovis.">A six-step catamaran build: engine, hull colour and stripe, T-top or hardtop, helm and bow seating, extras. Take the helm view from the skipper's seat — and on a phone, park it in your driveway in AR.</p>
+          <ul class="oskused">
+            <li data-et="4 mootorit">4 engines</li>
+            <li data-et="5 kere tooni">5 hull colours</li>
+            <li data-et="Kaptenivaade">Helm view</li>
+            <li>AR 1:1</li>
+          </ul>
+          <div class="naidis-jalus">
+            <small data-et="Arvuti ja telefon · avaneb uues aknas">Desktop and phone · opens in a new window</small>
+            <a class="proovi" href="https://3d.joonisekoda.ee/kaater/?keel=en" data-et-href="https://3d.joonisekoda.ee/kaater/" target="_blank" rel="noopener"><span data-et="Proovi">Try it</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
 <section class="content" id="toos" style="padding-top:0">
   <div class="container">
