@@ -161,7 +161,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,500&amp;display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -1551,7 +1551,16 @@ footer{background:#1d1c1a;color:#ecebe6}
   </div>
 </section>
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
+
+<script>
+(function(){
+  var sekt = document.getElementById('interaktiivne'), tehtud = false;
+  function lae(){ if (tehtud) return; tehtud = true; var m = document.createElement('script'); m.type = 'module';
+    m.src = 'https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer.min.js'; document.head.appendChild(m); }
+  if (!sekt || !('IntersectionObserver' in window)) return lae();
+  new IntersectionObserver(function(es, o){ if (es.some(function(e){ return e.isIntersecting; })) { o.disconnect(); lae(); } }, { rootMargin: '1500px 0px' }).observe(sekt);
+})();
+</script>
 <script>
 // Vaikne tühi kast on halvim veateade. Kui mudel ei ole 15 sekundiga kohal,
 // ütleme miks. Levinuim põhjus on lehe avamine topeltklikiga: file:// pealt
