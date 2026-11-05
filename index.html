@@ -838,6 +838,26 @@ footer{background:#1d1c1a;color:#ecebe6}
 @media(max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:860px){.reel-kate{background:linear-gradient(0deg,rgba(29,28,26,.88) 0%,rgba(29,28,26,.6) 42%,rgba(29,28,26,0) 70%)}}
 
+/* ===== Paketid (proov 05.11.2026, AVALDAMATA): teenuspakettide redel väikesest suureni.
+   Orienteeruvad hinnad (variant B) on peidus ja tulevad nähtavale ainult ?hinnad=1 korral —
+   vt skript lehe lõpus. Otsus hindade üle on kasutajal. ===== */
+.paketid-redel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:6px}
+.pakett{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 22px}
+.pakett:nth-child(1){margin-top:54px}
+.pakett:nth-child(2){margin-top:36px}
+.pakett:nth-child(3){margin-top:18px}
+.pakett-nr{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mark-bg);color:var(--dark-text);font-family:"Inter",sans-serif;font-size:13px;font-weight:700;margin-bottom:14px}
+.pakett h3{font-size:19px;line-height:1.2}
+.pakett > p{margin-top:8px;font-size:14px;color:var(--dark-muted)}
+.pakett-hind{display:none;margin-top:12px;font-family:"Inter",sans-serif;font-size:15px;font-weight:600;color:var(--dark-text)}
+.pakett-cta{margin-top:auto;padding-top:16px;font-size:14px;font-weight:600;color:var(--acc);transition:color .2s}
+.pakett-cta:hover{color:var(--acc-2)}
+.paketid-vihje{display:none;margin-top:14px;font-size:13px;color:var(--dark-muted)}
+body.naita-hinnad .pakett-hind{display:block}
+body.naita-hinnad .paketid-vihje{display:block}
+@media(max-width:1000px){.paketid-redel{grid-template-columns:repeat(2,minmax(0,1fr))}.pakett{margin-top:0!important}}
+@media(max-width:620px){.paketid-redel{grid-template-columns:1fr}}
+
 </style>
 </head>
 
@@ -1991,6 +2011,49 @@ footer{background:#1d1c1a;color:#ecebe6}
   </div>
 </section>
 
+<section class="content hele" id="paketid" style="padding-top:0">
+  <div class="container">
+    <div class="section-top">
+      <div>
+        <div class="eyebrow" data-et="Paketid">Packages</div>
+        <h2 class="section-title" data-et="Alusta ühest tootest.<br>Kasvata sammhaaval.">Start with one product.<br>Grow step by step.</h2>
+      </div>
+      <p class="section-intro" data-et="Neli paketti väikesest suureni. Iga samm kasutab sama 3D-mudelit — esimene valmib nädalaga ja iga järgmine toetub eelmisele.">Four packages from small to large. Every step uses the same 3D model — the first is ready in a week, and each next one builds on the last.</p>
+    </div>
+    <div class="paketid-redel">
+      <article class="pakett">
+        <b class="pakett-nr">01</b>
+        <h3 data-et="3D-tootevaade + AR">3D product view + AR</h3>
+        <p data-et="Üks toode tootelehele: pöörlev 3D-vaade ja AR, millega ostja näeb toodet oma õues või toas. Valmib nädalaga.">One product on your product page: a rotating 3D view, plus AR so the buyer sees it in their own yard or room. Ready in a week.</p>
+        <span class="pakett-hind" data-et="alates 490 €">from €490</span>
+        <a class="pakett-cta" href="#kontakt" data-et="Kirjuta meile →">Write to us →</a>
+      </article>
+      <article class="pakett">
+        <b class="pakett-nr">02</b>
+        <h3 data-et="Fotorealistlikud tooterenderid">Photorealistic product renders</h3>
+        <p data-et="Tootepildid jooniste või fotode järgi — kõik toonid ja nurgad ilma fotostuudiota.">Product images from your drawings or photos — every finish and angle, without a photo studio.</p>
+        <span class="pakett-hind" data-et="alates 35 € / pilt">from €35 / image</span>
+        <a class="pakett-cta" href="#kontakt" data-et="Kirjuta meile →">Write to us →</a>
+      </article>
+      <article class="pakett">
+        <b class="pakett-nr">03</b>
+        <h3 data-et="3D-konfiguraator">3D configurator</h3>
+        <p data-et="Ostja paneb toote ise kokku: mudel, mõõdud, värvid ja hind. Töötab koos e-poe ja AR-iga.">The buyer builds the product: model, dimensions, colours and price. Works with your webshop and AR.</p>
+        <span class="pakett-hind" data-et="alates 2 500 €">from €2,500</span>
+        <a class="pakett-cta" href="#kontakt" data-et="Kirjuta meile →">Write to us →</a>
+      </article>
+      <article class="pakett">
+        <b class="pakett-nr">04</b>
+        <h3 data-et="Tootmisjoonised ja paigaldusjuhendid">Production drawings &amp; installation manuals</h3>
+        <p data-et="Koostejoonised, lõikelehed ja illustreeritud paigaldusjuhendid — samast mudelist, mida müük juba kasutab.">Assembly drawings, cutting lists and illustrated installation manuals — from the same model your sales already use.</p>
+        <span class="pakett-hind" data-et="tunnihind 50 € / h">€50 / hour</span>
+        <a class="pakett-cta" href="#kontakt" data-et="Kirjuta meile →">Write to us →</a>
+      </article>
+    </div>
+    <p class="paketid-vihje" data-et="Hinnad on orienteeruvad ja sõltuvad tootest. Täpse pakkumise saadame ühe tööpäevaga.">Prices are indicative and depend on the product. We send an exact quote within one business day.</p>
+  </div>
+</section>
+
 <section class="content hele" id="tehtud" style="padding-top:0">
   <div class="container">
     <div class="section-top">
@@ -2220,6 +2283,7 @@ footer{background:#1d1c1a;color:#ecebe6}
         <a href="#animatsioon" data-et="Animatsioon &amp; mäng">Animation &amp; game</a>
         <a href="#kellele" data-et="Kellele">Who it's for</a>
         <a href="#teenused" data-et="Teenused">Services</a>
+        <a href="#paketid" data-et="Paketid">Packages</a>
         <a href="#tehtud" data-et="Tehtud tööd">Work</a>
         <a href="#kkk" data-et="KKK">FAQ</a>
       </div>
@@ -2254,6 +2318,11 @@ footer{background:#1d1c1a;color:#ecebe6}
   t.hidden = false;
   var v = document.querySelector('.kontaktvorm');
   if (v) v.style.display = 'none';
+})();
+
+/* Paketid: orienteeruvad hinnad (variant B) ainult ?hinnad=1 korral — kasutaja otsustab, kas hinnad lähevad lehele */
+(function(){
+  if (new URLSearchParams(location.search).get('hinnad') === '1') document.body.classList.add('naita-hinnad');
 })();
 
 const header = document.getElementById('header');

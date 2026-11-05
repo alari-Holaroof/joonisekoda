@@ -789,6 +789,26 @@ footer{background:#1d1c1a;color:#ecebe6}
 @media(max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:860px){.reel-kate{background:linear-gradient(0deg,rgba(29,28,26,.88) 0%,rgba(29,28,26,.6) 42%,rgba(29,28,26,0) 70%)}}
 
+/* ===== Paketid (proov 05.11.2026, AVALDAMATA): teenuspakettide redel väikesest suureni.
+   Orienteeruvad hinnad (variant B) on peidus ja tulevad nähtavale ainult ?hinnad=1 korral —
+   vt skript lehe lõpus. Otsus hindade üle on kasutajal. ===== */
+.paketid-redel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:6px}
+.pakett{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 22px}
+.pakett:nth-child(1){margin-top:54px}
+.pakett:nth-child(2){margin-top:36px}
+.pakett:nth-child(3){margin-top:18px}
+.pakett-nr{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mark-bg);color:var(--dark-text);font-family:"Inter",sans-serif;font-size:13px;font-weight:700;margin-bottom:14px}
+.pakett h3{font-size:19px;line-height:1.2}
+.pakett > p{margin-top:8px;font-size:14px;color:var(--dark-muted)}
+.pakett-hind{display:none;margin-top:12px;font-family:"Inter",sans-serif;font-size:15px;font-weight:600;color:var(--dark-text)}
+.pakett-cta{margin-top:auto;padding-top:16px;font-size:14px;font-weight:600;color:var(--acc);transition:color .2s}
+.pakett-cta:hover{color:var(--acc-2)}
+.paketid-vihje{display:none;margin-top:14px;font-size:13px;color:var(--dark-muted)}
+body.naita-hinnad .pakett-hind{display:block}
+body.naita-hinnad .paketid-vihje{display:block}
+@media(max-width:1000px){.paketid-redel{grid-template-columns:repeat(2,minmax(0,1fr))}.pakett{margin-top:0!important}}
+@media(max-width:620px){.paketid-redel{grid-template-columns:1fr}}
+
 
 /* style B — light premium (03.11.2026): tokens come from index.html <style> (--bg, --text, --acc, --line…) */
 .al-hero{background:var(--bg);color:var(--text);padding:140px 0 64px;position:relative;border-bottom:1px solid var(--line)}

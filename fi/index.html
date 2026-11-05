@@ -922,6 +922,26 @@ footer{background:#1d1c1a;color:#ecebe6}
 @media(max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:860px){.reel-kate{background:linear-gradient(0deg,rgba(29,28,26,.88) 0%,rgba(29,28,26,.6) 42%,rgba(29,28,26,0) 70%)}}
 
+/* ===== Paketid (proov 05.11.2026, AVALDAMATA): teenuspakettide redel väikesest suureni.
+   Orienteeruvad hinnad (variant B) on peidus ja tulevad nähtavale ainult ?hinnad=1 korral —
+   vt skript lehe lõpus. Otsus hindade üle on kasutajal. ===== */
+.paketid-redel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:6px}
+.pakett{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 22px}
+.pakett:nth-child(1){margin-top:54px}
+.pakett:nth-child(2){margin-top:36px}
+.pakett:nth-child(3){margin-top:18px}
+.pakett-nr{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mark-bg);color:var(--dark-text);font-family:"Inter",sans-serif;font-size:13px;font-weight:700;margin-bottom:14px}
+.pakett h3{font-size:19px;line-height:1.2}
+.pakett > p{margin-top:8px;font-size:14px;color:var(--dark-muted)}
+.pakett-hind{display:none;margin-top:12px;font-family:"Inter",sans-serif;font-size:15px;font-weight:600;color:var(--dark-text)}
+.pakett-cta{margin-top:auto;padding-top:16px;font-size:14px;font-weight:600;color:var(--acc);transition:color .2s}
+.pakett-cta:hover{color:var(--acc-2)}
+.paketid-vihje{display:none;margin-top:14px;font-size:13px;color:var(--dark-muted)}
+body.naita-hinnad .pakett-hind{display:block}
+body.naita-hinnad .paketid-vihje{display:block}
+@media(max-width:1000px){.paketid-redel{grid-template-columns:repeat(2,minmax(0,1fr))}.pakett{margin-top:0!important}}
+@media(max-width:620px){.paketid-redel{grid-template-columns:1fr}}
+
 </style>
 </head>
 
@@ -1970,6 +1990,49 @@ footer{background:#1d1c1a;color:#ecebe6}
   </div>
 </section>
 
+<section class="content hele" id="paketid" style="padding-top:0">
+  <div class="container">
+    <div class="section-top">
+      <div>
+        <div class="eyebrow">Paketit</div>
+        <h2 class="section-title">Aloittakaa yhdestä tuotteesta.<br>Kasvattakaa askel kerrallaan.</h2>
+      </div>
+      <p class="section-intro">Neljä pakettia pienestä suureen. Jokainen vaihe käyttää samaa 3D-mallia — ensimmäinen valmistuu viikossa, ja jokainen seuraava rakentuu edellisen päälle.</p>
+    </div>
+    <div class="paketid-redel">
+      <article class="pakett">
+        <b class="pakett-nr">01</b>
+        <h3>3D-tuotenäkymä + AR</h3>
+        <p>Yksi tuote tuotesivullenne: pyörivä 3D-näkymä ja AR, jolla ostaja näkee tuotteen omalla pihallaan tai omassa huoneessaan. Valmis viikossa.</p>
+        <span class="pakett-hind">alk. 490 €</span>
+        <a class="pakett-cta" href="#kontakt">Kirjoittakaa meille →</a>
+      </article>
+      <article class="pakett">
+        <b class="pakett-nr">02</b>
+        <h3>Fotorealistiset tuotekuvat</h3>
+        <p>Tuotekuvat piirustustenne tai valokuvienne pohjalta — kaikki sävyt ja kulmat ilman valokuvastudiota.</p>
+        <span class="pakett-hind">alk. 35 € / kuva</span>
+        <a class="pakett-cta" href="#kontakt">Kirjoittakaa meille →</a>
+      </article>
+      <article class="pakett">
+        <b class="pakett-nr">03</b>
+        <h3>3D-konfiguraattori</h3>
+        <p>Ostaja kokoaa tuotteen itse: malli, mitat, värit ja hinta. Toimii yhdessä verkkokaupan ja AR:n kanssa.</p>
+        <span class="pakett-hind">alk. 2 500 €</span>
+        <a class="pakett-cta" href="#kontakt">Kirjoittakaa meille →</a>
+      </article>
+      <article class="pakett">
+        <b class="pakett-nr">04</b>
+        <h3>Tuotantopiirustukset &amp; asennusohjeet</h3>
+        <p>Kokoonpanopiirustukset, sahauslistat ja kuvitetut asennusohjeet — samasta mallista, jota myyntinne jo käyttää.</p>
+        <span class="pakett-hind">50 € / tunti</span>
+        <a class="pakett-cta" href="#kontakt">Kirjoittakaa meille →</a>
+      </article>
+    </div>
+    <p class="paketid-vihje">Hinnat ovat suuntaa-antavia ja riippuvat tuotteesta. Tarkan tarjouksen lähetämme yhden arkipäivän kuluessa.</p>
+  </div>
+</section>
+
 <section class="content hele" id="tehtud" style="padding-top:0">
   <div class="container">
     <div class="section-top">
@@ -2198,6 +2261,7 @@ footer{background:#1d1c1a;color:#ecebe6}
         <a href="#animatsioon">Animaatio &amp; peli</a>
         <a href="#kellele">Kenelle</a>
         <a href="#teenused">Palvelut</a>
+        <a href="#paketid">Paketit</a>
         <a href="#tehtud">Työt</a>
         <a href="#kkk">UKK</a>
       </div>
@@ -2232,6 +2296,11 @@ footer{background:#1d1c1a;color:#ecebe6}
   t.hidden = false;
   var v = document.querySelector('.kontaktvorm');
   if (v) v.style.display = 'none';
+})();
+
+/* Paketid: orienteeruvad hinnad (variant B) ainult ?hinnad=1 korral — kasutaja otsustab, kas hinnad lähevad lehele */
+(function(){
+  if (new URLSearchParams(location.search).get('hinnad') === '1') document.body.classList.add('naita-hinnad');
 })();
 
 const header = document.getElementById('header');
