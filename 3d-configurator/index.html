@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","@id":"https://joonisekoda.ee/3d-configurator/#teenus","name":"3D product configurator","serviceType":"3D product configurator","description":"A browser-based 3D configurator where the buyer builds your product: models, sizes, materials and extras, live price and AR. No app. Built in Estonia.","url":"https://joonisekoda.ee/3d-configurator/","inLanguage":"en","provider":{"@id":"https://joonisekoda.ee/#joonisekoda"},"areaServed":[{"@type":"Place","name":"Europe"}],"image":"https://joonisekoda.ee/pildid/naidis/naidis-saunashark.webp"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://joonisekoda.ee/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://joonisekoda.ee/#teenused"},{"@type":"ListItem","position":3,"name":"3D product configurator","item":"https://joonisekoda.ee/3d-configurator/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Who is a configurator for?","acceptedAnswer":{"@type":"Answer","text":"For manufacturers whose product comes in many variants: saunas, garden rooms, modular and log cabins, sheds, carports, fences and gates, outdoor furniture, trailers and boats. If the buyer has to choose between sizes, materials and extras, a configurator shows the result instead of describing it."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. The configurator runs in an ordinary browser on desktop and mobile, and on a phone the buyer can also open the configured product in AR."}},{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"There is no public price list. The price depends on the product and the number of models and options, and we quote after seeing the product."}},{"@type":"Question","name":"Can it show our real prices?","acceptedAnswer":{"@type":"Answer","text":"Yes. Prices can come from a price table or from your webshop; the configurator shows the price of the exact combination the buyer has chosen."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Who is a configurator for?","acceptedAnswer":{"@type":"Answer","text":"For manufacturers whose product comes in many variants: saunas, garden rooms, modular and log cabins, sheds, carports, fences and gates, outdoor furniture, trailers and boats. If the buyer has to choose between sizes, materials and extras, a configurator shows the result instead of describing it."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. The configurator runs in an ordinary browser on desktop and mobile, and on a phone the buyer can also open the configured product in AR."}},{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Indicative prices: a 3D configurator from €1,900, webshop integration from €600, each additional product or variant from €190 (excl. VAT). The final price depends on the product and the number of models and options; we send an exact quote after seeing the product."}},{"@type":"Question","name":"Can it show our real prices?","acceptedAnswer":{"@type":"Answer","text":"Yes. Prices can come from a price table or from your webshop; the configurator shows the price of the exact combination the buyer has chosen."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500&display=swap" rel="stylesheet">
@@ -789,25 +789,26 @@ footer{background:#1d1c1a;color:#ecebe6}
 @media(max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:860px){.reel-kate{background:linear-gradient(0deg,rgba(29,28,26,.88) 0%,rgba(29,28,26,.6) 42%,rgba(29,28,26,0) 70%)}}
 
-/* ===== Paketid (proov 05.11.2026, AVALDAMATA): teenuspakettide redel väikesest suureni.
-   Orienteeruvad hinnad (variant B) on peidus ja tulevad nähtavale ainult ?hinnad=1 korral —
-   vt skript lehe lõpus. Otsus hindade üle on kasutajal. ===== */
-.paketid-redel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:6px}
+/* packages + price list */
+.paketid-redel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:6px}
 .pakett{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 22px}
-.pakett:nth-child(1){margin-top:54px}
-.pakett:nth-child(2){margin-top:36px}
-.pakett:nth-child(3){margin-top:18px}
+.pakett:nth-child(1){margin-top:36px}
+.pakett:nth-child(2){margin-top:18px}
 .pakett-nr{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mark-bg);color:var(--dark-text);font-family:"Inter",sans-serif;font-size:13px;font-weight:700;margin-bottom:14px}
 .pakett h3{font-size:19px;line-height:1.2}
 .pakett > p{margin-top:8px;font-size:14px;color:var(--dark-muted)}
-.pakett-hind{display:none;margin-top:12px;font-family:"Inter",sans-serif;font-size:15px;font-weight:600;color:var(--dark-text)}
+.pakett-hind{display:block;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-family:"Inter",sans-serif;font-size:20px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;color:var(--dark-text)}
 .pakett-cta{margin-top:auto;padding-top:16px;font-size:14px;font-weight:600;color:var(--acc);transition:color .2s}
 .pakett-cta:hover{color:var(--acc-2)}
-.paketid-vihje{display:none;margin-top:14px;font-size:13px;color:var(--dark-muted)}
-body.naita-hinnad .pakett-hind{display:block}
-body.naita-hinnad .paketid-vihje{display:block}
-@media(max-width:1000px){.paketid-redel{grid-template-columns:repeat(2,minmax(0,1fr))}.pakett{margin-top:0!important}}
-@media(max-width:620px){.paketid-redel{grid-template-columns:1fr}}
+.paketid-lisad{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px 8px}
+.paketid-lisad h3{font-family:"Inter",sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted)}
+.paketid-lisad ul{list-style:none;margin:8px 0 0;padding:0}
+.paketid-lisad li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 18px;align-items:baseline;padding:11px 0;border-top:1px solid var(--line);font-size:14px;color:var(--dark-text)}
+.paketid-lisad li:first-child{border-top:0}
+.paketid-lisad li b{font-family:"Inter",sans-serif;font-weight:600;white-space:nowrap;text-align:right}
+.paketid-vihje{margin-top:14px;font-size:13px;color:var(--dark-muted)}
+@media(max-width:900px){.paketid-redel{grid-template-columns:1fr}.pakett{margin-top:0!important}}
+@media(max-width:480px){.paketid-lisad{padding:16px 16px 6px}.paketid-lisad li{gap:2px 12px;font-size:13.5px}}
 
 
 /* style B — light premium (03.11.2026): tokens come from index.html <style> (--bg, --text, --acc, --line…) */
@@ -944,7 +945,7 @@ body.naita-hinnad .paketid-vihje{display:block}
       <div class="kkk">
         <details><summary>Who is a configurator for?</summary><div class="vastus"><p>For manufacturers whose product comes in many variants: saunas, garden rooms, modular and log cabins, sheds, carports, fences and gates, outdoor furniture, trailers and boats. If the buyer has to choose between sizes, materials and extras, a configurator shows the result instead of describing it.</p></div></details>
         <details><summary>Does it work on a phone?</summary><div class="vastus"><p>Yes. The configurator runs in an ordinary browser on desktop and mobile, and on a phone the buyer can also open the configured product in AR.</p></div></details>
-        <details><summary>How much does it cost?</summary><div class="vastus"><p>There is no public price list. The price depends on the product and the number of models and options, and we quote after seeing the product.</p></div></details>
+        <details><summary>How much does it cost?</summary><div class="vastus"><p>Indicative prices: a 3D configurator from €1,900, webshop integration from €600, each additional product or variant from €190 (excl. VAT). The final price depends on the product and the number of models and options; we send an exact quote after seeing the product.</p></div></details>
         <details><summary>Can it show our real prices?</summary><div class="vastus"><p>Yes. Prices can come from a price table or from your webshop; the configurator shows the price of the exact combination the buyer has chosen.</p></div></details>
       </div>
     </div>
