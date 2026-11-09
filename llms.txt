@@ -21,7 +21,7 @@ Manufacturers whose products come in many variants or are installed by someone e
 ## Key facts
 - One model for everything: the same part number appears on the drawing, in the manual, in the configurator and in the game.
 - An AR model of one product is usually ready within a week. The schedule for a configurator depends on the number of models and options.
-- There is no public price list. Pricing depends on the product and the number of options, and is quoted after seeing the product.
+- Indicative prices (from, excl. VAT; see https://joonisekoda.ee/#paketid): 3D product view + AR for one product from €490, each additional product or variant from €190; 3D configurator from €1,900; webshop integration (WooCommerce / Shopify, the choice goes to the cart with its price and order) from €600; material calculator with 3D preview from €1,500; dealer / partner dashboard (orders, price groups) from €6,000; hosting + maintenance €39 / month; production drawings and installation manuals €50 / hour. The exact quote depends on the product and is sent within one business day.
 - Languages: we work in English and Estonian. The configurator interface can be multilingual (translation table).
 - Area served: remotely across Europe, including the Baltic states, the Nordic countries and the United Kingdom.
 - Example work: a sauna configurator with 13 models and 7 steps; the Camilla sauna assembly animation; the Oliver playhouse (full package: 42 parts-list positions, 371 cut parts, 29-step manual); Toby playhouse and Pirate ship play tower manuals; Solar Full Roof installation animation; Solar Carport datasheet and 20-page manual.

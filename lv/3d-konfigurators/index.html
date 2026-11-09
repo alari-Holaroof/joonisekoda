@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","@id":"https://joonisekoda.ee/lv/3d-konfigurators/#teenus","name":"3D produktu konfigurators","serviceType":"3D produktu konfigurators","description":"3D konfigurators pārlūkā, kurā pircējs saliek jūsu produktu: modeļi, izmēri, materiāli, papildinājumi, cena reāllaikā un AR. Bez lietotnes. Izstrādāts Igaunijā.","url":"https://joonisekoda.ee/lv/3d-konfigurators/","inLanguage":"lv","provider":{"@id":"https://joonisekoda.ee/#joonisekoda"},"areaServed":[{"@type":"Place","name":"Europe"}],"image":"https://joonisekoda.ee/pildid/naidis/naidis-saunashark.webp"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Sākums","item":"https://joonisekoda.ee/lv/"},{"@type":"ListItem","position":2,"name":"Pakalpojumi","item":"https://joonisekoda.ee/lv/#teenused"},{"@type":"ListItem","position":3,"name":"3D produktu konfigurators","item":"https://joonisekoda.ee/lv/3d-konfigurators/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Kam paredzēts konfigurators?","acceptedAnswer":{"@type":"Answer","text":"Ražotājiem, kuru produktam ir daudz variantu: pirtis, dārza mājas, moduļu mājiņas un guļbūves, šķūņi, auto nojumes, žogi un vārti, dārza mēbeles, piekabes un laivas. Ja pircējam jāizvēlas starp izmēriem, materiāliem un papildinājumiem, konfigurators parāda rezultātu, nevis to apraksta."}},{"@type":"Question","name":"Vai tas darbojas tālrunī?","acceptedAnswer":{"@type":"Answer","text":"Jā. Konfigurators darbojas parastā pārlūkprogrammā datorā un mobilajā ierīcē, un tālrunī pircējs var arī atvērt konfigurēto produktu AR."}},{"@type":"Question","name":"Cik tas maksā?","acceptedAnswer":{"@type":"Answer","text":"Publiska cenrāža nav. Cena atkarīga no produkta, modeļu un iespēju skaita, un piedāvājumu sniedzam pēc produkta apskates."}},{"@type":"Question","name":"Vai tas var rādīt mūsu īstās cenas?","acceptedAnswer":{"@type":"Answer","text":"Jā. Cenas var nākt no cenu tabulas vai no jūsu e-veikala; konfigurators rāda tieši tās kombinācijas cenu, ko pircējs izvēlējies."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Kam paredzēts konfigurators?","acceptedAnswer":{"@type":"Answer","text":"Ražotājiem, kuru produktam ir daudz variantu: pirtis, dārza mājas, moduļu mājiņas un guļbūves, šķūņi, auto nojumes, žogi un vārti, dārza mēbeles, piekabes un laivas. Ja pircējam jāizvēlas starp izmēriem, materiāliem un papildinājumiem, konfigurators parāda rezultātu, nevis to apraksta."}},{"@type":"Question","name":"Vai tas darbojas tālrunī?","acceptedAnswer":{"@type":"Answer","text":"Jā. Konfigurators darbojas parastā pārlūkprogrammā datorā un mobilajā ierīcē, un tālrunī pircējs var arī atvērt konfigurēto produktu AR."}},{"@type":"Question","name":"Cik tas maksā?","acceptedAnswer":{"@type":"Answer","text":"Orientējošās cenas: 3D konfigurators no 1 900 €, savienojums ar e-veikalu no 600 €, katrs nākamais produkts vai variants no 190 € (bez PVN). Galīgā cena atkarīga no produkta, modeļu un iespēju skaita; precīzu piedāvājumu sniedzam pēc produkta apskates."}},{"@type":"Question","name":"Vai tas var rādīt mūsu īstās cenas?","acceptedAnswer":{"@type":"Answer","text":"Jā. Cenas var nākt no cenu tabulas vai no jūsu e-veikala; konfigurators rāda tieši tās kombinācijas cenu, ko pircējs izvēlējies."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500&display=swap" rel="stylesheet">
@@ -789,6 +789,27 @@ footer{background:#1d1c1a;color:#ecebe6}
 @media(max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:860px){.reel-kate{background:linear-gradient(0deg,rgba(29,28,26,.88) 0%,rgba(29,28,26,.6) 42%,rgba(29,28,26,0) 70%)}}
 
+/* packages + price list */
+.paketid-redel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:6px}
+.pakett{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px 22px}
+.pakett:nth-child(1){margin-top:36px}
+.pakett:nth-child(2){margin-top:18px}
+.pakett-nr{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mark-bg);color:var(--dark-text);font-family:"Inter",sans-serif;font-size:13px;font-weight:700;margin-bottom:14px}
+.pakett h3{font-size:19px;line-height:1.2}
+.pakett > p{margin-top:8px;font-size:14px;color:var(--dark-muted)}
+.pakett-hind{display:block;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-family:"Inter",sans-serif;font-size:20px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;color:var(--dark-text)}
+.pakett-cta{margin-top:auto;padding-top:16px;font-size:14px;font-weight:600;color:var(--acc);transition:color .2s}
+.pakett-cta:hover{color:var(--acc-2)}
+.paketid-lisad{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px 8px}
+.paketid-lisad h3{font-family:"Inter",sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted)}
+.paketid-lisad ul{list-style:none;margin:8px 0 0;padding:0}
+.paketid-lisad li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 18px;align-items:baseline;padding:11px 0;border-top:1px solid var(--line);font-size:14px;color:var(--dark-text)}
+.paketid-lisad li:first-child{border-top:0}
+.paketid-lisad li b{font-family:"Inter",sans-serif;font-weight:600;white-space:nowrap;text-align:right}
+.paketid-vihje{margin-top:14px;font-size:13px;color:var(--dark-muted)}
+@media(max-width:900px){.paketid-redel{grid-template-columns:1fr}.pakett{margin-top:0!important}}
+@media(max-width:480px){.paketid-lisad{padding:16px 16px 6px}.paketid-lisad li{gap:2px 12px;font-size:13.5px}}
+
 
 /* style B — light premium (03.11.2026): tokens come from index.html <style> (--bg, --text, --acc, --line…) */
 .al-hero{background:var(--bg);color:var(--text);padding:140px 0 64px;position:relative;border-bottom:1px solid var(--line)}
@@ -924,7 +945,7 @@ footer{background:#1d1c1a;color:#ecebe6}
       <div class="kkk">
         <details><summary>Kam paredzēts konfigurators?</summary><div class="vastus"><p>Ražotājiem, kuru produktam ir daudz variantu: pirtis, dārza mājas, moduļu mājiņas un guļbūves, šķūņi, auto nojumes, žogi un vārti, dārza mēbeles, piekabes un laivas. Ja pircējam jāizvēlas starp izmēriem, materiāliem un papildinājumiem, konfigurators parāda rezultātu, nevis to apraksta.</p></div></details>
         <details><summary>Vai tas darbojas tālrunī?</summary><div class="vastus"><p>Jā. Konfigurators darbojas parastā pārlūkprogrammā datorā un mobilajā ierīcē, un tālrunī pircējs var arī atvērt konfigurēto produktu AR.</p></div></details>
-        <details><summary>Cik tas maksā?</summary><div class="vastus"><p>Publiska cenrāža nav. Cena atkarīga no produkta, modeļu un iespēju skaita, un piedāvājumu sniedzam pēc produkta apskates.</p></div></details>
+        <details><summary>Cik tas maksā?</summary><div class="vastus"><p>Orientējošās cenas: 3D konfigurators no 1 900 €, savienojums ar e-veikalu no 600 €, katrs nākamais produkts vai variants no 190 € (bez PVN). Galīgā cena atkarīga no produkta, modeļu un iespēju skaita; precīzu piedāvājumu sniedzam pēc produkta apskates.</p></div></details>
         <details><summary>Vai tas var rādīt mūsu īstās cenas?</summary><div class="vastus"><p>Jā. Cenas var nākt no cenu tabulas vai no jūsu e-veikala; konfigurators rāda tieši tās kombinācijas cenu, ko pircējs izvēlējies.</p></div></details>
       </div>
     </div>
