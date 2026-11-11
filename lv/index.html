@@ -49,6 +49,8 @@
   },
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Vapramäe tn 10a/1",
+    "postalCode": "61508",
     "addressLocality": "Elva",
     "addressRegion": "Tartumaa",
     "addressCountry": "EE"
@@ -874,6 +876,13 @@ nav a:hover{color:var(--text)}
 .kontaktvorm input,.kontaktvorm textarea{background:#f6f3ee;border-color:#ddd6cb;color:var(--cta-text);border-radius:8px}
 .kontaktvorm input:focus,.kontaktvorm textarea:focus{outline-color:var(--acc);background:#fff}
 .vorm-vihje{color:var(--cta-muted)}
+/* 24 h promise + call button (11.11) */
+.lubadus{display:flex;align-items:center;gap:8px;flex-basis:100%;margin:2px 0 0;font-size:13px;font-weight:600;color:var(--acc)}
+.lubadus i{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px var(--mark-bg);flex:0 0 auto}
+.vorm-lubadus{margin:0 0 2px}
+.kontaktvorm{scroll-margin-top:96px}
+.footer-firma span,.footer-firma b{display:block}
+.footer-firma b{color:#fff;font-weight:600}
 .trust-item strong{font-weight:600}
 
 header.scrolled{background:rgba(246,243,238,.92);border-bottom-color:var(--line)}
@@ -1108,6 +1117,8 @@ footer{background:#1d1c1a;color:#ecebe6}
       <div class="actions">
         <a class="btn btn-primary" href="#kontakt">Atsūtiet mums vienu produkta saiti →</a>
         <a class="btn btn-ghost" href="#demod">Izmēģināt demo ↓</a>
+        <a class="btn btn-ghost kone-nupp" href="#kone">Pieteikt 20 min zvanu</a>
+        <p class="lubadus"><i></i><span>Atbildam 24 stundu laikā</span></p>
       </div>
       <div class="hero-demod">
         <span>Atvērt tagad:</span>
@@ -1143,9 +1154,9 @@ footer{background:#1d1c1a;color:#ecebe6}
 <div class="trust">
   <div class="container trust-inner">
     <div class="trust-item"><strong>5 tiešsaistes demo</strong><span>atveriet tagad datorā vai telefonā</span></div>
-    <div class="trust-item"><strong>6 projekti izstrādē</strong><span>ražotājiem — plaukti, guļbūves, virtuves…</span></div>
+    <div class="trust-item"><strong>6 klientu projekti</strong><span>ražotājiem — plaukti, guļbūves, virtuves…</span></div>
     <div class="trust-item"><strong>1:1</strong><span>AR telefonā, bez lietotnes</span></div>
-    <div class="trust-item"><strong>1 darba diena</strong><span>atbildei uz jūsu pieprasījumu</span></div>
+    <div class="trust-item"><strong>24 h</strong><span>atbildei uz jūsu pieprasījumu</span></div>
   </div>
 </div>
 
@@ -1656,219 +1667,6 @@ footer{background:#1d1c1a;color:#ecebe6}
 })();
 </script>
 
-<section class="content" id="toos" style="padding-top:0">
-  <div class="container">
-    <div class="section-top">
-      <div>
-        <div class="eyebrow">Izstrādē</div>
-        <h2 class="section-title">Konfiguratori un kalkulatori<br>tapšanas procesā.</h2>
-      </div>
-      <p class="section-intro">Klientu projekti, ko šobrīd veidojam ražotājiem, kā arī mūsu pašu kalkulators. Saites nav, kamēr klients nav apstiprinājis, bet video rāda īsto lietu.</p>
-    </div>
-    <div class="tk-grid">
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="/pildid/toos/toos-riiul.webp">
-            <img src="/pildid/toos/toos-riiul.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: plauktu sistēmas">
-          </picture>
-          <video class="tk-video" data-src="/video/toos/toos-riiul-960.mp4" data-src-telefon="video/toos/toos-riiul-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
-          <span class="tk-olek"><i></i><span>Izstrādē</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt">Klienta projekts</span>
-          <h3>Plauktu sistēmas</h3>
-          <p>Plauktu sistēmu ražotājs — pircējs izvēlas izmēru, koka apdari un durvis, un plaukts acumirklī pārbūvējas 3D. To pašu plauktu var apskatīt savā istabā ar AR.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="/pildid/toos/toos-palkmaja.webp">
-            <img src="/pildid/toos/toos-palkmaja.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: guļbūves dārza mājas">
-          </picture>
-          <video class="tk-video" data-src="/video/toos/toos-palkmaja-960.mp4" data-src-telefon="video/toos/toos-palkmaja-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
-          <span class="tk-olek"><i></i><span>Izstrādē</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt">Klienta projekts</span>
-          <h3>Guļbūves dārza mājas</h3>
-          <p>Guļbūvju ražotājs — gatavs dārza mājas modelis, kurā logi un durvis slīd pa sienu, un baļķu krāsa, rāmji un jumta segums mainās reāllaikā 3D.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="/pildid/toos/toos-palkmaja-plaan.webp">
-            <img src="/pildid/toos/toos-palkmaja-plaan.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: guļbūves dārza mājas">
-          </picture>
-          <video class="tk-video" data-src="/video/toos/toos-palkmaja-plaan-960.mp4" data-src-telefon="video/toos/toos-palkmaja-plaan-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
-          <span class="tk-olek"><i></i><span>Izstrādē</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt">Klienta projekts</span>
-          <h3>Guļbūves dārza mājas</h3>
-          <p>Guļbūvju ražotājs — pircējs pats uzzīmē savu plānojumu (taisnstūris, L vai T forma), un sienas, terase un jumts uzreiz parādās 3D.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="/pildid/toos/toos-garderoob.webp">
-            <img src="/pildid/toos/toos-garderoob.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: skapji pēc mēra">
-          </picture>
-          <video class="tk-video" data-src="/video/toos/toos-garderoob-960.mp4" data-src-telefon="video/toos/toos-garderoob-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
-          <span class="tk-olek"><i></i><span>Izstrādē</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt">Klienta projekts</span>
-          <h3>Skapji pēc mēra</h3>
-          <p>Skapju ražotājs — pircējs sāk no savas tukšās nišas: ievada izmērus, karkass izaug savā vietā, to piepilda drēbes un plaukti, tad nāk durvis un vakara LED gaisma.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="/pildid/toos/toos-kook.webp">
-            <img src="/pildid/toos/toos-kook.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: virtuves mēbeles">
-          </picture>
-          <video class="tk-video" data-src="/video/toos/toos-kook-960.mp4" data-src-telefon="video/toos/toos-kook-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
-          <span class="tk-olek"><i></i><span>Izstrādē</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt">Klienta projekts</span>
-          <h3>Virtuves mēbeles</h3>
-          <p>Virtuves mēbeļu ražotājs — virtuve piepildās ar standarta skapjiem atbilstoši sienas garumam; pircējs maina skapju veidus un frontes un pievieno salu savos izmēros.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="/pildid/toos/toos-aed.webp">
-            <img src="/pildid/toos/toos-aed.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: žogi un vārti">
-          </picture>
-          <video class="tk-video" data-src="/video/toos/toos-aed-960.mp4" data-src-telefon="video/toos/toos-aed-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
-          <span class="tk-olek"><i></i><span>Izstrādē</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt">Klienta projekts</span>
-          <h3>Žogi un vārti</h3>
-          <p>Žogu būvētājs — pircējs uzzīmē žogu kartē vai tukšā lapā, izvēlas žogu, vārtus un piedziņas un vēro, kā vārti 3D atveras ar īstu piedziņas ātrumu. Cena parādās uzreiz, un pieprasījums nonāk tieši pie montētāja.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="/pildid/toos/toos-kalkulaator.webp">
-            <img src="/pildid/toos/toos-kalkulaator.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Kalkulators izstrādē: būvmateriāli">
-          </picture>
-          <video class="tk-video" data-src="/video/toos/toos-kalkulaator-960.mp4" data-src-telefon="video/toos/toos-kalkulaator-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
-          <span class="tk-olek"><i></i><span>Izstrādē</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt">Pašu izstrāde</span>
-          <h3>Būvmateriālu kalkulators</h3>
-          <p>18 kalkulatori no jumta līdz ūdens caurulēm — visai mājai vai vienai konstrukcijai. Pircējs izvēlas slāņus un materiālus, redz griezumu un izvērstus slāņus 3D un uzreiz saņem daudzumus, iepakojumus un cenas. Būvmateriālu veikala vai ražotāja mājaslapai.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<script>
-(function(){
-  var vaiksem = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (vaiksem || !('IntersectionObserver' in window)) return;
-  var telefon = window.matchMedia('(max-width: 640px)').matches;
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      var v = e.target;
-      if (e.isIntersecting) {
-        if (!v.getAttribute('src')) {
-          v.src = (telefon && v.dataset.srcTelefon) || v.dataset.src;
-          v.addEventListener('playing', function(){ v.classList.add('mangib'); }, {once:true});
-        }
-        v.play().catch(function(){});
-      } else v.pause();
-    });
-  }, {threshold:.35});
-  document.querySelectorAll('video.tk-video').forEach(function(v){ io.observe(v); });
-})();
-</script>
-
-
-<section class="reel-sekt" id="showreel" aria-label="Showreel">
-  <div class="container">
-    <div class="reel" id="reel">
-      <div class="reel-video">
-        <video class="ui-klipp" data-algus="0" data-kestus="8.2" src="/video/konfiguraator.mp4" poster="/pildid/konf-arvuti-960.webp" muted="" playsinline="" preload="none"></video>
-        <video class="ui-klipp" data-algus="0" data-kestus="8" src="/video/diivan.mp4" poster="/pildid/diivan-arvuti-960.webp" muted="" playsinline="" preload="none"></video>
-        <video data-algus="3" data-kestus="6" src="/video/camilla-koost.mp4" poster="/pildid/anim-koost.jpg" muted="" playsinline="" preload="none"></video>
-        <video data-algus="1" data-kestus="6.5" src="/video/solar-katus.mp4" poster="/pildid/anim-str.jpg" muted="" playsinline="" preload="none"></video>
-        <video data-algus="2" data-kestus="6" src="/video/treening.mp4" poster="/pildid/mang-hud.jpg" muted="" playsinline="" preload="none"></video>
-        <video class="ui-klipp" data-algus="0" data-kestus="8.6" src="/video/haagis.mp4" poster="/pildid/haagis-arvuti-960.webp" muted="" playsinline="" preload="none"></video>
-        <video class="ui-klipp" data-algus="0" data-kestus="8.8" src="/video/aiamaja.mp4" poster="/pildid/aiamaja-arvuti-960.webp" muted="" playsinline="" preload="none"></video>
-        <video class="ui-klipp" data-algus="0" data-kestus="8.8" src="/video/kaater.mp4" poster="/pildid/kaater-arvuti-960.webp" muted="" playsinline="" preload="none"></video>
-        <i class="reel-pyhk" aria-hidden="true"></i>
-      </div>
-      <div class="reel-kate" aria-hidden="true"></div>
-      <div class="reel-tekstid">
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>01</b><span>3D konfigurators</span></span>
-          <h3><span class="rea"><span>Pircējs to izveido</span></span><span class="rea"><span><em>pats.</em></span></span></h3>
-          <p>Modeļi, sienas, lāvas — īsta ģeometrija, reāllaikā pārlūkā.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>02</b><span>Dīvāna konfigurators</span></span>
-          <h3><span class="rea"><span>Modulis, audums,</span></span><span class="rea"><span><em>cena — reāllaikā.</em></span></span></h3>
-          <p>Moduļi ieslīd savās vietās, audums un cena atjaunojas reāllaikā.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>03</b><span>Montāžas animācija</span></span>
-          <h3><span class="rea"><span>Detaļu pa detaļai,</span></span><span class="rea"><span><em>pareizā secībā.</em></span></span></h3>
-          <p>Tāda pati secība kā īstajā montāžā.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>04</b><span>Montāžas animācija</span></span>
-          <h3><span class="rea"><span>Katrs slānis,</span></span><span class="rea"><span><em>katra lata.</em></span></span></h3>
-          <p>Jumta komplekts no paklāja līdz saules dakstiņiem.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>05</b><span>Apmācības spēle</span></span>
-          <h3><span class="rea"><span>Kļūdas ekrānā,</span></span><span class="rea"><span><em>nevis objektā.</em></span></span></h3>
-          <p>95 soļi, apmācības video un noslēguma tests — pārlūkā.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>06</b><span>Piekabes konfigurators</span></span>
-          <h3><span class="rea"><span>Pārsegs, krāsa,</span></span><span class="rea"><span><em>otrā ass.</em></span></span></h3>
-          <p>Tents ielido savā vietā, krāsa mainās, tandēms ieripo — cena mainās līdzi.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>07</b><span>Dārza mājas konfigurators</span></span>
-          <h3><span class="rea"><span>Jumts, apdare,</span></span><span class="rea"><span><em>terase.</em></span></span></h3>
-          <p>Jumts nomainās gaisā, apdare kļūst melna, ielido terase un nojume — cena mainās līdzi.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>08</b><span>Laivas konfigurators</span></span>
-          <h3><span class="rea"><span>Korpuss, jumts,</span></span><span class="rea"><span><em>apakšā ūdens.</em></span></span></h3>
-          <p>Korpuss kļūst ledus zils, ielido T-top un cietais jumts, kamera apriņķo laivu — cena mainās līdzi.</p>
-        </div>
-      </div>
-      <div class="reel-riba">
-        <button type="button" class="reel-nupp" aria-label="Konfigurators"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Dīvāna konfigurators"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Montāžas animācija"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Montāžas animācija"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Apmācības spēle"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Piekabes konfigurators"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Dārza mājas konfigurators"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Laivas konfigurators"><i></i></button>
-      </div>
-      <span class="reel-lugeja" aria-hidden="true"><b>01</b> / 08</span>
-    </div>
-  </div>
-</section>
-
 <section class="content" id="animatsioon" style="padding-top:0">
   <div class="container">
     <div class="section-top">
@@ -2120,12 +1918,152 @@ footer{background:#1d1c1a;color:#ecebe6}
   </div>
 </section>
 
+<section class="content hele" id="toos" style="padding-top:0">
+  <div class="container">
+    <div class="section-top">
+      <div>
+        <div class="eyebrow">Nesenie darbi</div>
+        <h2 class="section-title">Konfiguratori un kalkulatori,<br>ko pēdējā laikā esam veidojuši.</h2>
+      </div>
+      <p class="section-intro">Nesenie klientu projekti ražotājiem un mūsu pašu kalkulators. Saiti kopīgojam, kad klients darbu ir apstiprinājis — video rāda īsto risinājumu.</p>
+    </div>
+    <div class="tk-grid">
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="/pildid/toos/toos-riiul.webp">
+            <img src="/pildid/toos/toos-riiul.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: plauktu sistēmas">
+          </picture>
+          <video class="tk-video" data-src="/video/toos/toos-riiul-960.mp4" data-src-telefon="video/toos/toos-riiul-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
+          <span class="tk-olek"><i></i><span>Privāts priekšskatījums</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt">Klienta projekts</span>
+          <h3>Plauktu sistēmas</h3>
+          <p>Plauktu sistēmu ražotājs — pircējs izvēlas izmēru, koka apdari un durvis, un plaukts acumirklī pārbūvējas 3D. To pašu plauktu var apskatīt savā istabā ar AR.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="/pildid/toos/toos-palkmaja.webp">
+            <img src="/pildid/toos/toos-palkmaja.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: guļbūves dārza mājas">
+          </picture>
+          <video class="tk-video" data-src="/video/toos/toos-palkmaja-960.mp4" data-src-telefon="video/toos/toos-palkmaja-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
+          <span class="tk-olek"><i></i><span>Privāts priekšskatījums</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt">Klienta projekts</span>
+          <h3>Guļbūves dārza mājas</h3>
+          <p>Guļbūvju ražotājs — gatavs dārza mājas modelis, kurā logi un durvis slīd pa sienu, un baļķu krāsa, rāmji un jumta segums mainās reāllaikā 3D.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="/pildid/toos/toos-palkmaja-plaan.webp">
+            <img src="/pildid/toos/toos-palkmaja-plaan.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: guļbūves dārza mājas">
+          </picture>
+          <video class="tk-video" data-src="/video/toos/toos-palkmaja-plaan-960.mp4" data-src-telefon="video/toos/toos-palkmaja-plaan-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
+          <span class="tk-olek"><i></i><span>Privāts priekšskatījums</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt">Klienta projekts</span>
+          <h3>Guļbūves dārza mājas</h3>
+          <p>Guļbūvju ražotājs — pircējs pats uzzīmē savu plānojumu (taisnstūris, L vai T forma), un sienas, terase un jumts uzreiz parādās 3D.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="/pildid/toos/toos-garderoob.webp">
+            <img src="/pildid/toos/toos-garderoob.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: skapji pēc mēra">
+          </picture>
+          <video class="tk-video" data-src="/video/toos/toos-garderoob-960.mp4" data-src-telefon="video/toos/toos-garderoob-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
+          <span class="tk-olek"><i></i><span>Privāts priekšskatījums</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt">Klienta projekts</span>
+          <h3>Skapji pēc mēra</h3>
+          <p>Skapju ražotājs — pircējs sāk no savas tukšās nišas: ievada izmērus, karkass izaug savā vietā, to piepilda drēbes un plaukti, tad nāk durvis un vakara LED gaisma.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="/pildid/toos/toos-kook.webp">
+            <img src="/pildid/toos/toos-kook.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: virtuves mēbeles">
+          </picture>
+          <video class="tk-video" data-src="/video/toos/toos-kook-960.mp4" data-src-telefon="video/toos/toos-kook-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
+          <span class="tk-olek"><i></i><span>Privāts priekšskatījums</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt">Klienta projekts</span>
+          <h3>Virtuves mēbeles</h3>
+          <p>Virtuves mēbeļu ražotājs — virtuve piepildās ar standarta skapjiem atbilstoši sienas garumam; pircējs maina skapju veidus un frontes un pievieno salu savos izmēros.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="/pildid/toos/toos-aed.webp">
+            <img src="/pildid/toos/toos-aed.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Konfigurators izstrādē: žogi un vārti">
+          </picture>
+          <video class="tk-video" data-src="/video/toos/toos-aed-960.mp4" data-src-telefon="video/toos/toos-aed-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
+          <span class="tk-olek"><i></i><span>Privāts priekšskatījums</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt">Klienta projekts</span>
+          <h3>Žogi un vārti</h3>
+          <p>Žogu būvētājs — pircējs uzzīmē žogu kartē vai tukšā lapā, izvēlas žogu, vārtus un piedziņas un vēro, kā vārti 3D atveras ar īstu piedziņas ātrumu. Cena parādās uzreiz, un pieprasījums nonāk tieši pie montētāja.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="/pildid/toos/toos-kalkulaator.webp">
+            <img src="/pildid/toos/toos-kalkulaator.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Kalkulators izstrādē: būvmateriāli">
+          </picture>
+          <video class="tk-video" data-src="/video/toos/toos-kalkulaator-960.mp4" data-src-telefon="video/toos/toos-kalkulaator-640.mp4" muted="" loop="" playsinline="" autoplay="" preload="none"></video>
+          <span class="tk-olek"><i></i><span>Privāts priekšskatījums</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt">Pašu izstrāde</span>
+          <h3>Būvmateriālu kalkulators</h3>
+          <p>18 kalkulatori no jumta līdz ūdens caurulēm — visai mājai vai vienai konstrukcijai. Pircējs izvēlas slāņus un materiālus, redz griezumu un izvērstus slāņus 3D un uzreiz saņem daudzumus, iepakojumus un cenas. Būvmateriālu veikala vai ražotāja mājaslapai.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var vaiksem = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (vaiksem || !('IntersectionObserver' in window)) return;
+  var telefon = window.matchMedia('(max-width: 640px)').matches;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting) {
+        if (!v.getAttribute('src')) {
+          v.src = (telefon && v.dataset.srcTelefon) || v.dataset.src;
+          v.addEventListener('playing', function(){ v.classList.add('mangib'); }, {once:true});
+        }
+        v.play().catch(function(){});
+      } else v.pause();
+    });
+  }, {threshold:.35});
+  document.querySelectorAll('video.tk-video').forEach(function(v){ io.observe(v); });
+})();
+</script>
+
 <section class="content hele" id="kkk" style="padding-top:0">
   <div class="container kkk-grid">
     <div>
       <div class="eyebrow">BUJ</div>
       <h2 class="section-title">Biežāk uzdotie jautājumi</h2>
-      <p class="section-intro" style="margin-top:14px">Neatradāt atbildi? Rakstiet vai zvaniet — atbildam vienas darba dienas laikā.</p>
+      <p class="section-intro" style="margin-top:14px">Neatradāt atbildi? Rakstiet vai zvaniet — atbildam 24 stundu laikā.</p>
     </div>
     <div class="kkk">
       <details>
@@ -2212,11 +2150,11 @@ footer{background:#1d1c1a;color:#ecebe6}
 
 <section class="content" id="kontakt" style="padding-top:0">
   <div class="container">
-    <p class="vorm-tanan" id="vorm-tanan" hidden="">Paldies — jūsu ziņa ir saņemta. Atbildēsim vienas darba dienas laikā.</p>
+    <p class="vorm-tanan" id="vorm-tanan" hidden="">Paldies — jūsu ziņa ir saņemta. Atbildēsim 24 stundu laikā.</p>
     <div class="cta">
       <div class="cta-tekst">
         <h2>Atsūtiet vienu saiti.<br>Pārējo pajautāsim mēs.</h2>
-        <p>Jums nav vajadzīgs ne modelis, ne rasējums, ne tehniskais uzdevums. Pietiek ar saiti uz produkta lapu un vienu teikumu par jūsu ieceri. Atbildam nākamajā darba dienā un pastāstām, par ko šis produkts varētu kļūt:</p>
+        <p>Jums nav vajadzīgs ne modelis, ne rasējums, ne tehniskais uzdevums. Pietiek ar saiti uz produkta lapu un vienu teikumu par jūsu ieceri. Atbildam 24 stundu laikā un pastāstām, par ko šis produkts varētu kļūt:</p>
         <ul>
           <li>konfigurators ar visām tā variācijām</li>
           <li>AR modelis produkta lapai, lai pircējs to redzētu savā pagalmā</li>
@@ -2224,27 +2162,29 @@ footer{background:#1d1c1a;color:#ecebe6}
         </ul>
         <ol class="mis-edasi">
           <li><b>Šodien</b><span>Jūs atsūtāt saiti uz produkta lapu.</span></li>
-          <li><b>1 darba diena</b><span>Mēs atbildam: ko mēs veidotu šim produktam, cik ilgi tas aizņemtu un ko tas aptuveni ietvertu.</span></li>
-          <li><b>Jūs izlemjat</b><span>Bez zvana, bez saistībām. „Jums tas neatmaksāsies” arī ir atbilde.</span></li>
+          <li><b>24 stundu laikā</b><span>Mēs atbildam: ko mēs veidotu šim produktam, cik ilgi tas aizņemtu un ko tas aptuveni ietvertu.</span></li>
+          <li><b>Jūs izlemjat</b><span>Zvans tikai tad, ja paši to vēlaties, un bez saistībām. „Jums tas neatmaksāsies” arī ir atbilde.</span></li>
         </ol>
         <div class="cta-kontakt">
+          <a class="btn kone-nupp" href="#kone">Pieteikt 20 min zvanu →</a>
           <a class="btn" href="mailto:visionframe3d@gmail.com">visionframe3d@gmail.com →</a>
           <a class="btn" href="tel:+37258257130">+372 5825 7130 →</a>
         </div>
       </div>
 
-      <form class="kontaktvorm" action="https://formsubmit.co/visionframe3d@gmail.com" method="POST">
+      <form class="kontaktvorm" id="kone" action="https://formsubmit.co/visionframe3d@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New enquiry from joonisekoda.ee (LV)">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://joonisekoda.ee/lv/?saadetud=1#kontakt">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+        <p class="lubadus vorm-lubadus"><i></i><span>Atbildam 24 stundu laikā</span></p>
         <label><span>Vārds</span><input type="text" name="Name" required="" autocomplete="name"></label>
         <label><span>Uzņēmums (nav obligāti)</span><input type="text" name="Company" autocomplete="organization"></label>
         <label><span>E-pasts vai tālrunis</span><input type="text" name="Contact" required="" autocomplete="email"></label>
         <label><span>Saite uz produktu vai daži vārdi par to</span><textarea name="Message" required=""></textarea></label>
         <button type="submit">Sūtīt →</button>
-        <p class="vorm-vihje">Atbildam vienas darba dienas laikā. Garš apraksts nav vajadzīgs — mēs pajautāsim. Ja jums jau ir 3D modelis, norādiet formātu (SketchUp, FBX, STEP vai cits).</p>
+        <p class="vorm-vihje">Garš apraksts nav vajadzīgs — mēs pajautāsim. Ja jums jau ir 3D modelis, norādiet formātu (SketchUp, FBX, STEP vai cits).</p>
       </form>
     </div>
   </div>
@@ -2280,12 +2220,11 @@ footer{background:#1d1c1a;color:#ecebe6}
         <h4>Kontakti</h4>
         <a href="mailto:visionframe3d@gmail.com">visionframe3d@gmail.com</a>
         <a href="tel:+37258257130">+372 5825 7130</a>
-        <p>VISIONFRAME3D OÜ · Elva</p>
-        <p>Igaunija</p>
+        <p class="footer-firma"><b>VISIONFRAME3D OÜ</b><span>Reģistrācijas kods 17123646</span><span>Vapramäe tn 10a/1, 61508 Elva</span><span>Igaunija</span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 VISIONFRAME3D OÜ</span>
+      <span>© 2026 VISIONFRAME3D OÜ · Joonisekoda ir VISIONFRAME3D OÜ zīmols</span>
       <span>Konfiguratori · AR · apmācības spēles · tehniskā dokumentācija</span>
     </div>
   </div>
@@ -2360,69 +2299,30 @@ document.querySelectorAll('video.hoverplay').forEach(v => {
   card.addEventListener('mouseleave', () => v.pause());
 });
 
-/* Showreel: klipid vahetuvad ise; ekraanilt väljas pausil; nupuga hüpe */
+/* "Book a 20-min call": no booking service; prefill the contact form with the request and focus it.
+   Also works as a link: joonisekoda.ee/#kone (and /et/#kone, /fi/#kone, /lv/#kone). */
 (function(){
-  var reel = document.getElementById('reel');
-  if (!reel) return;
-  var vid = [].slice.call(reel.querySelectorAll('.reel-video video'));
-  var tek = [].slice.call(reel.querySelectorAll('.reel-tekst'));
-  var nup = [].slice.call(reel.querySelectorAll('.reel-nupp'));
-  var pyhk = reel.querySelector('.reel-pyhk');
-  var lug = reel.querySelector('.reel-lugeja b');
-  var vaiksem = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var i = -1, nahtav = false, alustatud = false, vahetus = 0;
-  var algus = function(v){ return parseFloat(v.dataset.algus) || 0; };
-  var kestus = function(v){ return parseFloat(v.dataset.kestus) || 6; };
-  function laadi(v){ if (v.preload !== 'auto') { v.preload = 'auto'; v.load(); } }
-  function kerimine(v){ try { v.currentTime = algus(v); } catch(e){} }
-  vid.forEach(function(v){ v.addEventListener('loadedmetadata', function(){ if (v.currentTime < algus(v)) kerimine(v); }); });
-
-  function mine(n){
-    var eel = i;
-    i = (n + vid.length) % vid.length;
-    vahetus = performance.now();
-    var v = vid[i];
-    laadi(v); laadi(vid[(i + 1) % vid.length]);   // järgmine ette
-    kerimine(v);
-    vid.forEach(function(x, k){
-      x.classList.remove('sisse', 'valja');
-      if (k === eel && eel !== i) { x.classList.remove('akt'); x.classList.add('valja'); }
-      else if (k !== i) { x.classList.remove('akt'); x.pause(); }
-    });
-    void v.offsetWidth;
-    v.classList.add('akt');
-    if (eel >= 0 && !vaiksem) {
-      v.classList.add('sisse');
-      pyhk.classList.remove('kaib'); void pyhk.offsetWidth; pyhk.classList.add('kaib');
-      setTimeout(function(){ if (vid[eel] && eel !== i) { vid[eel].classList.remove('valja'); vid[eel].pause(); } }, 1000);
-    }
-    tek.forEach(function(t, k){
-      t.classList.toggle('valja', k === eel && eel !== i);
-      t.classList.toggle('akt', k === i);
-    });
-    nup.forEach(function(b, k){ b.firstChild.style.setProperty('--p', k < i ? 1 : 0); });
-    lug.textContent = String(i + 1).padStart(2, '0');
-    if (nahtav && !vaiksem) v.play().catch(function(){});
+  var v = document.getElementById('kone');
+  if (!v) return;
+  var soov = JK.t('Hi, I would like to book a 20-minute call. Times that suit me: ',
+    'Tere! Sooviksin broneerida 20-minutilise kõne. Mulle sobivad ajad: ',
+    'Hei! Haluaisimme varata 20 minuutin puhelun. Meille sopivat ajat: ',
+    'Labdien! Vēlamies pieteikt 20 minūšu zvanu. Mums piemēroti laiki: ');
+  function kone(kerimine){
+    var t = v.querySelector('textarea[name="Message"]');
+    if (t && t.value.indexOf(soov.trim()) === -1) t.value = t.value ? soov + '\n' + t.value : soov;
+    var sub = v.querySelector('input[name="_subject"]');
+    if (sub && !/20 min/.test(sub.value)) sub.value += ' · 20 min call';
+    if (kerimine) v.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    var tyhi = [].filter.call(v.querySelectorAll('input[required]'), function(i){ return !i.value; })[0];
+    var f = tyhi || t;
+    if (f) setTimeout(function(){ try { f.focus({ preventScroll: true }); } catch(e){ f.focus(); } }, kerimine ? 450 : 0);
   }
-
-  function samm(){
-    requestAnimationFrame(samm);
-    var v = vid[i]; if (!v || !nahtav) return;
-    var p = Math.min(1, Math.max(0, (v.currentTime - algus(v)) / kestus(v)));
-    nup[i].firstChild.style.setProperty('--p', p);
-    // .8 s kaitse: kerimise ajal võib currentTime veel vana väärtust näidata
-    if (!vaiksem && p >= 1 && performance.now() - vahetus > 800) mine(i + 1);
-  }
-
-  nup.forEach(function(b, k){ b.addEventListener('click', function(){ mine(k); }); });
-  vid.forEach(function(v){ v.addEventListener('ended', function(){ if (vid[i] === v && !vaiksem) mine(i + 1); }); });
-
-  new IntersectionObserver(function(es){
-    nahtav = es[0].isIntersecting;
-    if (nahtav && !alustatud) { alustatud = true; mine(0); requestAnimationFrame(samm); }
-    var v = vid[i]; if (!v) return;
-    if (nahtav && !vaiksem) v.play().catch(function(){}); else v.pause();
-  }, { threshold: .3 }).observe(reel);
+  document.querySelectorAll('a.kone-nupp').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); kone(true); });
+  });
+  if (location.hash === '#kone') kone(false);
+  window.addEventListener('hashchange', function(){ if (location.hash === '#kone') kone(false); });
 })();
 
 /* Vormi rämpsukaitse ilma captchata: alla 4 s või ilma suhtluseta ei saadeta */
