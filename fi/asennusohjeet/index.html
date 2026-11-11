@@ -741,6 +741,13 @@ nav a:hover{color:var(--text)}
 .kontaktvorm input,.kontaktvorm textarea{background:#f6f3ee;border-color:#ddd6cb;color:var(--cta-text);border-radius:8px}
 .kontaktvorm input:focus,.kontaktvorm textarea:focus{outline-color:var(--acc);background:#fff}
 .vorm-vihje{color:var(--cta-muted)}
+/* 24 h promise + call button (11.11) */
+.lubadus{display:flex;align-items:center;gap:8px;flex-basis:100%;margin:2px 0 0;font-size:13px;font-weight:600;color:var(--acc)}
+.lubadus i{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px var(--mark-bg);flex:0 0 auto}
+.vorm-lubadus{margin:0 0 2px}
+.kontaktvorm{scroll-margin-top:96px}
+.footer-firma span,.footer-firma b{display:block}
+.footer-firma b{color:#fff;font-weight:600}
 .trust-item strong{font-weight:600}
 
 header.scrolled{background:rgba(246,243,238,.92);border-bottom-color:var(--line)}
@@ -934,9 +941,10 @@ footer{background:#1d1c1a;color:#ecebe6}
     <div class="cta">
       <div class="cta-tekst">
         <h2>Lähettäkää yksi linkki.<br>Kysymme loput itse.</h2>
-        <p>Ette tarvitse mallia, piirustusta tai toimeksiantoa. Linkki tuotesivulle ja yksi lause siitä, mitä haluaisitte, riittää. Vastaamme seuraavana arkipäivänä.</p>
+        <p>Ette tarvitse mallia, piirustusta tai toimeksiantoa. Linkki tuotesivulle ja yksi lause siitä, mitä haluaisitte, riittää. Vastaamme 24 tunnin kuluessa.</p>
         <div class="cta-kontakt">
           <a class="btn" href="/fi/#kontakt">Kertokaa tuotteestanne →</a>
+          <a class="btn" href="/fi/#kone">Varaa 20 minuutin puhelu →</a>
           <a class="btn" href="mailto:visionframe3d@gmail.com">visionframe3d@gmail.com →</a>
           <a class="btn" href="tel:+37258257130">+372 5825 7130 →</a>
         </div>
@@ -963,11 +971,10 @@ footer{background:#1d1c1a;color:#ecebe6}
         <h4>Yhteystiedot</h4>
         <a href="mailto:visionframe3d@gmail.com">visionframe3d@gmail.com</a>
         <a href="tel:+37258257130">+372 5825 7130</a>
-        <p>VISIONFRAME3D OÜ · Elva</p>
-        <p>Viro</p>
+        <p class="footer-firma"><b>VISIONFRAME3D OÜ</b><span>Rekisterinumero 17123646</span><span>Mesilinnu tn 1, Kalme küla, Elva vald, Tartumaa</span><span>Viro</span></p>
       </div>
     </div>
-    <div class="footer-bottom"><span>© 2026 VISIONFRAME3D OÜ</span><span class="jalus-keeled"><a href="/installation-manuals/" hreflang="en" lang="en">In English</a> · <a href="/et/paigaldusjuhendid/" hreflang="et" lang="et">Eesti keeles</a> · <a href="/lv/montazas-instrukcijas/" hreflang="lv" lang="lv">Latviski</a></span></div>
+    <div class="footer-bottom"><span>© 2026 VISIONFRAME3D OÜ · Joonisekoda on VISIONFRAME3D OÜ:n tuotemerkki</span><span class="jalus-keeled"><a href="/installation-manuals/" hreflang="en" lang="en">In English</a> · <a href="/et/paigaldusjuhendid/" hreflang="et" lang="et">Eesti keeles</a> · <a href="/lv/montazas-instrukcijas/" hreflang="lv" lang="lv">Latviski</a></span></div>
   </div>
 </footer>
 <script>

@@ -44,7 +44,7 @@
   "telephone": "+372 5825 7130",
   "email": "visionframe3d@gmail.com",
   "identifier": { "@type": "PropertyValue", "propertyID": "Estonian business registry code", "value": "17123646" },
-  "address": { "@type": "PostalAddress", "addressLocality": "Elva", "addressRegion": "Tartumaa", "addressCountry": "EE" },
+  "address": { "@type": "PostalAddress", "streetAddress": "Mesilinnu tn 1", "addressLocality": "Kalme küla", "addressRegion": "Elva vald, Tartumaa", "addressCountry": "EE" },
   "areaServed": [ { "@type": "Place", "name": "Europe" }, { "@type": "Place", "name": "Baltic states" }, { "@type": "Place", "name": "Nordic countries" }, { "@type": "Country", "name": "United Kingdom" } ],
   "description": "Browser-based 3D product configurators, web AR (augmented reality without an app) and installer training games for manufacturers of saunas, garden rooms, modular cabins, sheds, carports and other timber products. Production drawings, cutting lists and installation manuals are derived from the same 3D model.",
   "sameAs": ["https://www.youtube.com/channel/UCbLxi3A3jerEBttyHBfnfpQ", "https://github.com/alari-Holaroof/joonisekoda"],
@@ -790,6 +790,13 @@ nav a:hover{color:var(--text)}
 .kontaktvorm input,.kontaktvorm textarea{background:#f6f3ee;border-color:#ddd6cb;color:var(--cta-text);border-radius:8px}
 .kontaktvorm input:focus,.kontaktvorm textarea:focus{outline-color:var(--acc);background:#fff}
 .vorm-vihje{color:var(--cta-muted)}
+/* 24 h promise + call button (11.11) */
+.lubadus{display:flex;align-items:center;gap:8px;flex-basis:100%;margin:2px 0 0;font-size:13px;font-weight:600;color:var(--acc)}
+.lubadus i{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px var(--mark-bg);flex:0 0 auto}
+.vorm-lubadus{margin:0 0 2px}
+.kontaktvorm{scroll-margin-top:96px}
+.footer-firma span,.footer-firma b{display:block}
+.footer-firma b{color:#fff;font-weight:600}
 .trust-item strong{font-weight:600}
 
 header.scrolled{background:rgba(246,243,238,.92);border-bottom-color:var(--line)}
@@ -1028,6 +1035,8 @@ footer{background:#1d1c1a;color:#ecebe6}
       <div class="actions">
         <a class="btn btn-primary" href="#kontakt" data-et="Saada üks tootelink →">Send us one product link →</a>
         <a class="btn btn-ghost" href="#demod" data-et="Proovi näidist ↓">Try a live demo ↓</a>
+        <a class="btn btn-ghost kone-nupp" href="#kone" data-et="Broneeri 20 min kõne">Book a 20-min call</a>
+        <p class="lubadus"><i></i><span data-et="Vastame 24 h jooksul">We reply within 24 hours</span></p>
       </div>
       <div class="hero-demod">
         <span data-et="Ava kohe:">Open now:</span>
@@ -1063,9 +1072,9 @@ footer{background:#1d1c1a;color:#ecebe6}
 <div class="trust">
   <div class="container trust-inner">
     <div class="trust-item"><strong data-et="5 näidist">5 live demos</strong><span data-et="ava kohe, arvutis või telefonis">open them now, desktop or phone</span></div>
-    <div class="trust-item"><strong data-et="6 projekti töös">6 builds in progress</strong><span data-et="tootjatele — riiulid, palkmajad, köögid…">for manufacturers — shelving, log cabins, kitchens…</span></div>
+    <div class="trust-item"><strong data-et="6 kliendiprojekti">6 client projects</strong><span data-et="tootjatele — riiulid, palkmajad, köögid…">for manufacturers — shelving, log cabins, kitchens…</span></div>
     <div class="trust-item"><strong>1:1</strong><span data-et="AR telefonis, ilma rakenduseta">AR on the phone, no app</span></div>
-    <div class="trust-item"><strong data-et="1 tööpäev">1 business day</strong><span data-et="vastame päringule">to reply to your enquiry</span></div>
+    <div class="trust-item"><strong>24 h</strong><span data-et="vastame päringule">to reply to your enquiry</span></div>
   </div>
 </div>
 
@@ -1658,222 +1667,6 @@ footer{background:#1d1c1a;color:#ecebe6}
 })();
 </script>
 
-<section class="content" id="toos" style="padding-top:0">
-  <div class="container">
-    <div class="section-top">
-      <div>
-        <div class="eyebrow" data-et="Töös">In progress</div>
-        <h2 class="section-title" data-et="Konfiguraatorid ja kalkulaatorid,<br>mis on praegu töös.">Configurators and calculators<br>in the making.</h2>
-      </div>
-      <p class="section-intro" data-et="Kliendiprojektid, mida praegu tootjatele ehitame, ja meie oma kalkulaator. Linki veel ei ole, kuni klient on töö üle vaadanud, aga video näitab päris asja.">
-        Client projects we are building for manufacturers right now, plus our own calculator. No link until the
-        client has signed off, but the video shows the real thing.
-      </p>
-    </div>
-    <div class="tk-grid">
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="pildid/toos/toos-riiul.webp">
-            <img src="pildid/toos/toos-riiul.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: shelving systems" data-et-alt="Töös olev konfiguraator: riiulisüsteemid">
-          </picture>
-          <video class="tk-video" data-src="video/toos/toos-riiul-960.mp4" data-src-telefon="video/toos/toos-riiul-640.mp4" muted loop playsinline autoplay preload="none"></video>
-          <span class="tk-olek"><i></i><span data-et="Töös">In progress</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
-          <h3 data-et="Riiulisüsteemid">Shelving systems</h3>
-          <p data-et="Riiulisüsteemi tootja — ostja valib mõõdu, puidutooni ja uksed ning riiul ehitub 3D-s kohe ümber. Sama riiulit saab AR-is oma toas vaadata.">Shelving system manufacturer — the buyer picks the size, wood finish and doors, and the shelf rebuilds itself in 3D instantly. The same shelf can be viewed in their own room in AR.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="pildid/toos/toos-palkmaja.webp">
-            <img src="pildid/toos/toos-palkmaja.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: log garden houses" data-et-alt="Töös olev konfiguraator: palk-aiamajad">
-          </picture>
-          <video class="tk-video" data-src="video/toos/toos-palkmaja-960.mp4" data-src-telefon="video/toos/toos-palkmaja-640.mp4" muted loop playsinline autoplay preload="none"></video>
-          <span class="tk-olek"><i></i><span data-et="Töös">In progress</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
-          <h3 data-et="Palk-aiamajad">Log garden houses</h3>
-          <p data-et="Palkmajade tootja — valmis aiamaja mudel, kus aknad ja uksed liiguvad mööda seina ning palgi toon, raamid ja katusekate vahetuvad otse 3D-s.">Log house manufacturer — a ready-made garden house model where windows and doors slide along the wall and the log colour, frames and roofing change live in 3D.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="pildid/toos/toos-palkmaja-plaan.webp">
-            <img src="pildid/toos/toos-palkmaja-plaan.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: log garden houses" data-et-alt="Töös olev konfiguraator: palk-aiamajad">
-          </picture>
-          <video class="tk-video" data-src="video/toos/toos-palkmaja-plaan-960.mp4" data-src-telefon="video/toos/toos-palkmaja-plaan-640.mp4" muted loop playsinline autoplay preload="none"></video>
-          <span class="tk-olek"><i></i><span data-et="Töös">In progress</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
-          <h3 data-et="Palk-aiamajad">Log garden houses</h3>
-          <p data-et="Palkmajade tootja — ostja joonistab ise oma maja plaani (ristkülik, L- või T-kuju), seinad, terrass ja katus tekivad kohe 3D-s.">Log house manufacturer — the buyer draws their own floor plan (rectangle, L or T shape) and the walls, terrace and roof appear in 3D straight away.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="pildid/toos/toos-garderoob.webp">
-            <img src="pildid/toos/toos-garderoob.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: made-to-measure wardrobes" data-et-alt="Töös olev konfiguraator: garderoobid mõõdu järgi">
-          </picture>
-          <video class="tk-video" data-src="video/toos/toos-garderoob-960.mp4" data-src-telefon="video/toos/toos-garderoob-640.mp4" muted loop playsinline autoplay preload="none"></video>
-          <span class="tk-olek"><i></i><span data-et="Töös">In progress</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
-          <h3 data-et="Garderoobid mõõdu järgi">Made-to-measure wardrobes</h3>
-          <p data-et="Garderoobide valmistaja — ostja alustab oma tühjast nišist: sisestab mõõdud, karkass kasvab nišši, sisse tulevad riided ja riiulid, siis uksed ja õhtune LED-valgus.">Wardrobe maker — the buyer starts from their own empty niche: enters the dimensions, the frame grows into place, clothes and shelves fill it, then come the doors and evening LED light.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="pildid/toos/toos-kook.webp">
-            <img src="pildid/toos/toos-kook.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: kitchen furniture" data-et-alt="Töös olev konfiguraator: köögimööbel">
-          </picture>
-          <video class="tk-video" data-src="video/toos/toos-kook-960.mp4" data-src-telefon="video/toos/toos-kook-640.mp4" muted loop playsinline autoplay preload="none"></video>
-          <span class="tk-olek"><i></i><span data-et="Töös">In progress</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
-          <h3 data-et="Köögimööbel">Kitchen furniture</h3>
-          <p data-et="Köögimööbli tootja — seina pikkuse järgi täitub köök standardkappidega; ostja vahetab kapitüüpe ja fassaadi ning lisab oma mõõtudega saare.">Kitchen furniture manufacturer — the kitchen fills with standard cabinets to fit the wall length; the buyer swaps cabinet types and fronts and adds an island in their own dimensions.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="pildid/toos/toos-aed.webp">
-            <img src="pildid/toos/toos-aed.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: fences and gates" data-et-alt="Töös olev konfiguraator: piirdeaiad ja väravad">
-          </picture>
-          <video class="tk-video" data-src="video/toos/toos-aed-960.mp4" data-src-telefon="video/toos/toos-aed-640.mp4" muted loop playsinline autoplay preload="none"></video>
-          <span class="tk-olek"><i></i><span data-et="Töös">In progress</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
-          <h3 data-et="Piirdeaiad ja väravad">Fences and gates</h3>
-          <p data-et="Aiaehitaja — ostja joonistab aia kaardile või valgele lehele, valib aia, väravad ja mootorid ning näeb 3D-s, kuidas väravad päris mootorikiirusega avanevad. Hind tuleb kohe, päring läheb otse paigaldajale.">Fence builder — the buyer draws the fence on a map or a blank sheet, picks the fence, gates and motors, and watches the gates open in 3D at real motor speed. The price comes instantly and the enquiry goes straight to the installer.</p>
-        </div>
-      </article>
-      <article class="tk">
-        <div class="tk-meedia">
-          <picture>
-            <source type="image/webp" srcset="pildid/toos/toos-kalkulaator.webp">
-            <img src="pildid/toos/toos-kalkulaator.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Calculator in progress: building materials" data-et-alt="Töös olev kalkulaator: ehitusmaterjalid">
-          </picture>
-          <video class="tk-video" data-src="video/toos/toos-kalkulaator-960.mp4" data-src-telefon="video/toos/toos-kalkulaator-640.mp4" muted loop playsinline autoplay preload="none"></video>
-          <span class="tk-olek"><i></i><span data-et="Töös">In progress</span></span>
-        </div>
-        <div class="tk-sisu">
-          <span class="tk-silt" data-et="Oma arendus">Own development</span>
-          <h3 data-et="Ehitusmaterjalide kalkulaator">Building materials calculator</h3>
-          <p data-et="18 kalkulaatorit katusest veetorudeni — terve maja või üks konstruktsioon. Ostja valib kihid ja materjalid, 3D-s näeb lõiget ja lahtivõetud kihte ning kogused, pakid ja hinnad tulevad kohe. Ehitusmaterjalide poe või tootja kodulehele.">18 calculators from the roof to the water pipes — the whole house or a single construction. The buyer picks the layers and materials, sees the cut-away and exploded layers in 3D, and gets quantities, packs and prices instantly. For a building-materials store or manufacturer website.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<script>
-(function(){
-  var vaiksem = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (vaiksem || !('IntersectionObserver' in window)) return;
-  var telefon = window.matchMedia('(max-width: 640px)').matches;
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      var v = e.target;
-      if (e.isIntersecting) {
-        if (!v.getAttribute('src')) {
-          v.src = (telefon && v.dataset.srcTelefon) || v.dataset.src;
-          v.addEventListener('playing', function(){ v.classList.add('mangib'); }, {once:true});
-        }
-        v.play().catch(function(){});
-      } else v.pause();
-    });
-  }, {threshold:.35});
-  document.querySelectorAll('video.tk-video').forEach(function(v){ io.observe(v); });
-})();
-</script>
-
-<!-- showreel -->
-<section class="reel-sekt" id="showreel" aria-label="Showreel">
-  <div class="container">
-    <div class="reel" id="reel">
-      <div class="reel-video">
-        <video class="ui-klipp" data-algus="0" data-kestus="8.2" src="video/konfiguraator.mp4" poster="pildid/konf-arvuti-960.webp" muted playsinline preload="none"></video>
-        <video class="ui-klipp" data-algus="0" data-kestus="8" src="video/diivan.mp4" poster="pildid/diivan-arvuti-960.webp" muted playsinline preload="none"></video>
-        <video data-algus="3" data-kestus="6" src="video/camilla-koost.mp4" poster="pildid/anim-koost.jpg" muted playsinline preload="none"></video>
-        <video data-algus="1" data-kestus="6.5" src="video/solar-katus.mp4" poster="pildid/anim-str.jpg" muted playsinline preload="none"></video>
-        <video data-algus="2" data-kestus="6" src="video/treening.mp4" poster="pildid/mang-hud.jpg" muted playsinline preload="none"></video>
-        <video class="ui-klipp" data-algus="0" data-kestus="8.6" src="video/haagis.mp4" poster="pildid/haagis-arvuti-960.webp" muted playsinline preload="none"></video>
-        <video class="ui-klipp" data-algus="0" data-kestus="8.8" src="video/aiamaja.mp4" poster="pildid/aiamaja-arvuti-960.webp" muted playsinline preload="none"></video>
-        <video class="ui-klipp" data-algus="0" data-kestus="8.8" src="video/kaater.mp4" poster="pildid/kaater-arvuti-960.webp" muted playsinline preload="none"></video>
-        <i class="reel-pyhk" aria-hidden="true"></i>
-      </div>
-      <div class="reel-kate" aria-hidden="true"></div>
-      <div class="reel-tekstid">
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>01</b><span data-et="3D-konfiguraator">3D configurator</span></span>
-          <h3><span class="rea"><span data-et="Ostja paneb">The buyer builds</span></span><span class="rea"><span data-et="selle &lt;em&gt;ise kokku.&lt;/em&gt;">it <em>themselves.</em></span></span></h3>
-          <p data-et="Mudelid, seinad, lavad — päris geomeetria, otse brauseris.">Models, walls, benches — real geometry, live in the browser.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>02</b><span data-et="Diivanikonfiguraator">Sofa configurator</span></span>
-          <h3><span class="rea"><span data-et="Moodul, kangas,">Module, fabric,</span></span><span class="rea"><span data-et="&lt;em&gt;hind — kohe.&lt;/em&gt;"><em>price — live.</em></span></span></h3>
-          <p data-et="Moodulid liuguvad paika, kangas ja hind uuenevad kohe.">Modules slide into place, fabric and price update live.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>03</b><span data-et="Koosteanimatsioon">Assembly animation</span></span>
-          <h3><span class="rea"><span data-et="Detail detaili">Part by part,</span></span><span class="rea"><span data-et="haaval, &lt;em&gt;õiges järjekorras.&lt;/em&gt;"><em>in the right order.</em></span></span></h3>
-          <p data-et="Sama järjekord nagu päris paigalduses.">The same order as the real installation.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>04</b><span data-et="Paigaldusanimatsioon">Installation animation</span></span>
-          <h3><span class="rea"><span data-et="Iga kiht,">Every layer,</span></span><span class="rea"><span data-et="&lt;em&gt;iga roov.&lt;/em&gt;"><em>every batten.</em></span></span></h3>
-          <p data-et="Katusepakett aluskattest päikesekivideni.">A roof package from underlay to solar tiles.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>05</b><span data-et="Treeningmäng">Training game</span></span>
-          <h3><span class="rea"><span data-et="Vead ekraanil,">Mistakes on screen,</span></span><span class="rea"><span data-et="&lt;em&gt;mitte platsil.&lt;/em&gt;"><em>not on site.</em></span></span></h3>
-          <p data-et="95 sammu, õppevideod ja lõputest — brauseris.">95 steps, training videos and a final test — in the browser.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>06</b><span data-et="Haagisekonfiguraator">Trailer configurator</span></span>
-          <h3><span class="rea"><span data-et="Kate, toon,">Cover, colour,</span></span><span class="rea"><span data-et="&lt;em&gt;teine telg.&lt;/em&gt;"><em>a second axle.</em></span></span></h3>
-          <p data-et="Tent lendab paika, toon vahetub, tandem veereb sisse — hind käib kaasas.">The tarp flies into place, the colour changes, the tandem rolls in — the price keeps up.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>07</b><span data-et="Aiamaja konfiguraator">Garden house configurator</span></span>
-          <h3><span class="rea"><span data-et="Katus, vooder,">Roof, cladding,</span></span><span class="rea"><span data-et="&lt;em&gt;terrass.&lt;/em&gt;"><em>a terrace.</em></span></span></h3>
-          <p data-et="Katus vahetub lennates, vooder läheb mustaks, terrass ja varikatus tulevad paika — hind käib kaasas.">The roof swaps in mid-air, the cladding turns black, a terrace and canopy fly in — the price keeps up.</p>
-        </div>
-        <div class="reel-tekst">
-          <span class="reel-silt"><b>08</b><span data-et="Kaatri konfiguraator">Boat configurator</span></span>
-          <h3><span class="rea"><span data-et="Kere, katus,">Hull, top,</span></span><span class="rea"><span data-et="&lt;em&gt;vesi all.&lt;/em&gt;"><em>water below.</em></span></span></h3>
-          <p data-et="Kere muutub jääsiniseks, T-top ja hardtop lendavad paika, kaamera tiirutab ümber kaatri — hind käib kaasas.">The hull turns ice blue, a T-top and a hardtop fly in, the camera circles the boat — the price keeps up.</p>
-        </div>
-      </div>
-      <div class="reel-riba">
-        <button type="button" class="reel-nupp" aria-label="Configurator" data-et-aria-label="Konfiguraator"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Sofa configurator" data-et-aria-label="Diivanikonfiguraator"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Assembly animation" data-et-aria-label="Koosteanimatsioon"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Installation animation" data-et-aria-label="Paigaldusanimatsioon"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Training game" data-et-aria-label="Treeningmäng"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Trailer configurator" data-et-aria-label="Haagisekonfiguraator"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Garden house configurator" data-et-aria-label="Aiamaja konfiguraator"><i></i></button>
-        <button type="button" class="reel-nupp" aria-label="Boat configurator" data-et-aria-label="Kaatri konfiguraator"><i></i></button>
-      </div>
-      <span class="reel-lugeja" aria-hidden="true"><b>01</b> / 08</span>
-    </div>
-  </div>
-</section>
-
 <section class="content" id="animatsioon" style="padding-top:0">
   <div class="container">
     <div class="section-top">
@@ -2142,12 +1935,155 @@ footer{background:#1d1c1a;color:#ecebe6}
   </div>
 </section>
 
+<section class="content hele" id="toos" style="padding-top:0">
+  <div class="container">
+    <div class="section-top">
+      <div>
+        <div class="eyebrow" data-et="Hiljutised tööd">Recent projects</div>
+        <h2 class="section-title" data-et="Konfiguraatorid ja kalkulaatorid,<br>mida oleme viimasel ajal ehitanud.">Configurators and calculators<br>we've been building lately.</h2>
+      </div>
+      <p class="section-intro" data-et="Hiljutised kliendiprojektid tootjatele ja meie oma kalkulaator. Lingi jagame siis, kui klient on töö üle vaadanud — video näitab päris asja.">
+        Recent client projects for manufacturers, plus our own calculator. Links are shared once the client has
+        signed off — the videos show the real thing.
+      </p>
+    </div>
+    <div class="tk-grid">
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="pildid/toos/toos-riiul.webp">
+            <img src="pildid/toos/toos-riiul.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: shelving systems" data-et-alt="Töös olev konfiguraator: riiulisüsteemid">
+          </picture>
+          <video class="tk-video" data-src="video/toos/toos-riiul-960.mp4" data-src-telefon="video/toos/toos-riiul-640.mp4" muted loop playsinline autoplay preload="none"></video>
+          <span class="tk-olek"><i></i><span data-et="Privaatne eelvaade">Private preview</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
+          <h3 data-et="Riiulisüsteemid">Shelving systems</h3>
+          <p data-et="Riiulisüsteemi tootja — ostja valib mõõdu, puidutooni ja uksed ning riiul ehitub 3D-s kohe ümber. Sama riiulit saab AR-is oma toas vaadata.">Shelving system manufacturer — the buyer picks the size, wood finish and doors, and the shelf rebuilds itself in 3D instantly. The same shelf can be viewed in their own room in AR.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="pildid/toos/toos-palkmaja.webp">
+            <img src="pildid/toos/toos-palkmaja.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: log garden houses" data-et-alt="Töös olev konfiguraator: palk-aiamajad">
+          </picture>
+          <video class="tk-video" data-src="video/toos/toos-palkmaja-960.mp4" data-src-telefon="video/toos/toos-palkmaja-640.mp4" muted loop playsinline autoplay preload="none"></video>
+          <span class="tk-olek"><i></i><span data-et="Privaatne eelvaade">Private preview</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
+          <h3 data-et="Palk-aiamajad">Log garden houses</h3>
+          <p data-et="Palkmajade tootja — valmis aiamaja mudel, kus aknad ja uksed liiguvad mööda seina ning palgi toon, raamid ja katusekate vahetuvad otse 3D-s.">Log house manufacturer — a ready-made garden house model where windows and doors slide along the wall and the log colour, frames and roofing change live in 3D.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="pildid/toos/toos-palkmaja-plaan.webp">
+            <img src="pildid/toos/toos-palkmaja-plaan.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: log garden houses" data-et-alt="Töös olev konfiguraator: palk-aiamajad">
+          </picture>
+          <video class="tk-video" data-src="video/toos/toos-palkmaja-plaan-960.mp4" data-src-telefon="video/toos/toos-palkmaja-plaan-640.mp4" muted loop playsinline autoplay preload="none"></video>
+          <span class="tk-olek"><i></i><span data-et="Privaatne eelvaade">Private preview</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
+          <h3 data-et="Palk-aiamajad">Log garden houses</h3>
+          <p data-et="Palkmajade tootja — ostja joonistab ise oma maja plaani (ristkülik, L- või T-kuju), seinad, terrass ja katus tekivad kohe 3D-s.">Log house manufacturer — the buyer draws their own floor plan (rectangle, L or T shape) and the walls, terrace and roof appear in 3D straight away.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="pildid/toos/toos-garderoob.webp">
+            <img src="pildid/toos/toos-garderoob.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: made-to-measure wardrobes" data-et-alt="Töös olev konfiguraator: garderoobid mõõdu järgi">
+          </picture>
+          <video class="tk-video" data-src="video/toos/toos-garderoob-960.mp4" data-src-telefon="video/toos/toos-garderoob-640.mp4" muted loop playsinline autoplay preload="none"></video>
+          <span class="tk-olek"><i></i><span data-et="Privaatne eelvaade">Private preview</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
+          <h3 data-et="Garderoobid mõõdu järgi">Made-to-measure wardrobes</h3>
+          <p data-et="Garderoobide valmistaja — ostja alustab oma tühjast nišist: sisestab mõõdud, karkass kasvab nišši, sisse tulevad riided ja riiulid, siis uksed ja õhtune LED-valgus.">Wardrobe maker — the buyer starts from their own empty niche: enters the dimensions, the frame grows into place, clothes and shelves fill it, then come the doors and evening LED light.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="pildid/toos/toos-kook.webp">
+            <img src="pildid/toos/toos-kook.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: kitchen furniture" data-et-alt="Töös olev konfiguraator: köögimööbel">
+          </picture>
+          <video class="tk-video" data-src="video/toos/toos-kook-960.mp4" data-src-telefon="video/toos/toos-kook-640.mp4" muted loop playsinline autoplay preload="none"></video>
+          <span class="tk-olek"><i></i><span data-et="Privaatne eelvaade">Private preview</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
+          <h3 data-et="Köögimööbel">Kitchen furniture</h3>
+          <p data-et="Köögimööbli tootja — seina pikkuse järgi täitub köök standardkappidega; ostja vahetab kapitüüpe ja fassaadi ning lisab oma mõõtudega saare.">Kitchen furniture manufacturer — the kitchen fills with standard cabinets to fit the wall length; the buyer swaps cabinet types and fronts and adds an island in their own dimensions.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="pildid/toos/toos-aed.webp">
+            <img src="pildid/toos/toos-aed.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Configurator in progress: fences and gates" data-et-alt="Töös olev konfiguraator: piirdeaiad ja väravad">
+          </picture>
+          <video class="tk-video" data-src="video/toos/toos-aed-960.mp4" data-src-telefon="video/toos/toos-aed-640.mp4" muted loop playsinline autoplay preload="none"></video>
+          <span class="tk-olek"><i></i><span data-et="Privaatne eelvaade">Private preview</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt" data-et="Kliendiprojekt">Client project</span>
+          <h3 data-et="Piirdeaiad ja väravad">Fences and gates</h3>
+          <p data-et="Aiaehitaja — ostja joonistab aia kaardile või valgele lehele, valib aia, väravad ja mootorid ning näeb 3D-s, kuidas väravad päris mootorikiirusega avanevad. Hind tuleb kohe, päring läheb otse paigaldajale.">Fence builder — the buyer draws the fence on a map or a blank sheet, picks the fence, gates and motors, and watches the gates open in 3D at real motor speed. The price comes instantly and the enquiry goes straight to the installer.</p>
+        </div>
+      </article>
+      <article class="tk">
+        <div class="tk-meedia">
+          <picture>
+            <source type="image/webp" srcset="pildid/toos/toos-kalkulaator.webp">
+            <img src="pildid/toos/toos-kalkulaator.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Calculator in progress: building materials" data-et-alt="Töös olev kalkulaator: ehitusmaterjalid">
+          </picture>
+          <video class="tk-video" data-src="video/toos/toos-kalkulaator-960.mp4" data-src-telefon="video/toos/toos-kalkulaator-640.mp4" muted loop playsinline autoplay preload="none"></video>
+          <span class="tk-olek"><i></i><span data-et="Privaatne eelvaade">Private preview</span></span>
+        </div>
+        <div class="tk-sisu">
+          <span class="tk-silt" data-et="Oma arendus">Own development</span>
+          <h3 data-et="Ehitusmaterjalide kalkulaator">Building materials calculator</h3>
+          <p data-et="18 kalkulaatorit katusest veetorudeni — terve maja või üks konstruktsioon. Ostja valib kihid ja materjalid, 3D-s näeb lõiget ja lahtivõetud kihte ning kogused, pakid ja hinnad tulevad kohe. Ehitusmaterjalide poe või tootja kodulehele.">18 calculators from the roof to the water pipes — the whole house or a single construction. The buyer picks the layers and materials, sees the cut-away and exploded layers in 3D, and gets quantities, packs and prices instantly. For a building-materials store or manufacturer website.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var vaiksem = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (vaiksem || !('IntersectionObserver' in window)) return;
+  var telefon = window.matchMedia('(max-width: 640px)').matches;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting) {
+        if (!v.getAttribute('src')) {
+          v.src = (telefon && v.dataset.srcTelefon) || v.dataset.src;
+          v.addEventListener('playing', function(){ v.classList.add('mangib'); }, {once:true});
+        }
+        v.play().catch(function(){});
+      } else v.pause();
+    });
+  }, {threshold:.35});
+  document.querySelectorAll('video.tk-video').forEach(function(v){ io.observe(v); });
+})();
+</script>
+
 <section class="content hele" id="kkk" style="padding-top:0">
   <div class="container kkk-grid">
     <div>
       <div class="eyebrow" data-et="KKK">FAQ</div>
       <h2 class="section-title" data-et="Korduma kippuvad küsimused">Frequently asked questions</h2>
-      <p class="section-intro" style="margin-top:14px" data-et="Ei leidnud vastust? Kirjuta või helista — vastame ühe tööpäeva jooksul.">Didn't find your answer? Write or call — we reply within one business day.</p>
+      <p class="section-intro" style="margin-top:14px" data-et="Ei leidnud vastust? Kirjuta või helista — vastame 24 tunni jooksul.">Didn't find your answer? Write or call — we reply within 24 hours.</p>
     </div>
     <div class="kkk">
       <details>
@@ -2234,11 +2170,11 @@ footer{background:#1d1c1a;color:#ecebe6}
 
 <section class="content" id="kontakt" style="padding-top:0">
   <div class="container">
-    <p class="vorm-tanan" id="vorm-tanan" hidden data-et="Aitäh — sõnum on kohal. Vastame ühe tööpäeva jooksul.">Thank you — your message has arrived. We'll reply within one business day.</p>
+    <p class="vorm-tanan" id="vorm-tanan" hidden data-et="Aitäh — sõnum on kohal. Vastame 24 tunni jooksul.">Thank you — your message has arrived. We'll reply within 24 hours.</p>
     <div class="cta">
       <div class="cta-tekst">
         <h2 data-et="Saada üks link.<br>Ülejäänu küsime ise.">Send one link.<br>We'll ask the rest.</h2>
-        <p data-et="Mudelit, joonist ega lähteülesannet ei ole vaja. Piisab lingist tootelehele ja ühest lausest, mida sa tahaksid. Vastame järgmisel tööpäeval ja ütleme, mis sellest tootest saaks teha:">You don't need a model, a drawing or a brief. A link to the product page and one sentence about what you have in mind is enough. We reply the next business day and tell you what that product could become:</p>
+        <p data-et="Mudelit, joonist ega lähteülesannet ei ole vaja. Piisab lingist tootelehele ja ühest lausest, mida sa tahaksid. Vastame 24 tunni jooksul ja ütleme, mis sellest tootest saaks teha:">You don't need a model, a drawing or a brief. A link to the product page and one sentence about what you have in mind is enough. We reply within 24 hours and tell you what that product could become:</p>
         <ul>
           <li data-et="konfiguraator koos kõigi variatsioonidega">a configurator with all its variations</li>
           <li data-et="AR-mudel tootelehele, et ostja näeks toodet oma õues">an AR model for the product page, so the buyer sees it in their yard</li>
@@ -2246,27 +2182,29 @@ footer{background:#1d1c1a;color:#ecebe6}
         </ul>
         <ol class="mis-edasi">
           <li><b data-et="Täna">Today</b><span data-et="Saadad lingi tootelehele.">You send a link to the product page.</span></li>
-          <li><b data-et="1 tööpäev">1 business day</b><span data-et="Vastame: mida sellest tootest teeksime, kui kaua see võtab ja mida see umbes hõlmaks.">We reply: what we'd build for that product, how long it takes and what it would roughly involve.</span></li>
-          <li><b data-et="Sina otsustad">You decide</b><span data-et="Ilma kõne ja kohustuseta. Ka „see ei tasu end ära” on vastus.">No call, no commitment. "It won't pay off for you" is an answer too.</span></li>
+          <li><b data-et="24 h jooksul">Within 24 h</b><span data-et="Vastame: mida sellest tootest teeksime, kui kaua see võtab ja mida see umbes hõlmaks.">We reply: what we'd build for that product, how long it takes and what it would roughly involve.</span></li>
+          <li><b data-et="Sina otsustad">You decide</b><span data-et="Kõne ainult siis, kui ise soovid, ja ilma kohustuseta. Ka „see ei tasu end ära” on vastus.">A call only if you want one, and no commitment. "It won't pay off for you" is an answer too.</span></li>
         </ol>
         <div class="cta-kontakt">
+          <a class="btn kone-nupp" href="#kone" data-et="Broneeri 20 min kõne →">Book a 20-min call →</a>
           <a class="btn" href="mailto:visionframe3d@gmail.com">visionframe3d@gmail.com →</a>
           <a class="btn" href="tel:+37258257130">+372 5825 7130 →</a>
         </div>
       </div>
 
-      <form class="kontaktvorm" action="https://formsubmit.co/visionframe3d@gmail.com" method="POST">
+      <form class="kontaktvorm" id="kone" action="https://formsubmit.co/visionframe3d@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New enquiry from joonisekoda.ee">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://joonisekoda.ee/?saadetud=1#kontakt">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+        <p class="lubadus vorm-lubadus"><i></i><span data-et="Vastame 24 h jooksul">We reply within 24 hours</span></p>
         <label><span data-et="Nimi">Name</span><input type="text" name="Name" required autocomplete="name"></label>
         <label><span data-et="Ettevõte (valikuline)">Company (optional)</span><input type="text" name="Company" autocomplete="organization"></label>
         <label><span data-et="E-post või telefon">Email or phone</span><input type="text" name="Contact" required autocomplete="email"></label>
         <label><span data-et="Link tootele või paar sõna sellest">A link to the product, or a few words about it</span><textarea name="Message" required></textarea></label>
         <button type="submit" data-et="Saada →">Send →</button>
-        <p class="vorm-vihje" data-et="Vastame ühe tööpäeva jooksul. Pikka kirjeldust ei ole vaja, täpsustame ise. Kui 3D-mudel on olemas, kirjuta formaat (SketchUp, FBX, STEP või muu).">We reply within one business day. No long description needed — we'll ask. If you already have a 3D model, mention the format (SketchUp, FBX, STEP or something else).</p>
+        <p class="vorm-vihje" data-et="Pikka kirjeldust ei ole vaja, täpsustame ise. Kui 3D-mudel on olemas, kirjuta formaat (SketchUp, FBX, STEP või muu).">No long description needed — we'll ask. If you already have a 3D model, mention the format (SketchUp, FBX, STEP or something else).</p>
       </form>
     </div>
   </div>
@@ -2302,12 +2240,11 @@ footer{background:#1d1c1a;color:#ecebe6}
         <h4 data-et="Kontakt">Contact</h4>
         <a href="mailto:visionframe3d@gmail.com">visionframe3d@gmail.com</a>
         <a href="tel:+37258257130">+372 5825 7130</a>
-        <p>VISIONFRAME3D OÜ · Elva</p>
-        <p data-et="Eesti">Estonia</p>
+        <p class="footer-firma"><b>VISIONFRAME3D OÜ</b><span data-et="Registrikood 17123646">Registry code 17123646</span><span>Mesilinnu tn 1, Kalme küla, Elva vald, Tartumaa</span><span data-et="Eesti">Estonia</span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 VISIONFRAME3D OÜ</span>
+      <span data-et="© 2026 VISIONFRAME3D OÜ · Joonisekoda on VISIONFRAME3D OÜ kaubamärk">© 2026 VISIONFRAME3D OÜ · Joonisekoda is a brand of VISIONFRAME3D OÜ</span>
       <span data-et="Konfiguraatorid · AR · treeningmängud · tehniline dokumentatsioon">Configurators · AR · training games · technical documentation</span>
     </div>
   </div>
@@ -2382,69 +2319,30 @@ document.querySelectorAll('video.hoverplay').forEach(v => {
   card.addEventListener('mouseleave', () => v.pause());
 });
 
-/* Showreel: klipid vahetuvad ise; ekraanilt väljas pausil; nupuga hüpe */
+/* "Book a 20-min call": no booking service; prefill the contact form with the request and focus it.
+   Also works as a link: joonisekoda.ee/#kone (and /et/#kone, /fi/#kone, /lv/#kone). */
 (function(){
-  var reel = document.getElementById('reel');
-  if (!reel) return;
-  var vid = [].slice.call(reel.querySelectorAll('.reel-video video'));
-  var tek = [].slice.call(reel.querySelectorAll('.reel-tekst'));
-  var nup = [].slice.call(reel.querySelectorAll('.reel-nupp'));
-  var pyhk = reel.querySelector('.reel-pyhk');
-  var lug = reel.querySelector('.reel-lugeja b');
-  var vaiksem = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var i = -1, nahtav = false, alustatud = false, vahetus = 0;
-  var algus = function(v){ return parseFloat(v.dataset.algus) || 0; };
-  var kestus = function(v){ return parseFloat(v.dataset.kestus) || 6; };
-  function laadi(v){ if (v.preload !== 'auto') { v.preload = 'auto'; v.load(); } }
-  function kerimine(v){ try { v.currentTime = algus(v); } catch(e){} }
-  vid.forEach(function(v){ v.addEventListener('loadedmetadata', function(){ if (v.currentTime < algus(v)) kerimine(v); }); });
-
-  function mine(n){
-    var eel = i;
-    i = (n + vid.length) % vid.length;
-    vahetus = performance.now();
-    var v = vid[i];
-    laadi(v); laadi(vid[(i + 1) % vid.length]);   // järgmine ette
-    kerimine(v);
-    vid.forEach(function(x, k){
-      x.classList.remove('sisse', 'valja');
-      if (k === eel && eel !== i) { x.classList.remove('akt'); x.classList.add('valja'); }
-      else if (k !== i) { x.classList.remove('akt'); x.pause(); }
-    });
-    void v.offsetWidth;
-    v.classList.add('akt');
-    if (eel >= 0 && !vaiksem) {
-      v.classList.add('sisse');
-      pyhk.classList.remove('kaib'); void pyhk.offsetWidth; pyhk.classList.add('kaib');
-      setTimeout(function(){ if (vid[eel] && eel !== i) { vid[eel].classList.remove('valja'); vid[eel].pause(); } }, 1000);
-    }
-    tek.forEach(function(t, k){
-      t.classList.toggle('valja', k === eel && eel !== i);
-      t.classList.toggle('akt', k === i);
-    });
-    nup.forEach(function(b, k){ b.firstChild.style.setProperty('--p', k < i ? 1 : 0); });
-    lug.textContent = String(i + 1).padStart(2, '0');
-    if (nahtav && !vaiksem) v.play().catch(function(){});
+  var v = document.getElementById('kone');
+  if (!v) return;
+  var soov = JK.t('Hi, I would like to book a 20-minute call. Times that suit me: ',
+    'Tere! Sooviksin broneerida 20-minutilise kõne. Mulle sobivad ajad: ',
+    'Hei! Haluaisimme varata 20 minuutin puhelun. Meille sopivat ajat: ',
+    'Labdien! Vēlamies pieteikt 20 minūšu zvanu. Mums piemēroti laiki: ');
+  function kone(kerimine){
+    var t = v.querySelector('textarea[name="Message"]');
+    if (t && t.value.indexOf(soov.trim()) === -1) t.value = t.value ? soov + '\n' + t.value : soov;
+    var sub = v.querySelector('input[name="_subject"]');
+    if (sub && !/20 min/.test(sub.value)) sub.value += ' · 20 min call';
+    if (kerimine) v.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    var tyhi = [].filter.call(v.querySelectorAll('input[required]'), function(i){ return !i.value; })[0];
+    var f = tyhi || t;
+    if (f) setTimeout(function(){ try { f.focus({ preventScroll: true }); } catch(e){ f.focus(); } }, kerimine ? 450 : 0);
   }
-
-  function samm(){
-    requestAnimationFrame(samm);
-    var v = vid[i]; if (!v || !nahtav) return;
-    var p = Math.min(1, Math.max(0, (v.currentTime - algus(v)) / kestus(v)));
-    nup[i].firstChild.style.setProperty('--p', p);
-    // .8 s kaitse: kerimise ajal võib currentTime veel vana väärtust näidata
-    if (!vaiksem && p >= 1 && performance.now() - vahetus > 800) mine(i + 1);
-  }
-
-  nup.forEach(function(b, k){ b.addEventListener('click', function(){ mine(k); }); });
-  vid.forEach(function(v){ v.addEventListener('ended', function(){ if (vid[i] === v && !vaiksem) mine(i + 1); }); });
-
-  new IntersectionObserver(function(es){
-    nahtav = es[0].isIntersecting;
-    if (nahtav && !alustatud) { alustatud = true; mine(0); requestAnimationFrame(samm); }
-    var v = vid[i]; if (!v) return;
-    if (nahtav && !vaiksem) v.play().catch(function(){}); else v.pause();
-  }, { threshold: .3 }).observe(reel);
+  document.querySelectorAll('a.kone-nupp').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); kone(true); });
+  });
+  if (location.hash === '#kone') kone(false);
+  window.addEventListener('hashchange', function(){ if (location.hash === '#kone') kone(false); });
 })();
 
 /* Vormi rämpsukaitse ilma captchata: alla 4 s või ilma suhtluseta ei saadeta */
