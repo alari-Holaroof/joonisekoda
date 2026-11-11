@@ -41,7 +41,7 @@ Manufacturers whose products come in many variants or are installed by someone e
 - [Installation manuals](https://joonisekoda.ee/installation-manuals/): step-by-step manuals with parts, connections, fasteners and safety zone plans ([Estonian](https://joonisekoda.ee/et/paigaldusjuhendid/), [Finnish](https://joonisekoda.ee/fi/asennusohjeet/), [Latvian](https://joonisekoda.ee/lv/montazas-instrukcijas/))
 
 ## Contact
-- Email: visionframe3d@gmail.com
+- Email: info@joonisekoda.ee
 - Phone: +372 5825 7130
 - Company: VISIONFRAME3D OÜ, registry code 17123646, Elva, Tartumaa, Estonia
 - We reply within one business day.
